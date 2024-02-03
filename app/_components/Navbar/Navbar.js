@@ -1,18 +1,45 @@
-const Navbar = () => {
+import Link from 'next/link';
+import CustomLink from '@/app/_components/Navbar/CustomLink';
+import DayNightButton from '@/app/_components/Navbar/DayNightButton';
+import DropDownNavItems from './DropDownNavItems';
+
+const Navbar = ({ darkTheme, setDarkTheme }) => {
   return (
-    <nav className='lg:px-20 px-3 py-6 bg-slate-800'>
-      <ul className='flex justify-between'>
-        <li>Walid Hassan</li>
+    <nav className='lg:px-8 px-3 py-4 shadow-lg sticky top-0 bg-white dark:bg-slate-900 text-black dark:text-white'>
+      <ul className='flex justify-between items-center'>
         <li>
-          <ul className='lg:flex gap-4 hidden'>
-            <li>Home</li>
-            <li>About</li>
-            <li>Skills</li>
-            <li>Projects</li>
-            <li>Experience</li>
-            <li>Resume</li>
-            <li>Contact</li>
+          <Link href='/' className='uppercase text-xl hover:text-pink-700'>
+            Walid Hassan
+          </Link>
+        </li>
+        <li>
+          <ul className='lg:flex gap-8 hidden'>
+            <li>
+              <CustomLink href='/'>Home</CustomLink>
+            </li>
+            <li>
+              <CustomLink href='/about'>About</CustomLink>
+            </li>
+            <li>
+              <CustomLink href='/skills'>Skills</CustomLink>
+            </li>
+            <li>
+              <CustomLink href='/projects'>Projects</CustomLink>
+            </li>
+            <li>
+              <CustomLink href='/experience'>Experience</CustomLink>
+            </li>
+            <li>
+              <CustomLink href='/resume'>Resume</CustomLink>
+            </li>
+            <li>
+              <CustomLink href='/contact'>Contact</CustomLink>
+            </li>
           </ul>
+        </li>
+        <li className='lg:block flex gap-4'>
+          <DayNightButton darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+          <DropDownNavItems />
         </li>
       </ul>
     </nav>
