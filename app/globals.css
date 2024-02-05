@@ -5,3 +5,8 @@
 section {
   @apply text-black dark:text-white bg-white dark:bg-slate-900 min-h-screen;
 }
+
+.hasan {
+  -webkit-text-stroke: 1px #06b6d4;
+  color: transparent;
+}
