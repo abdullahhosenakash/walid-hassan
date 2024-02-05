@@ -1,21 +1,23 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import Navbar from '@/app/_components/Navbar/Navbar';
+import { getCookie } from 'cookies-next';
+import { useEffect, useState } from 'react';
 
 const ThemeProvider = ({ children }) => {
-  const [darkTheme, setDarkTheme] = useState(
-    window?.sessionStorage?.getItem('darkTheme') === 'true' ? true : false
-  );
-
+  const [theme, setTheme] = useState('light');
+  const [themeChanged, setThemeChanged] = useState(false);
   useEffect(() => {
     if (window) {
-      sessionStorage?.setItem('darkTheme', darkTheme);
+      const prevTheme = getCookie('theme');
+      prevTheme
+        ? setTheme(prevTheme)
+        : setTheme((prevState) => (prevState === 'light' ? 'dark' : 'light'));
     }
-  }, [darkTheme]);
+  }, [themeChanged]);
   return (
-    <main className={darkTheme ? 'dark' : ''}>
-      <Navbar setDarkTheme={setDarkTheme} darkTheme={darkTheme} />
+    <main className={theme}>
+      <Navbar setThemeChanged={setThemeChanged} />
       {children}
     </main>
   );

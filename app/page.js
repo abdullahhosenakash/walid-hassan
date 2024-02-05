@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main className='bg-white dark:bg-slate-900'>
+    <main className='bg-white dark:bg-slate-900 text-black dark:text-white'>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste illum
       reprehenderit tenetur totam voluptates velit ipsum perspiciatis
       dignissimos earum harum laboriosam itaque quibusdam, at, veniam dolor ex.

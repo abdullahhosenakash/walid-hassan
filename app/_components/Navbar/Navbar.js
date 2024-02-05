@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import CustomLink from '@/app/_components/Navbar/CustomLink';
 import DayNightButton from '@/app/_components/Navbar/DayNightButton';
-import DropDownNavItems from './DropDownNavItems';
+import DropDownNavItems from '@/app/_components/Navbar/DropDownNavItems';
 
-const Navbar = ({ darkTheme, setDarkTheme }) => {
+const Navbar = ({ setThemeChanged }) => {
   return (
     <nav className='lg:px-8 px-3 py-4 shadow-lg sticky top-0 bg-white dark:bg-slate-900 text-black dark:text-white'>
       <ul className='flex justify-between items-center'>
@@ -38,7 +38,7 @@ const Navbar = ({ darkTheme, setDarkTheme }) => {
           </ul>
         </li>
         <li className='lg:block flex gap-4'>
-          <DayNightButton darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+          <DayNightButton setThemeChanged={setThemeChanged} />
           <DropDownNavItems />
         </li>
       </ul>
