@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const About = () => {
   return (
-    <section className='dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3'>
+    <section className='dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3 lg:dark:h-[100vh]'>
       <h2 className='text-center text-3xl dark:text-white'>About Me</h2>
       <div className='flex flex-col gap-4 text-lg mt-6 lg:w-[65%] mx-auto text-justify'>
         <p>Hi,</p>
