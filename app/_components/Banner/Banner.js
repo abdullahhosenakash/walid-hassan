@@ -7,6 +7,7 @@ import {
   faSquareFacebook,
   faSquareGithub
 } from '@fortawesome/free-brands-svg-icons';
+import Link from 'next/link';
 
 const Banner = () => {
   return (
@@ -16,6 +17,7 @@ const Banner = () => {
           src={walidHasanImage}
           alt='Walid Hasan Image'
           className='border rounded-full p-2 bg-white'
+          priority
         />
       </div>
       <h2 className='text-4xl text-center uppercase mt-4 font-bold text-cyan-500'>
@@ -31,15 +33,24 @@ const Banner = () => {
       </h3>
       <TypewriterEffect />
       <div className='flex gap-4 justify-center mt-12'>
-        <FontAwesomeIcon
-          icon={faSquareFacebook}
-          className='w-10 text-5xl text-blue-700'
-        />
-        <FontAwesomeIcon
-          icon={faLinkedin}
-          className='w-10 text-5xl text-blue-700 '
-        />
-        <FontAwesomeIcon icon={faSquareGithub} className='w-10 text-5xl' />
+        <Link href='' target='_black'>
+          <FontAwesomeIcon
+            icon={faSquareFacebook}
+            className='w-10 text-5xl text-blue-700 dark:bg-white h-fit dark:h-10 dark:rounded-lg'
+          />
+        </Link>
+        <Link href='' target='_black'>
+          <FontAwesomeIcon
+            icon={faLinkedin}
+            className='w-10 text-5xl text-blue-700 dark:bg-white h-fit dark:h-10 dark:rounded-lg'
+          />
+        </Link>{' '}
+        <Link href='' target='_black'>
+          <FontAwesomeIcon
+            icon={faSquareGithub}
+            className='w-10 text-5xl dark:bg-white text-black h-fit dark:h-10 dark:rounded-lg'
+          />
+        </Link>
       </div>
     </section>
   );

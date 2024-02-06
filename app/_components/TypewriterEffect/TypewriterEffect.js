@@ -5,7 +5,7 @@ const TypewriterEffect = () => {
   return (
     <div className='flex justify-center gap-1 text-lg'>
       <span>I work with</span>{' '}
-      <p className='text-pink-700 font-bold'>
+      <div className='text-pink-700 font-bold'>
         <Typewriter
           options={{
             strings: [
@@ -24,7 +24,7 @@ const TypewriterEffect = () => {
             delay: 50
           }}
         />
-      </p>
+      </div>
     </div>
   );
 };
