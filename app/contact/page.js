@@ -11,7 +11,7 @@ const Contact = () => {
       <p className='text-center dark:text-white'>
         Feel free to contact me if you think I can help somehow
       </p>
-      <div className='grid lg:grid-cols-2 grid-cols-1 gap-8 mx-auto lg:w-3/4 mt-6'>
+      <div className='grid lg:grid-cols-2 grid-cols-1 lg:gap-8 gap-3 mx-auto lg:w-3/4 mt-6'>
         <div className='text-center shadow-xl dark:shadow-none bg-slate-100 dark:bg-slate-800 py-6'>
           <FontAwesomeIcon icon={faEnvelope} className='text-3xl' />
           <p className='text-2xl'>Email</p>
