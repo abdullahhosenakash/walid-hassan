@@ -17,7 +17,7 @@ const Card = ({ card }) => {
       <hr className='mt-4' />
       <Link
         href=''
-        className='text-white py-2 px-4 rounded-lg flex w-fit mx-auto my-2 bg-blue-700'
+        className='text-white py-2 px-4 rounded-lg flex w-fit mx-auto my-2 bg-blue-700 hover:bg-blue-600'
       >
         {card.linkText}
       </Link>
