@@ -3,7 +3,7 @@ import Link from 'next/link';
 const Experience = () => {
   return (
     <section className='dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3 lg:dark:h-screen'>
-      <h2 className='text-center text-3xl dark:text-white'>My Experience</h2>
+      <h2 className='text-center text-3xl'>My Experience</h2>
       <div className='flex flex-col gap-4 text-lg mt-6 lg:w-[65%] mx-auto text-justify'>
         <p className='font-bold text-xl'>Problem Solving</p>
         <p>
