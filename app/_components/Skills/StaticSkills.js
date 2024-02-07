@@ -1,6 +1,6 @@
 const StaticSkills = () => {
   return (
-    <section className='flex flex-col gap-4'>
+    <section className='flex flex-col gap-6 mt-6'>
       <div>
         <h4 className='text-2xl font-bold'>Languages</h4>
         <p className='text-lg'>

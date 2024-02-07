@@ -13,7 +13,11 @@ const Skills = () => {
   console.log(toggleSkill);
 
   return (
-    <section className='dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3  dark:lg:h-screen'>
+    <section
+      className={`dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3 ${
+        !toggleSkill ? 'dark:lg:h-screen' : ''
+      }`}
+    >
       <h2 className='text-center text-3xl dark:text-white'>My Skills</h2>
       <div className='lg:w-[60%] mx-auto mt-12'>
         <ToggleSkillsShowcase
