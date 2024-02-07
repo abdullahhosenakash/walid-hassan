@@ -4,6 +4,7 @@ import DayNightButton from '@/app/_components/Navbar/DayNightButton';
 import DropDownNavItems from '@/app/_components/Navbar/DropDownNavItems';
 
 const Navbar = ({ setThemeChanged }) => {
+  const isAuthenticated = false;
   return (
     <nav className='lg:px-8 px-3 py-4 shadow-lg sticky top-0 bg-white dark:bg-slate-900 text-black dark:text-white'>
       <ul className='flex justify-between items-center'>
@@ -34,6 +35,13 @@ const Navbar = ({ setThemeChanged }) => {
             </li>
             <li>
               <CustomLink href='/contact'>Contact</CustomLink>
+            </li>
+            <li>
+              {isAuthenticated ? (
+                <CustomLink href='/dashboard'>Dashboard</CustomLink>
+              ) : (
+                <CustomLink href='/login'>Login</CustomLink>
+              )}
             </li>
           </ul>
         </li>
