@@ -1,6 +1,5 @@
 'use client';
 
-import { redirect } from 'next/navigation';
 import { useState } from 'react';
 
 const Login = () => {
@@ -9,7 +8,7 @@ const Login = () => {
   // const []
   const isAuthenticated = false;
   if (isAuthenticated) {
-    redirect('/dashboard');
+    // redirect('/dashboard');
   }
 
   const handleUserSecret = (e) => {
@@ -26,7 +25,7 @@ const Login = () => {
     const userEmail = e.target.email.value;
     const userPassword = e.target.password.value;
     const userCredential = { userEmail, userPassword };
-    const response = await fetch('/api/login', {
+    const response = await fetch('/api/auth/login', {
       method: 'PUT',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(userCredential)
