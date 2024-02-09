@@ -1,15 +1,12 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [secretProvided, setSecretProvided] = useState(false);
-  // const []
-  const isAuthenticated = false;
-  if (isAuthenticated) {
-    // redirect('/dashboard');
-  }
+  const { push } = useRouter();
 
   const handleUserSecret = (e) => {
     const secret = e.target.value;
@@ -24,14 +21,26 @@ const Login = () => {
     e.preventDefault();
     const userEmail = e.target.email.value;
     const userPassword = e.target.password.value;
-    const userCredential = { userEmail, userPassword };
-    const response = await fetch('/api/auth/login', {
-      method: 'PUT',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(userCredential)
-    });
-    const userInfo = await response.json();
-    console.log(userInfo);
+    const payload = { userEmail, userPassword };
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (response.ok) {
+        e.target.reset();
+        push('/dashboard');
+      } else if (response.status === 404) {
+        setErrorMessage(
+          'Something went wrong. The server responded not found. Please try again later!'
+        );
+      } else if (response.status === 401) {
+        setErrorMessage('Unauthorized access detected!');
+      }
+    } catch (error) {
+      setErrorMessage(error);
+    }
   };
 
   return (
@@ -62,7 +71,10 @@ const Login = () => {
               id='email'
               required
               disabled={!secretProvided}
-              className='py-2 border border-slate-500 hover:border-pink-500 focus:outline-pink-700 rounded px-2 dark:bg-slate-800 w-full disabled:bg-slate-200 disabled:hover:border-slate-500'
+              placeholder={
+                secretProvided ? 'Enter your email' : 'Enter user secret first'
+              }
+              className='py-2 border border-slate-500 hover:border-pink-500 focus:outline-pink-700 rounded px-2 dark:bg-slate-800 w-full disabled:bg-slate-200 dark:disabled:bg-slate-500 disabled:hover:border-slate-500'
             />
           </div>
 
@@ -76,7 +88,12 @@ const Login = () => {
               id='password'
               required
               disabled={!secretProvided}
-              className='py-2 border border-slate-500 hover:border-pink-500 focus:outline-pink-700 rounded px-2 dark:bg-slate-800 w-full disabled:bg-slate-200 disabled:hover:border-slate-500'
+              placeholder={
+                secretProvided
+                  ? 'Enter your password'
+                  : 'Enter user secret first'
+              }
+              className='py-2 border border-slate-500 hover:border-pink-500 focus:outline-pink-700 rounded px-2 dark:bg-slate-800 w-full disabled:bg-slate-200 disabled:hover:border-slate-500 dark:disabled:bg-slate-500'
             />
           </div>
           <p className='text-center text-red-600'>
@@ -88,7 +105,7 @@ const Login = () => {
               disabled={!secretProvided}
               className='py-2 rounded bg-blue-700 w-full hover:bg-blue-600 text-white disabled:bg-slate-500'
             >
-              Login
+              {secretProvided ? 'Login' : 'Enter user secret first to login'}
             </button>
           </div>
         </form>

@@ -1,7 +1,8 @@
 import { redirect } from 'next/navigation';
-export default function DashboardLayout({ children }) {
-  const isAuthenticated = false;
-  if (isAuthenticated) {
+import getUser from '../_lib/getUser';
+export default async function DashboardLayout({ children }) {
+  const { user, error } = await getUser();
+  if (error) {
     redirect('/login');
   }
   return (

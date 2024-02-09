@@ -34,6 +34,9 @@ const Navbar = ({ setThemeChanged }) => {
               <CustomLink href='/resume'>Resume</CustomLink>
             </li>
             <li>
+              <CustomLink href='/research-papers'>Research Papers</CustomLink>
+            </li>
+            <li>
               <CustomLink href='/contact'>Contact</CustomLink>
             </li>
             <li>
