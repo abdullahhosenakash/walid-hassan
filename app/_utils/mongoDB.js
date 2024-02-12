@@ -8,8 +8,9 @@ const client = new MongoClient(process.env.MONGODB_URI, {
   }
 });
 
-await client.connect();
-const db = client.db('ahAkashPortfolio');
-const userCollection = db.collection('users');
-const collection = { userCollection };
-export default collection;
+export async function DB() {
+  await client.connect();
+  const db = client.db('ahAkashPortfolio');
+  const userCollection = db.collection('users');
+  return userCollection;
+}

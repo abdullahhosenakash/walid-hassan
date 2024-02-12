@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 const Resume = () => {
-  console.log('resume');
   return (
     <section className='dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3'>
       <h2 className='text-center text-3xl dark:text-white'>My Resume</h2>

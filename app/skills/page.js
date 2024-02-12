@@ -10,8 +10,6 @@ import { faClock } from '@fortawesome/free-regular-svg-icons';
 const Skills = () => {
   const [toggleSkill, setToggleSkill] = useState(false);
 
-  console.log(toggleSkill);
-
   return (
     <section
       className={`dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3 ${

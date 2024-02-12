@@ -1,10 +1,11 @@
 import collection from '@/app/_utils/mongoDB';
-import { MAX_AGE, USER_COOKIE } from '@/constants';
-import { serialize } from 'cookie';
+import { MAX_AGE, USER_COOKIE } from '@/app/_constants';
 import { sign } from 'jsonwebtoken';
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 export async function POST(request) {
+  const cookieStore = cookies();
   const { userCollection } = collection;
   const { userEmail, userPassword: userPass } = await request.json();
   const user = await userCollection.findOne({
@@ -18,26 +19,28 @@ export async function POST(request) {
       { status: 401 }
     );
   }
-  const { userPassword, ...userInfo } = user || {};
+
   const secret = process.env.JWT_SECRET || '';
   const token = sign(
     {
-      userInfo
+      userEmail
     },
     secret,
     { expiresIn: MAX_AGE }
   );
-  const serialized = serialize(USER_COOKIE, token, {
+
+  cookieStore.set(USER_COOKIE, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
     maxAge: MAX_AGE,
-    path: '/'
+    path: '/',
+    domain:
+      process.env.NODE_ENV === 'development' ? '.localhost' : '.vercel.com'
   });
 
   const response = { message: 'Authenticated successfully!' };
-  return NextResponse.json(JSON.stringify(response), {
-    status: 200,
-    headers: { 'Set-Cookie': serialized }
+  return NextResponse.json(response, {
+    status: 200
   });
 }
