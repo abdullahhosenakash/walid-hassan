@@ -1,7 +1,8 @@
 'use client';
 
 import Navbar from '@/app/_components/Navbar/Navbar';
-import { getCookie } from 'cookies-next';
+import { USER_COOKIE } from '@/app/_constants';
+import { getCookie, getCookies } from 'cookies-next';
 import { useEffect, useState } from 'react';
 
 const ThemeProvider = ({ children }) => {

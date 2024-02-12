@@ -15,10 +15,11 @@ const getUser = async () => {
   const secret = process.env.JWT_SECRET || '';
 
   try {
-    verify(token.value, secret);
+    const decoded = verify(token.value, secret);
+    const user = { userName: decoded.userName, userEmail: decoded.userEmail };
 
     return {
-      user: token.value,
+      user,
       error: null
     };
   } catch (error) {
@@ -30,29 +31,3 @@ const getUser = async () => {
 };
 
 export default getUser;
-
-// const getUser = async () => {
-//   try {
-//     const response = await import('../api/auth/user/route');
-//     const { user, message } = await (await response.GET()).json();
-
-//     if (user) {
-//       return {
-//         user,
-//         error: null
-//       };
-//     } else if (message) {
-//       return {
-//         user: null,
-//         error: message
-//       };
-//     }
-//   } catch (error) {
-//     return {
-//       user: null,
-//       error: 'not found'
-//     };
-//   }
-// };
-
-// export default getUser;
