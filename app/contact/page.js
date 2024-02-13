@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Contact = () => {
   return (
-    <section className='dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3 lg:dark:h-screen'>
+    <section className='dark:bg-slate-900 lg:py-8 py-4 dark:text-white lg:px-0 px-3 lg:dark:h-screen'>
       <h2 className='text-center text-3xl dark:text-white'>My Contacts</h2>
       <p className='text-center dark:text-white'>
         Feel free to contact me if you think I can help somehow

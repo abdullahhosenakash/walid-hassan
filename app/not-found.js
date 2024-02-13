@@ -3,7 +3,7 @@ import React from 'react';
 
 const NotFound = () => {
   return (
-    <section className='dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3 dark:lg:h-screen'>
+    <section className='dark:bg-slate-900 lg:lg:py-8 py-4 py-4 dark:text-white lg:px-0 px-3 dark:lg:h-screen'>
       <h2 className='text-center text-3xl dark:text-whit text-red-600 mt-20'>
         Page Not Found
       </h2>

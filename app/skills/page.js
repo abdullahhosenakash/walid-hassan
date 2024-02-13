@@ -12,7 +12,7 @@ const Skills = () => {
 
   return (
     <section
-      className={`dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3 ${
+      className={`dark:bg-slate-900 lg:py-8 py-4 dark:text-white lg:px-0 px-3 ${
         !toggleSkill ? 'dark:lg:h-screen' : ''
       }`}
     >

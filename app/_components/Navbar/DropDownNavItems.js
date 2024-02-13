@@ -1,14 +1,11 @@
-'use client';
-
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CustomLink from '@/app/_components/Navbar/CustomLink';
+import AuthenticationLinks from '@/app/_components/Navbar/AuthenticationLinks';
 
-const DropDownNavItems = () => {
+const DropDownNavItems = ({ user }) => {
   const [toggle, setToggle] = useState(false);
-
-  const isAuthenticated = false;
   return (
     <div className='lg:hidden block'>
       {toggle ? (
@@ -22,7 +19,7 @@ const DropDownNavItems = () => {
       )}
       {toggle && (
         <ul
-          className='flex flex-col gap-2 absolute w-full left-0 pl-3 pt-3 bg-white dark:bg-slate-950 dark:text-white text-lg transition shadow-2xl'
+          className='flex flex-col gap-2 absolute w-full left-0 pl-3 py-3 bg-white dark:bg-slate-950 dark:text-white text-lg transition shadow-2xl'
           onClick={() => setToggle(false)}
         >
           <li>
@@ -50,11 +47,7 @@ const DropDownNavItems = () => {
             <CustomLink href='/contact'>Contact</CustomLink>
           </li>
           <li>
-            {isAuthenticated ? (
-              <CustomLink href='/dashboard'>Dashboard</CustomLink>
-            ) : (
-              <CustomLink href='/login'>Login</CustomLink>
-            )}
+            <AuthenticationLinks user={user} />
           </li>
         </ul>
       )}

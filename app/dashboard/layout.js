@@ -1,3 +1,4 @@
+import DashboardNavigationBar from '@/app/_components/DashboardNavigationBar/DashboardNavigationBar';
 import { getUser } from '@/app/_lib/getUser';
 import { redirect } from 'next/navigation';
 export default async function DashboardLayout({ children }) {
@@ -8,9 +9,9 @@ export default async function DashboardLayout({ children }) {
   }
 
   return (
-    <section className='dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3'>
+    <section className='dark:bg-slate-900 lg:py-8 py-4 dark:text-white lg:px-0 px-3 dark:h-screen'>
       <h2 className='text-center text-3xl'>Dashboard</h2>
-
+      <DashboardNavigationBar />
       {children}
     </section>
   );

@@ -4,7 +4,7 @@ import web_project from '@/app/_assets/images/web_project.png';
 
 const Projects = () => {
   return (
-    <section className='dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3'>
+    <section className='dark:bg-slate-900 lg:py-8 py-4 dark:text-white lg:px-0 px-3'>
       <h2 className='text-center text-3xl'>My Projects</h2>
       <div className='lg:w-[60%] mx-auto mt-6'>
         <ul className='list-disc'>

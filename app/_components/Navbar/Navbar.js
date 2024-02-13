@@ -2,9 +2,7 @@ import Link from 'next/link';
 import CustomLink from '@/app/_components/Navbar/CustomLink';
 import DayNightButton from '@/app/_components/Navbar/DayNightButton';
 import DropDownNavItems from '@/app/_components/Navbar/DropDownNavItems';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-import { logout } from '@/app/_lib/logout';
+import AuthenticationLinks from '@/app/_components/Navbar/AuthenticationLinks';
 
 const Navbar = ({ setThemeChanged, user }) => {
   return (
@@ -42,31 +40,13 @@ const Navbar = ({ setThemeChanged, user }) => {
               <CustomLink href='/contact'>Contact</CustomLink>
             </li>
             <li>
-              {user ? (
-                <div className='flex gap-4'>
-                  <CustomLink href='/dashboard'>Dashboard</CustomLink>
-                  <button
-                    className='hover:text-pink-700'
-                    onClick={async () => {
-                      await logout();
-                    }}
-                  >
-                    Logout{' '}
-                    <FontAwesomeIcon
-                      icon={faRightFromBracket}
-                      className='w-4 inline-block'
-                    />
-                  </button>
-                </div>
-              ) : (
-                <CustomLink href='/login'>Login</CustomLink>
-              )}
+              <AuthenticationLinks user={user} />
             </li>
           </ul>
         </li>
         <li className='lg:block flex gap-4'>
           <DayNightButton setThemeChanged={setThemeChanged} />
-          <DropDownNavItems />
+          <DropDownNavItems user={user} />
         </li>
       </ul>
     </nav>
