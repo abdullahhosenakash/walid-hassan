@@ -7,6 +7,7 @@ const StaticSkills = () => {
           JavaScript, TypeScript, Python, C++, Java, HTML, CSS
         </p>
       </div>
+
       <div>
         <h4 className='text-2xl font-bold'>Frameworks & Library</h4>
         <p className='text-lg'>

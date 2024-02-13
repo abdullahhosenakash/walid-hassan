@@ -13,7 +13,10 @@ const Contact = () => {
       </p>
       <div className='grid lg:grid-cols-2 grid-cols-1 lg:gap-8 gap-3 mx-auto lg:w-3/4 mt-6'>
         <div className='text-center shadow-xl dark:shadow-none bg-slate-100 dark:bg-slate-800 py-6'>
-          <FontAwesomeIcon icon={faEnvelope} className='text-3xl' />
+          <FontAwesomeIcon
+            icon={faEnvelope}
+            className='text-3xl inline-block w-8'
+          />
           <p className='text-2xl'>Email</p>
           <Link
             href='mailto:walidhassan@tanim.com'
@@ -23,7 +26,10 @@ const Contact = () => {
           </Link>
         </div>
         <div className='text-center shadow-xl dark:shadow-none bg-slate-100 dark:bg-slate-800 py-6'>
-          <FontAwesomeIcon icon={faPhone} className='text-3xl' />
+          <FontAwesomeIcon
+            icon={faPhone}
+            className='text-3xl inline-block w-8'
+          />
           <p className='text-2xl'>Phone</p>
           <Link
             href='tel:+01234567899'
@@ -33,7 +39,10 @@ const Contact = () => {
           </Link>
         </div>
         <div className='text-center shadow-xl dark:shadow-none bg-slate-100 dark:bg-slate-800 py-6'>
-          <FontAwesomeIcon icon={faWhatsapp} className='text-3xl' />
+          <FontAwesomeIcon
+            icon={faWhatsapp}
+            className='text-3xl inline-block w-8'
+          />
           <p className='text-2xl'>WhatsApp</p>
           <Link
             href='whatsappAddress'
@@ -43,7 +52,10 @@ const Contact = () => {
           </Link>
         </div>
         <div className='text-center shadow-xl dark:shadow-none bg-slate-100 dark:bg-slate-800 py-6'>
-          <FontAwesomeIcon icon={faLocationDot} className='text-3xl' />
+          <FontAwesomeIcon
+            icon={faLocationDot}
+            className='text-3xl inline-block w-8'
+          />
           <p className='text-2xl'>Address</p>
           <Link
             href='location'

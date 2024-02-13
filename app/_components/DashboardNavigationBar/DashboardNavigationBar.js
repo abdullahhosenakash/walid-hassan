@@ -2,7 +2,7 @@ import DashboardLink from '@/app/_components/DashboardNavigationBar/DashboardLin
 
 const DashboardNavigationBar = () => {
   return (
-    <ul className='flex flex-wrap justify-center lg:gap-8 gap-x-4 gap-y-1 items-center mt-1 border-b w-fit mx-auto'>
+    <ul className='flex flex-wrap justify-center lg:gap-8 gap-x-4 gap-y-1 items-center mt-1 border-b border-b-slate-500 w-fit mx-auto'>
       <li>
         <DashboardLink href='/dashboard/update-skills'>
           Update Skills

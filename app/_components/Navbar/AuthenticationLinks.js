@@ -1,3 +1,5 @@
+'use client';
+
 import CustomLink from '@/app/_components/Navbar/CustomLink';
 import { logout } from '@/app/_lib/logout';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';

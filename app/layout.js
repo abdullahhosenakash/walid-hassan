@@ -1,7 +1,8 @@
 import { Inter } from 'next/font/google';
 import '@/app/globals.css';
-import ThemeProvider from '@/app/_components/ThemeProvider/ThemeProvider';
 import { getUser } from '@/app/_lib/getUser';
+import { getTheme } from '@/app/_lib/getTheme';
+import Navbar from '@/app/_components/Navbar/Navbar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,10 +13,13 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const { user } = await getUser();
+  const theme = await getTheme();
+
   return (
-    <html lang='en' className='scroll-smooth'>
+    <html lang='en' className={`scroll-smooth ${theme}`}>
       <body className={inter.className}>
-        <ThemeProvider user={user}>{children}</ThemeProvider>
+        <Navbar user={user} theme={theme} />
+        {children}
       </body>
     </html>
   );

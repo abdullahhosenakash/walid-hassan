@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import ToggleSkillsShowcase from '../_components/Skills/ToggleSkillsShowcase';
-import ProgressSkills from '../_components/Skills/ProgressSkills';
-import StaticSkills from '../_components/Skills/StaticSkills';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
+import ToggleSkillsShowcase from '@/app/_components/Skills/ToggleSkillsShowcase';
+import ProgressSkills from '@/app/_components/Skills/ProgressSkills';
+import StaticSkills from '@/app/_components/Skills/StaticSkills';
 
 const Skills = () => {
   const [toggleSkill, setToggleSkill] = useState(false);
@@ -23,8 +23,9 @@ const Skills = () => {
           setToggleSkill={setToggleSkill}
         />
         {toggleSkill ? <ProgressSkills /> : <StaticSkills />}
-        <p className='mt-12 text-slate-600 dark:text-slate-400'>
-          <FontAwesomeIcon icon={faClock} /> Last Updated: February 6, 2024
+        <p className='mt-6 text-slate-600 dark:text-slate-400'>
+          <FontAwesomeIcon icon={faClock} className='w-4 inline-block' /> Last
+          Updated: February 6, 2024
         </p>
       </div>
     </section>
