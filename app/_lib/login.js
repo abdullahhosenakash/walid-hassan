@@ -9,6 +9,7 @@ export async function login(prevState, formData) {
   const userSecret = formData.get('userSecret');
   const userEmail = formData.get('userEmail');
   const userPassword = formData.get('userPassword');
+  console.log(typeof userSecret, 'aaa', typeof process.env.USER_SECRET);
   if (userSecret !== process.env.USER_SECRET) {
     return { errorType: 'userSecret', message: 'Wrong user secret' };
   }
