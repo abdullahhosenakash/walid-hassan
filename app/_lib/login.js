@@ -1,6 +1,6 @@
 'use server';
 
-import { MAX_AGE, USER_COOKIE, USER_INFO_COOKIE } from '@/app/_constants';
+import { MAX_AGE, USER_COOKIE } from '@/app/_constants';
 import { DB } from '@/app/_utils/mongoDB';
 import { sign } from 'jsonwebtoken';
 import { cookies } from 'next/headers';
@@ -42,20 +42,5 @@ export async function login(prevState, formData) {
     path: '/'
   });
 
-  cookieStore.set(
-    USER_INFO_COOKIE,
-    JSON.stringify({
-      userEmail,
-      userName: user.userName
-    }),
-    {
-      httpOnly: false,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
-      maxAge: MAX_AGE,
-      path: '/'
-    }
-  );
-
-  return { errorType: null, message: '' };
+  return { errorType: null, message: 'login successful' };
 }

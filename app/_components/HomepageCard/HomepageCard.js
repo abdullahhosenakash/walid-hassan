@@ -1,4 +1,4 @@
-import Card from './Card';
+import Card from '@/app/_components/HomepageCard/Card';
 
 const HomepageCard = () => {
   const cards = [

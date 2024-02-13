@@ -1,8 +1,10 @@
+'use server';
+
 import { USER_COOKIE } from '@/app/_constants';
 import { verify } from 'jsonwebtoken';
 import { cookies } from 'next/headers';
 
-const getUser = async () => {
+export async function getUser() {
   const cookieStore = cookies();
   const token = cookieStore.get(USER_COOKIE);
   if (!token) {
@@ -28,6 +30,4 @@ const getUser = async () => {
       error: 'something went wrong'
     };
   }
-};
-
-export default getUser;
+}

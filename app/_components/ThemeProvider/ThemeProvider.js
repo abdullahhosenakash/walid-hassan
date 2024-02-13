@@ -1,11 +1,10 @@
 'use client';
 
 import Navbar from '@/app/_components/Navbar/Navbar';
-import { USER_COOKIE } from '@/app/_constants';
-import { getCookie, getCookies } from 'cookies-next';
+import { getCookie } from 'cookies-next';
 import { useEffect, useState } from 'react';
 
-const ThemeProvider = ({ children }) => {
+const ThemeProvider = ({ children, user }) => {
   const [theme, setTheme] = useState('light');
   const [themeChanged, setThemeChanged] = useState(false);
   useEffect(() => {
@@ -18,7 +17,7 @@ const ThemeProvider = ({ children }) => {
   }, [themeChanged]);
   return (
     <main className={theme}>
-      <Navbar setThemeChanged={setThemeChanged} />
+      <Navbar setThemeChanged={setThemeChanged} user={user} />
       {children}
     </main>
   );

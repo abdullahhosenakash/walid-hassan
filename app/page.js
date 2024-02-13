@@ -1,5 +1,5 @@
 import Banner from '@/app/_components/Banner/Banner';
-import HomepageCard from './_components/HomepageCard/HomepageCard';
+import HomepageCard from '@/app/_components/HomepageCard/HomepageCard';
 
 export default function Home() {
   return (
