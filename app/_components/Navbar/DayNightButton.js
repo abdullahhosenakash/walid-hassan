@@ -10,13 +10,15 @@ const DayNightButton = ({ theme }) => {
       {theme === 'dark' ? (
         <FontAwesomeIcon
           icon={faSun}
-          className='text-xl w-5 text-white hover:text-pink-700 hover:cursor-pointer'
+          className='text-white hover:text-pink-700 hover:cursor-pointer'
+          size='lg'
           onClick={async () => await updateTheme('light')}
         />
       ) : (
         <FontAwesomeIcon
           icon={faMoon}
-          className='text-xl w-5 hover:text-pink-700 hover:cursor-pointer'
+          className='hover:text-pink-700 hover:cursor-pointer'
+          size='lg'
           onClick={async () => await updateTheme('dark')}
         />
       )}

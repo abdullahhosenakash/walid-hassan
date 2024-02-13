@@ -44,7 +44,7 @@ const Navbar = ({ user, theme }) => {
             </li>
           </ul>
         </li>
-        <li className='lg:block flex gap-4'>
+        <li className='lg:block flex items-center gap-4'>
           <DayNightButton theme={theme} />
           <DropDownNavItems user={user} />
         </li>

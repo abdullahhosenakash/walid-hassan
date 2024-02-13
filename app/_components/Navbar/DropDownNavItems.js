@@ -12,11 +12,11 @@ const DropDownNavItems = ({ user }) => {
     <div className='lg:hidden block'>
       {toggle ? (
         <button onClick={() => setToggle(false)}>
-          <FontAwesomeIcon icon={faX} className='text-xl w-8' />
+          <FontAwesomeIcon icon={faX} size='lg' className='w-5' />
         </button>
       ) : (
         <button onClick={() => setToggle(true)}>
-          <FontAwesomeIcon icon={faBars} className='text-xl w-8' />
+          <FontAwesomeIcon icon={faBars} size='lg' className='w-5' />
         </button>
       )}
       {toggle && (
