@@ -6,7 +6,9 @@ const Experience = () => {
       <h2 className='text-center text-3xl'>My Experience</h2>
       <div className='flex flex-col gap-6 text-lg mt-6 lg:w-[65%] mx-auto text-justify'>
         <div>
-          <p className='font-bold text-xl'>Problem Solving</p>
+          <p className='font-bold text-xl hover:cursor-pointer hover:dark:text-blue-400 text-blue-700'>
+            Problem Solving
+          </p>
           <p className='mt-1'>
             I am an avid learner of Algorithms and Data Structures, Mathematics
             and Problem solving strategies. I have solved 1500+ problems on

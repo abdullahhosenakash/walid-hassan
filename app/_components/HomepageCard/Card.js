@@ -15,10 +15,10 @@ const Card = ({ card }) => {
       <h3 className='text-2xl text-center dark:text-white mt-4'>
         {card.title}
       </h3>
-      <p className='mt-4 text-center'>{card.details}</p>
+      <p className='mt-4 text-center'>{card.description}</p>
       <hr className='mt-4' />
       <Link
-        href=''
+        href={card.link}
         className='text-white py-2 px-4 rounded-lg flex w-fit mx-auto my-2 bg-blue-700 hover:bg-blue-600'
       >
         {card.linkText}

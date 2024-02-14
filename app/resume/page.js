@@ -50,7 +50,10 @@ const Resume = () => {
           <h4 className='text-xl font-bold flex justify-between'>
             <span>
               Travel & Tourism Website -{' '}
-              <Link href='link' className='text-blue-700 hover:underline'>
+              <Link
+                href='link'
+                className='dark:text-blue-400 text-blue-700 hover:underline'
+              >
                 Github Link
               </Link>
             </span>
@@ -75,7 +78,10 @@ const Resume = () => {
           <h4 className='text-xl font-bold flex justify-between'>
             <span>
               Travel & Tourism Website -{' '}
-              <Link href='link' className='text-blue-700 hover:underline'>
+              <Link
+                href='link'
+                className='dark:text-blue-400 text-blue-700 hover:underline'
+              >
                 Github Link
               </Link>
             </span>
@@ -117,7 +123,10 @@ const Resume = () => {
           </h3>
           <p className='text-lg font-bold'>
             Problem Solving -{' '}
-            <Link href='github' className='text-blue-700 hover:underline'>
+            <Link
+              href='github'
+              className='dark:text-blue-400 text-blue-700 hover:underline'
+            >
               Github Link
             </Link>
           </p>
@@ -133,7 +142,10 @@ const Resume = () => {
           </ul>
           <p className='text-lg font-bold'>
             Algorithm Learning -{' '}
-            <Link href='github' className='text-blue-700 hover:underline'>
+            <Link
+              href='github'
+              className='dark:text-blue-400 text-blue-700 hover:underline'
+            >
               Github Link
             </Link>
           </p>

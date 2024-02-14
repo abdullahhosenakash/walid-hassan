@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
-import ToggleSkillsShowcase from '@/app/skills/_components/ToggleSkillsShowcase';
-import ProgressSkills from '@/app/skills/_components/ProgressSkills';
-import StaticSkills from '@/app/skills/_components/StaticSkills';
+import ToggleSkillsShowcase from '@/app/_components/Skills/ToggleSkillsShowcase';
+import ProgressSkills from '@/app/_components/Skills/ProgressSkills';
+import StaticSkills from '@/app/_components/Skills/StaticSkills';
 
 const Skills = () => {
   const [toggleSkill, setToggleSkill] = useState(false);

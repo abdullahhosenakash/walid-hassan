@@ -36,3 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 text.js
+homepage.json
+projects.json
+skills.json
+researchPapers.json

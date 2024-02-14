@@ -20,7 +20,7 @@ const Contact = () => {
           <p className='text-2xl'>Email</p>
           <Link
             href='mailto:walidhassan@tanim.com'
-            className='text-blue-700 dark:text-blue-500 text-xl hover:underline'
+            className='dark:text-blue-400 text-blue-700 text-xl hover:underline'
           >
             walidhassan@tanim.com
           </Link>
@@ -33,7 +33,7 @@ const Contact = () => {
           <p className='text-2xl'>Phone</p>
           <Link
             href='tel:+01234567899'
-            className='text-blue-700 dark:text-blue-500 text-xl hover:underline'
+            className='dark:text-blue-400 text-blue-700 text-xl hover:underline'
           >
             +01234567899
           </Link>
@@ -46,7 +46,7 @@ const Contact = () => {
           <p className='text-2xl'>WhatsApp</p>
           <Link
             href='whatsappAddress'
-            className='text-blue-700 dark:text-blue-500 text-xl hover:underline'
+            className='dark:text-blue-400 text-blue-700 text-xl hover:underline'
           >
             +01234567899
           </Link>
@@ -59,7 +59,7 @@ const Contact = () => {
           <p className='text-2xl'>Address</p>
           <Link
             href='location'
-            className='text-blue-700 dark:text-blue-500 text-xl hover:underline'
+            className='dark:text-blue-400 text-blue-700 text-xl hover:underline'
           >
             HSTU, Basherhat, Sadar, Dinajpur
           </Link>
