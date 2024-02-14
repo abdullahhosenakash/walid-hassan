@@ -1,4 +1,4 @@
-import DashboardNavigationBar from '@/app/_components/DashboardNavigationBar/DashboardNavigationBar';
+import DashboardNavigationBar from '@/app/dashboard/_components/DashboardNavigationBar';
 import { getUser } from '@/app/_lib/getUser';
 import { redirect } from 'next/navigation';
 export default async function DashboardLayout({ children }) {

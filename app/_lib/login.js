@@ -1,6 +1,6 @@
 'use server';
 
-import { USER_COOKIE, USER_COOKIE_MAX_AGE } from '@/app/_constants';
+import { USER_COOKIE, USER_COOKIE_MAX_AGE } from '@/app/_constants/constants';
 import { DB } from '@/app/_utils/mongoDB';
 import { sign } from 'jsonwebtoken';
 import { cookies } from 'next/headers';

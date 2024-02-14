@@ -1,6 +1,6 @@
 'use server';
 
-import { USER_THEME, USER_THEME_MAX_AGE } from '@/app/_constants';
+import { USER_THEME, USER_THEME_MAX_AGE } from '@/app/_constants/constants';
 import { cookies } from 'next/headers';
 
 export async function updateTheme(theme) {

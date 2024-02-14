@@ -1,6 +1,6 @@
 'use server';
 
-import { USER_COOKIE } from '@/app/_constants';
+import { USER_COOKIE } from '@/app/_constants/constants';
 import { verify } from 'jsonwebtoken';
 import { cookies } from 'next/headers';
 

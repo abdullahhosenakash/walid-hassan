@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import CustomLink from '@/app/_components/Navbar/CustomLink';
 import DayNightButton from '@/app/_components/Navbar/DayNightButton';
 import DropDownNavItems from '@/app/_components/Navbar/DropDownNavItems';
-import AuthenticationLinks from '@/app/_components/Navbar/AuthenticationLinks';
+import NavLinks from '@/app/_components/Navbar/NavLinks';
 
 const Navbar = ({ user, theme }) => {
   return (
@@ -15,33 +14,7 @@ const Navbar = ({ user, theme }) => {
         </li>
         <li>
           <ul className='lg:flex gap-8 hidden'>
-            <li>
-              <CustomLink href='/'>Home</CustomLink>
-            </li>
-            <li>
-              <CustomLink href='/about'>About</CustomLink>
-            </li>
-            <li>
-              <CustomLink href='/skills'>Skills</CustomLink>
-            </li>
-            <li>
-              <CustomLink href='/projects'>Projects</CustomLink>
-            </li>
-            <li>
-              <CustomLink href='/experience'>Experience</CustomLink>
-            </li>
-            <li>
-              <CustomLink href='/resume'>Resume</CustomLink>
-            </li>
-            <li>
-              <CustomLink href='/research-papers'>Research Papers</CustomLink>
-            </li>
-            <li>
-              <CustomLink href='/contact'>Contact</CustomLink>
-            </li>
-            <li>
-              <AuthenticationLinks user={user} />
-            </li>
+            <NavLinks user={user} />
           </ul>
         </li>
         <li className='lg:block flex items-center gap-4'>

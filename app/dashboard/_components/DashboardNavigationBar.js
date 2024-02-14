@@ -1,4 +1,4 @@
-import DashboardLink from '@/app/_components/DashboardNavigationBar/DashboardLink';
+import DashboardLink from '@/app/dashboard/_components/DashboardLink';
 
 const DashboardNavigationBar = () => {
   return (

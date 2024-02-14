@@ -9,23 +9,29 @@ const AuthenticationLinks = ({ user }) => {
   return (
     <>
       {user ? (
-        <div className='flex flex-col lg:flex-row items-start lg:gap-4 gap-2'>
-          <CustomLink href='/dashboard'>Dashboard</CustomLink>
-          <button
-            className='hover:text-pink-700'
-            onClick={async () => {
-              await logout();
-            }}
-          >
-            Logout{' '}
-            <FontAwesomeIcon
-              icon={faRightFromBracket}
-              className='w-4 inline-block'
-            />
-          </button>
-        </div>
+        <>
+          <li>
+            <CustomLink href='/dashboard'>Dashboard</CustomLink>
+          </li>
+          <li>
+            <button
+              className='hover:text-pink-700'
+              onClick={async () => {
+                await logout();
+              }}
+            >
+              Logout{' '}
+              <FontAwesomeIcon
+                icon={faRightFromBracket}
+                className='w-4 inline-block'
+              />
+            </button>
+          </li>
+        </>
       ) : (
-        <CustomLink href='/login'>Login</CustomLink>
+        <li className='lg:block hidden'>
+          <CustomLink href='/login'>Login</CustomLink>
+        </li>
       )}
     </>
   );
