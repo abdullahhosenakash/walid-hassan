@@ -52,7 +52,7 @@ const Projects = () => {
     <section className='dark:bg-slate-900 lg:py-8 py-4 dark:text-white lg:px-0 px-3'>
       <h2 className='text-center text-3xl'>My Projects</h2>
       <div className='lg:w-[60%] mx-auto mt-6'>
-        <ul className='list-disc'>
+        <ul className='list-disc pl-4'>
           <li>
             <CategoryLink>Web Projects</CategoryLink>
           </li>

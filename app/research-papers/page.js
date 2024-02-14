@@ -63,7 +63,7 @@ const ResearchPapers = () => {
       <h2 className='text-center text-3xl dark:text-white'>Research Papers</h2>
 
       <div className='lg:w-[60%] mx-auto mt-6'>
-        <ul className='list-disc'>
+        <ul className='list-disc pl-4'>
           <li>
             <CategoryLink>Conference Papers</CategoryLink>
           </li>

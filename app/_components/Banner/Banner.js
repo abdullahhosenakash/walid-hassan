@@ -15,19 +15,9 @@ const protestGuerrilla = localFont({
   display: 'swap'
 });
 
-const Banner = () => {
-  const passion = 'programming';
-  const designation = [
-    'Full Stack Web Developer',
-    'Competitive Programmer',
-    'Project Manager'
-  ];
-  const socialLinks = {
-    facebookLink: '',
-    linkedInLink: '',
-    githubLink: '',
-    googleScholarLink: ''
-  };
+const Banner = ({ bannerData }) => {
+  const { passion, designation, socialLinks, highlightedSkills } =
+    bannerData || {};
   const { facebookLink, linkedInLink, githubLink, googleScholarLink } =
     socialLinks || {};
   return (
@@ -58,7 +48,7 @@ const Banner = () => {
         <span className='text-lg lg:inline-block hidden'>|</span>
         <span>{designation[2]}</span>
       </h3>
-      <TypewriterEffect />
+      <TypewriterEffect highlightedSkills={highlightedSkills} />
       <div className='flex gap-4 justify-center items-center mt-12'>
         <Link href={facebookLink} target='_blank'>
           <FontAwesomeIcon
@@ -82,11 +72,11 @@ const Banner = () => {
           <Link
             href={githubLink}
             target='_blank'
-            className='py-1 bg-black rounded-lg'
+            className='dark:py-0 py-1 bg-black rounded-lg'
           >
             <FontAwesomeIcon
               icon={faGoogleScholar}
-              className='w-10 text-3xl dark:bg-white text-white dark:h-10 dark:rounded-lg bg-back'
+              className='w-9 text-3xl dark:border dark:bg-white text-white dark:text-black dark:h-fit dark:rounded-lg bg-black'
             />
           </Link>
         )}

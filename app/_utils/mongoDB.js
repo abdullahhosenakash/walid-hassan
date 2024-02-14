@@ -10,7 +10,18 @@ const client = new MongoClient(process.env.MONGODB_URI, {
 
 export async function DB() {
   await client.connect();
-  const db = client.db('ahAkashPortfolio');
-  const userCollection = db.collection('users');
-  return userCollection;
+  const db = client.db('portfolio');
+  const userCollection = db.collection('user');
+  const miscellaneousCollection = db.collection('miscellaneous');
+  const projectCollection = db.collection('projects');
+  const researchPaperCollection = db.collection('researchPapers');
+  const skillCollection = db.collection('skills');
+  const collections = {
+    userCollection,
+    miscellaneousCollection,
+    projectCollection,
+    researchPaperCollection,
+    skillCollection
+  };
+  return collections;
 }

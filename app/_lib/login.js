@@ -14,7 +14,7 @@ export async function login(prevState, formData) {
   }
 
   const cookieStore = cookies();
-  const userCollection = await DB();
+  const { userCollection } = await DB();
   const user = await userCollection.findOne({
     userEmail,
     userPassword

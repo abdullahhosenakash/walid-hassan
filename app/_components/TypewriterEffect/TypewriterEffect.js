@@ -1,17 +1,7 @@
 'use client';
 import Typewriter from 'typewriter-effect';
 
-const TypewriterEffect = () => {
-  const highlightedSkills = [
-    'Node.js',
-    'Express.js',
-    'React.js',
-    'MongoDB',
-    'Next.js',
-    'JavaScript',
-    'Bootstrap',
-    'TailwindCSS'
-  ];
+const TypewriterEffect = ({ highlightedSkills }) => {
   return (
     <div className='flex justify-center gap-1 text-lg'>
       <span>I work with</span>{' '}
