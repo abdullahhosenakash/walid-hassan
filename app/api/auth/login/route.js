@@ -1,5 +1,5 @@
 import collection from '@/app/_utils/mongoDB';
-import { MAX_AGE, USER_COOKIE } from '@/app/_constants';
+import { USER_COOKIE, USER_COOKIE_MAX_AGE } from '@/app/_constants';
 import { sign } from 'jsonwebtoken';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
@@ -26,14 +26,14 @@ export async function POST(request) {
       userEmail
     },
     secret,
-    { expiresIn: MAX_AGE }
+    { expiresIn: USER_COOKIE_MAX_AGE }
   );
 
   cookieStore.set(USER_COOKIE, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
-    maxAge: MAX_AGE,
+    maxAge: USER_COOKIE_MAX_AGE,
     path: '/',
     domain:
       process.env.NODE_ENV === 'development' ? '.localhost' : '.vercel.com'

@@ -1,6 +1,6 @@
 'use server';
 
-import { MAX_AGE, USER_COOKIE } from '@/app/_constants';
+import { USER_COOKIE, USER_COOKIE_MAX_AGE } from '@/app/_constants';
 import { DB } from '@/app/_utils/mongoDB';
 import { sign } from 'jsonwebtoken';
 import { cookies } from 'next/headers';
@@ -31,14 +31,14 @@ export async function login(prevState, formData) {
       userName: user.userName
     },
     secret,
-    { expiresIn: MAX_AGE }
+    { expiresIn: USER_COOKIE_MAX_AGE }
   );
 
   cookieStore.set(USER_COOKIE, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
-    maxAge: MAX_AGE,
+    maxAge: USER_COOKIE_MAX_AGE,
     path: '/'
   });
 
