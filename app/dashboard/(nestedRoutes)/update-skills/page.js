@@ -1,6 +1,6 @@
 'use client';
 
-import { handleDeleteSkill, handleEditSkill } from '@/app/_lib/handleSkills';
+import { handleDeleteSkill, handleEditSkill } from '@/app/_lib/updateSkills';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

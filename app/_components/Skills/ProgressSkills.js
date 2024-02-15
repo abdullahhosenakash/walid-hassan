@@ -1,273 +1,60 @@
-const ProgressSkills = () => {
+const ProgressSkills = ({ skills }) => {
   return (
     <section className='mt-6'>
-      <div>
-        <h4 className='text-2xl font-bold'>Languages</h4>
-        <div className='flex flex-col gap-2'>
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>JavaScript</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
+      {skills?.map((skill) => (
+        <div key={skill.skillType}>
+          <h4 className='text-2xl font-bold'>{skill.skillType}</h4>
+          <div className='flex flex-col gap-2'>
+            {skill?.skills?.map((singleSkill) => (
+              <div
+                className='lg:grid lg:grid-cols-2 items-center gap-2'
+                key={singleSkill.skillName}
+              >
+                <p className='text-lg text-end'>{singleSkill.skillName}</p>
+                <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
+                  <div
+                    className={`bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full ${
+                      singleSkill.percentage === '30%'
+                        ? 'w-[30%]'
+                        : singleSkill.percentage === '35%'
+                        ? 'w-[35%]'
+                        : singleSkill.percentage === '40%'
+                        ? 'w-[40%]'
+                        : singleSkill.percentage === '45%'
+                        ? 'w-[45%]'
+                        : singleSkill.percentage === '50%'
+                        ? 'w-[50%]'
+                        : singleSkill.percentage === '55%'
+                        ? 'w-[55%]'
+                        : singleSkill.percentage === '60%'
+                        ? 'w-[60%]'
+                        : singleSkill.percentage === '65%'
+                        ? 'w-[65%]'
+                        : singleSkill.percentage === '70%'
+                        ? 'w-[70%]'
+                        : singleSkill.percentage === '75%'
+                        ? 'w-[75%]'
+                        : singleSkill.percentage === '80%'
+                        ? 'w-[80%]'
+                        : singleSkill.percentage === '85%'
+                        ? 'w-[85%]'
+                        : singleSkill.percentage === '90%'
+                        ? 'w-[90%]'
+                        : singleSkill.percentage === '95%'
+                        ? 'w-[95%]'
+                        : singleSkill.percentage === '100%'
+                        ? 'w-[100%]'
+                        : ''
+                    }`}
+                  >
+                    {singleSkill.percentage}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>TypeScript</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Python</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end block'>C++</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Java</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[80%]'>
-                80%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>HTML</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>CSS</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-      </div>
-
-      <div className='mt-6'>
-        <h4 className='text-2xl font-bold'>Frameworks & Library</h4>
-        <div className='flex flex-col gap-2'>
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>React.js</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[85%]'>
-                85%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Redux</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[85%]'>
-                85%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Express.js</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[85%]'>
-                85%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end block'>Node.js</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[60%]'>
-                60%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Bootstrap</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Django</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[70%]'>
-                70%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Django Rest Framework</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[80%]'>
-                80%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>JavaFX</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[80%]'>
-                80%
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className='mt-6'>
-        <h4 className='text-2xl font-bold'>Databases</h4>
-        <div className='flex flex-col gap-2'>
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>MongoDB</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Redux</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[85%]'>
-                85%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>PostgreSQL</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end block'>Oracle</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[85%]'>
-                85%
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className='mt-6'>
-        <h4 className='text-2xl font-bold'>Tools</h4>
-        <div className='flex flex-col gap-2'>
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>REST API</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Git</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Github</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end block'>Bash</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[60%]'>
-                60%
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className='mt-6'>
-        <h4 className='text-2xl font-bold'>Others</h4>
-        <div className='flex flex-col gap-2'>
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Data Structures and Algorithms</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Problem Solving</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end'>Object Oriented Programming</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-
-          <div className='lg:grid lg:grid-cols-2 items-center gap-2'>
-            <p className='text-lg text-end block'>Competitive Programming</p>
-            <div className='w-full bg-gray-200 rounded-full dark:bg-gray-700'>
-              <div className='bg-blue-600 text-xs font-medium text-blue-100 text-end py-0.5 pr-1 leading-none rounded-full w-[90%]'>
-                90%
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      ))}
     </section>
   );
 };

@@ -14,7 +14,7 @@ const ContactCard = ({ children, contactInfo }) => {
             ? faEnvelope
             : children === 'Phone'
             ? faPhone
-            : children === 'whatsApp'
+            : children === 'WhatsApp'
             ? faWhatsapp
             : faLocationDot
         }
@@ -22,10 +22,21 @@ const ContactCard = ({ children, contactInfo }) => {
       />
       <p className='text-2xl'>{children}</p>
       <Link
-        href='mailto:walidhassan@tanim.com'
+        href={
+          children === 'Email'
+            ? `mailto:${contactInfo}`
+            : children === 'Phone'
+            ? `tel:+88${contactInfo}`
+            : children === 'WhatsApp'
+            ? `https://wa.me/88${contactInfo}`
+            : contactInfo
+        }
+        target='_blank'
         className='dark:text-blue-400 text-blue-700 text-xl hover:underline'
       >
-        walidhassan@tanim.com
+        {children === 'Phone' || children === 'WhatsApp'
+          ? `+88${contactInfo}`
+          : contactInfo}
       </Link>
     </div>
   );
