@@ -6,6 +6,6 @@ export async function getProjects() {
     const projects = await projectCollection.find().toArray();
     return JSON.parse(JSON.stringify(projects));
   } catch (error) {
-    return {};
+    return [];
   }
 }
