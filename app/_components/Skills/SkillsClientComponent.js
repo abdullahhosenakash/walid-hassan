@@ -3,8 +3,6 @@
 import ProgressSkills from '@/app/_components/Skills/ProgressSkills';
 import StaticSkills from '@/app/_components/Skills/StaticSkills';
 import ToggleSkillsShowcase from '@/app/_components/Skills/ToggleSkillsShowcase';
-import { faClock } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 
 const SkillsClientComponent = ({ skills }) => {
@@ -20,10 +18,6 @@ const SkillsClientComponent = ({ skills }) => {
       ) : (
         <StaticSkills skills={skills} />
       )}
-      <p className='mt-6 text-slate-600 dark:text-slate-400'>
-        <FontAwesomeIcon icon={faClock} className='w-4 inline-block' /> Last
-        Updated: {skills.updateTime}
-      </p>
     </div>
   );
 };

@@ -1,52 +1,11 @@
+import ContactCard from '@/app/_components/Contact/ContactCard';
 import { getMiscellaneousData } from '@/app/_lib/getMiscellaneousData';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import { faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Link from 'next/link';
-
-const ContactCard = ({ children, contactInfo }) => {
-  return (
-    <div className='text-center shadow-xl dark:shadow-none bg-slate-100 dark:bg-slate-800 py-6'>
-      <FontAwesomeIcon
-        icon={
-          children === 'Email'
-            ? faEnvelope
-            : children === 'Phone'
-            ? faPhone
-            : children === 'WhatsApp'
-            ? faWhatsapp
-            : faLocationDot
-        }
-        className='text-3xl inline-block w-8'
-      />
-      <p className='text-2xl'>{children}</p>
-      <Link
-        href={
-          children === 'Email'
-            ? `mailto:${contactInfo}`
-            : children === 'Phone'
-            ? `tel:+88${contactInfo}`
-            : children === 'WhatsApp'
-            ? `https://wa.me/88${contactInfo}`
-            : contactInfo
-        }
-        target='_blank'
-        className='dark:text-blue-400 text-blue-700 text-xl hover:underline'
-      >
-        {children === 'Phone' || children === 'WhatsApp'
-          ? `+88${contactInfo}`
-          : contactInfo}
-      </Link>
-    </div>
-  );
-};
 
 const Contact = async () => {
   const { contact } = await getMiscellaneousData();
 
   return (
-    <section className='dark:bg-slate-900 lg:py-8 py-4 dark:text-white lg:px-0 px-3 lg:dark:h-screen'>
+    <section className='dark:bg-slate-900 lg:py-8 py-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl dark:text-white'>My Contacts</h2>
       <p className='text-center dark:text-white'>
         Feel free to contact me if you think I can help somehow

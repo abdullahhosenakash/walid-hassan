@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Resume = () => {
   return (
-    <section className='dark:bg-slate-900 lg:py-8 py-4 dark:text-white lg:px-0 px-3'>
+    <section className='dark:bg-slate-900 lg:py-8 py-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl dark:text-white'>My Resume</h2>
       <div className='lg:w-[60%] mx-auto'>
         <button className='text-white bg-blue-500 py-2 px-4 rounded-lg block w-fit mx-auto mt-6 hover:bg-blue-400'>
