@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Experience = async () => {
   const { experience } = await getMiscellaneousData();
   return (
-    <section className='dark:bg-slate-900 lg:py-8 py-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
+    <section className='dark:bg-slate-900 lg:pt-4 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl'>My Experience</h2>
       <div className='flex flex-col gap-6 text-lg mt-6 lg:w-[65%] mx-auto text-justify'>
         {experience?.map((e) => (

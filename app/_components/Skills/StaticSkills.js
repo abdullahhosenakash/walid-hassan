@@ -4,7 +4,7 @@ const StaticSkills = ({ skills }) => {
       {skills?.map((skill) => (
         <div key={skill.skillType}>
           <h4 className='text-2xl font-bold'>{skill.skillType}</h4>
-          <p className='text-lg'>
+          <p className='text-lg flex flex-wrap'>
             {skill.skills?.map((singleSkill, index) => {
               return (
                 <span key={singleSkill.skillName} className='mr-1'>

@@ -38,9 +38,7 @@ const Banner = ({ bannerData }) => {
           Hassan
         </span>
       </h2>
-      <h4 className='text-x text-center uppercase text-pink-700'>
-        In love with {passion}
-      </h4>
+      <h4 className='text-x text-center uppercase text-pink-700'>{passion}</h4>
       <h3 className='lg:text-2xl text-lg text-slate-800 dark:text-slate-400 my-4 flex lg:flex-row flex-col justify-center items-center gap-2'>
         <span>{designation[0]}</span>
         <span className='text-lg lg:inline-block hidden'>|</span>

@@ -20,9 +20,9 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang='en' className={`scroll-smooth ${theme}`}>
-      <body className={inter.className}>
+      <body className={`${inter.className} dark:bg-slate-900`}>
         <Navbar user={user} theme={theme} />
-        <div className='pt-14'>{children}</div>
+        <div className='pt-20'>{children}</div>
       </body>
     </html>
   );

@@ -9,7 +9,7 @@ export default async function DashboardLayout({ children }) {
   }
 
   return (
-    <section className='dark:bg-slate-900 lg:py-8 py-6 dark:text-white lg:px-0 px-3 dark:min-h-screen relative'>
+    <section className='dark:bg-slate-900 lg:pt-4 pb-6 dark:text-white lg:px-0 px-3 dark:min-h-screen relative'>
       <h2 className='text-center text-3xl lg:block hidden'>Dashboard</h2>
       <DashboardWithSideBar />
       {children}
