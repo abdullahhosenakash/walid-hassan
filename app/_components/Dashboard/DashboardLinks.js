@@ -1,16 +1,16 @@
 import DashboardLink from '@/app/_components/Dashboard/DashboardLink';
 
-const DashboardNavigationBar = () => {
+const DashboardLinks = () => {
   return (
-    <ul className='flex flex-wrap justify-center lg:gap-4 gap-x-4 gap-y-1 items-center mt-1 border-b border-b-slate-500 w-fit mx-auto'>
+    <ul className='flex flex-col gap-3'>
       <li>
-        <DashboardLink href='/dashboard/update-skills'>
+        <DashboardLink href='/dashboard/update-homepage'>
           Update Homepage
         </DashboardLink>
       </li>
 
       <li>
-        <DashboardLink href='/dashboard/update-skills'>
+        <DashboardLink href='/dashboard/update-about'>
           Update About
         </DashboardLink>
       </li>
@@ -34,7 +34,7 @@ const DashboardNavigationBar = () => {
       </li>
 
       <li>
-        <DashboardLink href='/dashboard/update-experience'>
+        <DashboardLink href='/dashboard/update-research-papers'>
           Update Research Papers
         </DashboardLink>
       </li>
@@ -46,11 +46,11 @@ const DashboardNavigationBar = () => {
       </li>
 
       <li>
-        <DashboardLink href='/dashboard/update-resume'>
+        <DashboardLink href='/dashboard/update-contact'>
           Update Contact
         </DashboardLink>
       </li>
     </ul>
   );
 };
-export default DashboardNavigationBar;
+export default DashboardLinks;

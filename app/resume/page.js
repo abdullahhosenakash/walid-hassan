@@ -1,160 +1,87 @@
+import { getMiscellaneousData } from '@/app/_lib/getMiscellaneousData';
+import { getSkills } from '@/app/_lib/getSkills';
 import Link from 'next/link';
 
-const Resume = () => {
+const Resume = async () => {
+  const { resume } = await getMiscellaneousData();
+  const skills = await getSkills();
+
   return (
     <section className='dark:bg-slate-900 lg:py-8 py-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl dark:text-white'>My Resume</h2>
       <div className='lg:w-[60%] mx-auto'>
-        <button className='text-white bg-blue-500 py-2 px-4 rounded-lg block w-fit mx-auto mt-6 hover:bg-blue-400'>
+        <Link
+          href={resume?.resumeLink}
+          target='_blank'
+          className='text-white bg-blue-500 py-2 px-4 rounded-lg block w-fit mx-auto mt-6 hover:bg-blue-400'
+        >
           Download as PDF
-        </button>
-
-        <p className='text-justify text-lg mt-4'>
-          I am a Full Stack Web Developer with 3+ years of experience in
-          learning and working with different web technologies. I am also a
-          Competitive Programmer. I have a good understanding of Data Structures
-          and Algorithms.
-        </p>
+        </Link>
+        <p className='text-justify text-lg mt-4'>{resume?.description}</p>
 
         <h3 className='text-center text-2xl font-bold my-4 uppercase'>
           Skills
         </h3>
-
         <ul className='list-disc pl-4 text-lg'>
-          <li>
-            <span className='font-bold'>Languages:</span> JavaScript,
-            TypeScript, Python, C++, Java, CSS, HTML
-          </li>
-          <li>
-            <span className='font-bold'>Frameworks:</span> NodeJs, Express,
-            React, Bootstrap, Django, Django Rest Framework
-          </li>
-          <li>
-            <span className='font-bold'>Database:</span> MongoDB, Oracle,
-            PostgreSQL
-          </li>
-          <li>
-            <span className='font-bold'>Tools:</span> REST API, Git, Github,
-            Linux
-          </li>
-          <li>
-            <span className='font-bold'>Others:</span> Data Structures,
-            Algorithms, Competitive Programming, Problem Solving
-          </li>
+          {skills?.skillsDeveloped?.map((skill) => (
+            <li key={skill.skillType}>
+              <span className='font-bold'>{skill.skillType}: </span>
+              {skill.skills?.map((s, index) => (
+                <span key={s.skillName}>
+                  {s.skillName}
+                  {skill.skills?.length !== index + 1 && (
+                    <span className='mr-1'>,</span>
+                  )}
+                </span>
+              ))}
+            </li>
+          ))}
         </ul>
 
         <h3 className='text-center text-2xl font-bold my-4 uppercase'>
           Projects
         </h3>
-        <div>
-          <h4 className='text-xl font-bold flex justify-between'>
-            <span>
-              Travel & Tourism Website -{' '}
-              <Link
-                href='link'
-                className='dark:text-blue-400 text-blue-700 hover:underline'
-              >
-                Github Link
-              </Link>
-            </span>
-            <span>2022</span>
-          </h4>
-          <p className='text-lg'>
-            NodeJS, Express, React, MongoDB, Bootstrap, CSS, Stripe
-          </p>
-          <ul className='list-disc text-lg pl-8'>
-            <li>
-              A website for hosting personal experiences, booking experiences
-              and providing detailed transport guidelines for travelling a
-              particular place.
-            </li>
-            <li>
-              Solves travel related inconvenience and provides an amazing
-              experience for travelers.
-            </li>
-          </ul>
-        </div>
-        <div className='mt-4'>
-          <h4 className='text-xl font-bold flex justify-between'>
-            <span>
-              Travel & Tourism Website -{' '}
-              <Link
-                href='link'
-                className='dark:text-blue-400 text-blue-700 hover:underline'
-              >
-                Github Link
-              </Link>
-            </span>
-            <span>2022</span>
-          </h4>
-          <p className='text-lg'>
-            NodeJS, Express, React, MongoDB, Bootstrap, CSS, Stripe
-          </p>
-          <ul className='list-disc text-lg pl-8'>
-            <li>
-              A website for hosting personal experiences, booking experiences
-              and providing detailed transport guidelines for travelling a
-              particular place.
-            </li>
-            <li>
-              Solves travel related inconvenience and provides an amazing
-              experience for travelers.
-            </li>
-          </ul>
-        </div>
+        {resume?.projects?.map((project) => (
+          <div key={project.projectName} className='mt-3'>
+            <h4 className='text-xl font-bold flex justify-between'>
+              <span>
+                {project.projectName} -{' '}
+                <Link
+                  href={project.link}
+                  target='_blank'
+                  className='dark:text-blue-400 text-blue-700 hover:underline'
+                >
+                  Project Link
+                </Link>
+              </span>
+            </h4>
+            <p className='text-lg'>{project.technology}</p>
+            <ul className='list-disc text-lg pl-8'>
+              {project.shortDescription?.map((description) => (
+                <li key={description}>{description}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        <Link
+          href='/projects'
+          className='text-lg text-blue-700 dark:text-blue-400 hover:underline block w-fit mx-auto my-2'
+        >
+          See more projects
+        </Link>
 
         <div>
           <h3 className='text-center text-2xl font-bold my-4 uppercase'>
             Education
           </h3>
-          <p className='text-lg font-bold'>
-            Bangladesh University of Engineering and Technology (BUET)
+          <p className='text-xl font-bold'>
+            Hajee Mohammad Danesh Science and Technology University (HSTU)
           </p>
           <p className='text-lg'>
-            Bachelor of Science in Computer Science and Engineering{' '}
+            Bachelor of Science in Electronics and Communication Engineering{' '}
           </p>
-          <p className='text-lg'>2017 -2022</p>
-          <p className='text-lg'>Dhaka, Bangladesh</p>
-        </div>
-
-        <div>
-          <h3 className='text-center text-2xl font-bold my-4 uppercase'>
-            Experience
-          </h3>
-          <p className='text-lg font-bold'>
-            Problem Solving -{' '}
-            <Link
-              href='github'
-              className='dark:text-blue-400 text-blue-700 hover:underline'
-            >
-              Github Link
-            </Link>
-          </p>
-          <ul className='list-disc pl-4'>
-            <li>Solved 1500+ problems in different Online Judges.</li>
-          </ul>
-          <p className='text-lg font-bold'>Competitive Programming</p>
-          <ul className='list-disc pl-4'>
-            <li>
-              I was an active competitive programmer in different Online Judges
-              especially in Codeforces.
-            </li>
-          </ul>
-          <p className='text-lg font-bold'>
-            Algorithm Learning -{' '}
-            <Link
-              href='github'
-              className='dark:text-blue-400 text-blue-700 hover:underline'
-            >
-              Github Link
-            </Link>
-          </p>
-          <ul className='list-disc pl-4'>
-            <li>
-              Learned and implemented large numbers of Algorithms & Data
-              Structures.
-            </li>
-          </ul>
+          <p className='text-lg'>2017 -2023</p>
+          <p className='text-lg'>Dinajpur, Bangladesh</p>
         </div>
       </div>
     </section>

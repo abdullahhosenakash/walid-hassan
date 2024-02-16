@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 const ResearchPapers = async () => {
   const researchPapers = await getResearchPapers();
-  console.log(researchPapers[0]);
 
   return (
     <section className='dark:bg-slate-900 lg:py-8 py-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>

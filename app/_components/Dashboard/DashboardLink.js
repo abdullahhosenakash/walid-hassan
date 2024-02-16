@@ -9,8 +9,8 @@ const DashboardLink = ({ href, children }) => {
   return (
     <Link
       href={href}
-      className={`hover:text-pink-700 capitalize ${
-        pathname === href ? 'text-pink-700' : ''
+      className={`hover:dark:bg-slate-600 hover:bg-slate-500 capitalize block text-center px-4 py-2 rounded-lg ${
+        pathname === href ? 'bg-slate-500' : 'dark:bg-slate-700 bg-slate-400'
       }`}
     >
       {children}

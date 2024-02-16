@@ -22,7 +22,7 @@ export default async function RootLayout({ children }) {
     <html lang='en' className={`scroll-smooth ${theme}`}>
       <body className={inter.className}>
         <Navbar user={user} theme={theme} />
-        {children}
+        <div className='pt-14'>{children}</div>
       </body>
     </html>
   );

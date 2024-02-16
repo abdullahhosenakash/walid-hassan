@@ -1,6 +1,6 @@
 'use client';
 
-import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
+import { faBarsStaggered, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import NavLinks from '@/app/_components/Navbar/NavLinks';
@@ -16,25 +16,26 @@ const DropDownNavItems = ({ user }) => {
         </button>
       ) : (
         <button onClick={() => setToggle(true)}>
-          <FontAwesomeIcon icon={faBars} size='lg' className='w-5' />
+          <FontAwesomeIcon icon={faBarsStaggered} size='lg' className='w-5' />
         </button>
       )}
-      {toggle && (
-        <>
-          <div className='bg-white dark:bg-slate-950 dark:text-white text-lg transition shadow-2xl absolute w-full left-0 pl-3 py-3'>
-            <ul
-              className='grid grid-cols-2 justify-center mx-auto gap-2'
-              onClick={() => setToggle(false)}
-            >
-              <NavLinks user={user} />
-            </ul>
 
-            <div className='lg:hidden inline-block px-32 pt-4'>
-              <CustomLink href='/login'>Login</CustomLink>
-            </div>
-          </div>
-        </>
-      )}
+      <div
+        className={`bg-white dark:bg-slate-950 dark:text-white text-lg shadow-2xl absolute w-full left-0 top-14 pl-3 py-3 transition-transform ${
+          toggle ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <ul
+          className='grid grid-cols-2 justify-center mx-auto gap-2'
+          onClick={() => setToggle(false)}
+        >
+          <NavLinks user={user} />
+        </ul>
+
+        <div className='lg:hidden inline-block px-32 pt-4'>
+          {!user && <CustomLink href='/login'>Login</CustomLink>}
+        </div>
+      </div>
     </div>
   );
 };

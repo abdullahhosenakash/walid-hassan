@@ -2,7 +2,7 @@ import { getUser } from '@/app/_lib/getUser';
 
 const Dashboard = async () => {
   const { user } = await getUser();
-  console.log(user);
+  // console.log(user);
 
   return (
     <section className='dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3'>

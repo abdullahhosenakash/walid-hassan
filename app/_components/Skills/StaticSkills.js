@@ -9,7 +9,7 @@ const StaticSkills = ({ skills }) => {
               return (
                 <span key={singleSkill.skillName} className='mr-1'>
                   {singleSkill.skillName}
-                  {skill?.skills?.length === index ? <span>,</span> : ''}
+                  {skill.skills?.length !== index + 1 && <span>,</span>}
                 </span>
               );
             })}

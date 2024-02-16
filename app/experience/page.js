@@ -9,9 +9,9 @@ const Experience = async () => {
       <div className='flex flex-col gap-6 text-lg mt-6 lg:w-[65%] mx-auto text-justify'>
         {experience?.map((e) => (
           <div key={e.experienceName}>
-            <p className='font-bold text-xl hover:cursor-pointer hover:dark:text-blue-400 hover:text-blue-700'>
+            <h3 className='font-bold text-xl hover:dark:text-blue-400 hover:text-blue-700 w-fit'>
               <Link href={e.experienceLink}>{e.experienceName}</Link>
-            </p>
+            </h3>
             <p className='mt-1'>{e.description}</p>
           </div>
         ))}
