@@ -5,8 +5,8 @@ const Dashboard = async () => {
   // console.log(user);
 
   return (
-    <section className='dark:bg-slate-900 py-8 dark:text-white lg:px-0 px-3'>
-      <h2 className='text-center text-2xl'>
+    <section className='dark:bg-slate-900 dark:text-white lg:px-0 px-3'>
+      <h2 className='text-center text-3xl'>
         Welcome to your dashboard {user?.userName}
       </h2>
     </section>
