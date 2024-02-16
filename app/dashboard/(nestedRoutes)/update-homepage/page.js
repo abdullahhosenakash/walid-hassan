@@ -3,8 +3,9 @@ import { getMiscellaneousData } from '@/app/_lib/getMiscellaneousData';
 
 const UpdateHomepage = async () => {
   const { homepage } = await getMiscellaneousData();
+
   return (
-    <section>
+    <section className='pb-12'>
       <h2 className='text-center text-3xl lg:block hidden'>Update Homepage</h2>
       <UpdateHomepageClient homepage={homepage} />
     </section>

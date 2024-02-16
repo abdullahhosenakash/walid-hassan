@@ -5,6 +5,7 @@ import { getTheme } from '@/app/_lib/getTheme';
 import Navbar from '@/app/_components/Navbar/Navbar';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,6 +24,14 @@ export default async function RootLayout({ children }) {
       <body className={`${inter.className} dark:bg-slate-900`}>
         <Navbar user={user} theme={theme} />
         <div className='pt-20'>{children}</div>
+        <Toaster
+          toastOptions={{
+            className: '',
+            style: {
+              marginTop: '50px'
+            }
+          }}
+        />
       </body>
     </html>
   );
