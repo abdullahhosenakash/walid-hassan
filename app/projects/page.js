@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import CategoryLink from '@/app/_components/CategoryLink/CategoryLink';
-import { getProjects } from '@/app/_lib/getProjects';
+import { getProjects } from '@/app/_lib/getFunctions/getProjects';
 
 const Projects = async () => {
   const projects = await getProjects();

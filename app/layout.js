@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 import '@/app/globals.css';
-import { getUser } from '@/app/_lib/getUser';
-import { getTheme } from '@/app/_lib/getTheme';
+import { getUser } from '@/app/_lib/getFunctions/getUser';
+import { getTheme } from '@/app/_lib/getFunctions/getTheme';
 import Navbar from '@/app/_components/Navbar/Navbar';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';

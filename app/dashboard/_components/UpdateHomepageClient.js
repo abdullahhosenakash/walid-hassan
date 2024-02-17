@@ -1,7 +1,7 @@
 'use client';
 
-import InputField from '@/app/_components/Dashboard/InputField';
-import { updateHomepage } from '@/app/_lib/updateHomepage';
+import InputField from '@/app/dashboard/_components/InputField';
+import { updateHomepage } from '@/app/_lib/updateFunctions/updateHomepage';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
@@ -33,16 +33,14 @@ const UpdateHomepageClient = ({ homepage }) => {
     };
     setErrorMessage(generatedError);
 
-    if (state.status === 'success') {
-      toast.success('Homepage info updated successfully!');
+    if (state?.status === 'success') {
+      toast.success('Homepage updated successfully!');
       push('/');
     }
   }, [state, push]);
 
-  console.log(state);
-
   return (
-    <form action={formAction} className='lg:w-1/2 mx-auto mt-6'>
+    <form action={formAction}>
       {/* passion */}
       <InputField
         inputFieldTitle='Passion'
@@ -126,7 +124,7 @@ const UpdateHomepageClient = ({ homepage }) => {
           placeholder='Enter your highlighted skills'
           required
           defaultValue={highlightedSkills?.map((skill) => skill)}
-          className='py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full'
+          className='py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full lg:h-24 h-32'
         />
       </div>
 

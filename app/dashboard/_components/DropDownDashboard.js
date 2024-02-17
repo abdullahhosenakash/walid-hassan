@@ -1,8 +1,9 @@
 'use client';
 
-import SideBar from '@/app/_components/Dashboard/SideBar';
+import SideBar from '@/app/dashboard/_components/SideBar';
 import { faBarsStaggered, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 import { useState } from 'react';
 
 const DropDownDashboard = () => {
@@ -20,7 +21,9 @@ const DropDownDashboard = () => {
             <FontAwesomeIcon icon={faBarsStaggered} />
           )}
         </button>
-        <h2 className='text-center text-3xl'>Dashboard</h2>
+        <h2 className='text-center text-3xl'>
+          <Link href='/dashboard'>Dashboard</Link>
+        </h2>
         <div />
       </div>
       <div

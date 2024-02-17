@@ -1,4 +1,4 @@
-import { getUser } from '@/app/_lib/getUser';
+import { getUser } from '@/app/_lib/getFunctions/getUser';
 
 const Dashboard = async () => {
   const { user } = await getUser();

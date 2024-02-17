@@ -1,5 +1,5 @@
-import { getMiscellaneousData } from '@/app/_lib/getMiscellaneousData';
-import { getSkills } from '@/app/_lib/getSkills';
+import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
+import { getSkills } from '@/app/_lib/getFunctions/getSkills';
 import Link from 'next/link';
 
 const Resume = async () => {

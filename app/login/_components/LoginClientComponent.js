@@ -1,6 +1,6 @@
 'use client';
 
-import { login } from '@/app/_lib/login';
+import { login } from '@/app/_lib/authentication/login';
 import { useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
 

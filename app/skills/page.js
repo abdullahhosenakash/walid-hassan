@@ -1,7 +1,7 @@
-import { getSkills } from '@/app/_lib/getSkills';
-import SkillsClientComponent from '@/app/_components/Skills/SkillsClientComponent';
+import { getSkills } from '@/app/_lib/getFunctions/getSkills';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
+import SkillsClientComponent from '@/app/skills/_components/SkillsClientComponent';
 
 const Skills = async () => {
   const skills = await getSkills();

@@ -1,4 +1,4 @@
-import { getMiscellaneousData } from '@/app/_lib/getMiscellaneousData';
+import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 import Link from 'next/link';
 
 const About = async () => {

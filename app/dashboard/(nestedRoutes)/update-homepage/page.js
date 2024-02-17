@@ -1,12 +1,12 @@
-import UpdateHomepageClient from '@/app/_components/Dashboard/UpdateHomepageClient';
-import { getMiscellaneousData } from '@/app/_lib/getMiscellaneousData';
+import UpdateHomepageClient from '@/app/dashboard/_components/UpdateHomepageClient';
+import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 
 const UpdateHomepage = async () => {
   const { homepage } = await getMiscellaneousData();
 
   return (
-    <section className='pb-12'>
-      <h2 className='text-center text-3xl lg:block hidden'>Update Homepage</h2>
+    <section className='lg:w-1/2 mx-auto pb-12'>
+      <h2 className='text-center lg:text-3xl text-xl mt-3'>Update Homepage</h2>
       <UpdateHomepageClient homepage={homepage} />
     </section>
   );

@@ -1,8 +1,8 @@
 'use client';
 
-import ProgressSkills from '@/app/_components/Skills/ProgressSkills';
-import StaticSkills from '@/app/_components/Skills/StaticSkills';
-import ToggleSkillsShowcase from '@/app/_components/Skills/ToggleSkillsShowcase';
+import ProgressSkills from '@/app/skills/_components/ProgressSkills';
+import StaticSkills from '@/app/skills/_components/StaticSkills';
+import ToggleSkillsShowcase from '@/app/skills/_components/ToggleSkillsShowcase';
 import { useState } from 'react';
 
 const SkillsClientComponent = ({ skills }) => {

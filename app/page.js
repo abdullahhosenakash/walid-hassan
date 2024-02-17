@@ -1,6 +1,6 @@
 import Banner from '@/app/_components/Banner/Banner';
 import HomepageCard from '@/app/_components/HomepageCard/HomepageCard';
-import { getMiscellaneousData } from '@/app/_lib/getMiscellaneousData';
+import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 
 export default async function Home() {
   const { homepage } = await getMiscellaneousData();

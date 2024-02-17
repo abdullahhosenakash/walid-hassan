@@ -1,5 +1,5 @@
-import ContactCard from '@/app/_components/Contact/ContactCard';
-import { getMiscellaneousData } from '@/app/_lib/getMiscellaneousData';
+import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
+import ContactCard from '@/app/contact/_components/ContactCard';
 
 const Contact = async () => {
   const { contact } = await getMiscellaneousData();

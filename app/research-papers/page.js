@@ -1,5 +1,5 @@
 import CategoryLink from '@/app/_components/CategoryLink/CategoryLink';
-import { getResearchPapers } from '@/app/_lib/getResearchPapers';
+import { getResearchPapers } from '@/app/_lib/getFunctions/getResearchPapers';
 import Link from 'next/link';
 
 const ResearchPapers = async () => {

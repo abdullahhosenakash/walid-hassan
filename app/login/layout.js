@@ -1,4 +1,4 @@
-import { getUser } from '@/app/_lib/getUser';
+import { getUser } from '@/app/_lib/getFunctions/getUser';
 import { redirect } from 'next/navigation';
 
 const LoginLayout = async ({ children }) => {

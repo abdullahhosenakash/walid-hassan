@@ -1,5 +1,5 @@
-import DropDownDashboard from '@/app/_components/Dashboard/DropDownDashboard';
-import SideBar from '@/app/_components/Dashboard/SideBar';
+import DropDownDashboard from '@/app/dashboard/_components/DropDownDashboard';
+import SideBar from '@/app/dashboard/_components/SideBar';
 
 const DashboardWithSideBar = () => {
   return (

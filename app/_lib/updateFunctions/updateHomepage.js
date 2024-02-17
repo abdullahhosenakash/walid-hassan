@@ -1,6 +1,6 @@
 'use server';
 
-import { getMiscellaneousData } from '@/app/_lib/getMiscellaneousData';
+import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 import { DB } from '@/app/_utils/mongoDB';
 
 async function getFormData(formData) {
@@ -113,7 +113,7 @@ export async function updateHomepage(prevState, formData) {
         JSON.stringify({
           errorType: null,
           status: 'success',
-          message: 'Homepage info updated successfully!'
+          message: 'Homepage updated successfully!'
         })
       );
     } else {
