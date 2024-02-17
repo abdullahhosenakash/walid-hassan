@@ -1,7 +1,5 @@
-import DashboardLinks from '@/app/_components/Dashboard/DashboardLinks';
 import DropDownDashboard from '@/app/_components/Dashboard/DropDownDashboard';
 import SideBar from '@/app/_components/Dashboard/SideBar';
-import Link from 'next/link';
 
 const DashboardWithSideBar = () => {
   return (

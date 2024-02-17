@@ -28,7 +28,7 @@ const DropDownDashboard = () => {
           dropDownToggled ? '-translate-x-3' : '-translate-x-full'
         }`}
       >
-        <SideBar />
+        <SideBar setDropDownToggled={setDropDownToggled} />
       </div>
     </div>
   );
