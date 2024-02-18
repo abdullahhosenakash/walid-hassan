@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
 import toast from 'react-hot-toast';
 import { updateAbout } from '@/app/_lib/updateFunctions/updateAbout';
+import SubmitButton from '@/app/dashboard/_components/SubmitButton';
 
 const initialState = {
   errorType: null,
@@ -82,14 +83,7 @@ const UpdateAboutClient = ({ aboutMe }) => {
           {errorMessage.message}
         </p>
       )}
-
-      <button
-        type='submit'
-        onClick={() => setErrorMessage({})}
-        className='block w-fit mx-auto px-10 py-2 mt-2 rounded-lg hover:bg-slate-600  bg-slate-700'
-      >
-        Update Info
-      </button>
+      <SubmitButton setErrorMessage={setErrorMessage} />
     </form>
   );
 };

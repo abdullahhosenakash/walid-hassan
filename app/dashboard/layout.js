@@ -1,6 +1,12 @@
 import DashboardWithSideBar from '@/app/dashboard/_components/DashboardWithSideBar';
 import { getUser } from '@/app/_lib/getFunctions/getUser';
 import { redirect } from 'next/navigation';
+
+export const metadata = {
+  title: 'Dashboard - Walid Hassan',
+  description: "This is Walid Hassan's dashboard page of the portfolio website"
+};
+
 export default async function DashboardLayout({ children }) {
   const { user, error } = await getUser();
 
