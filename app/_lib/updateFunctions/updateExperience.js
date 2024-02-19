@@ -17,6 +17,11 @@ export async function updateExperience(prevState, formData) {
       ];
     }
     const { experience } = await getMiscellaneousData();
+
+    if (!experience) {
+      throw new Error('Failed to get experience data');
+    }
+
     const previousData = JSON.stringify(experience);
     const currentData = JSON.stringify(updatedData);
     if (currentData === previousData) {

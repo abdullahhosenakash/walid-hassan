@@ -90,6 +90,10 @@ export async function updateHomepage(prevState, formData) {
   try {
     const updatedData = await getFormData(formData);
     const { homepage } = await getMiscellaneousData();
+
+    if (!homepage) {
+      throw new Error('Failed to get homepage data');
+    }
     const previousData = JSON.stringify(homepage);
     const currentData = JSON.stringify(updatedData);
     if (previousData === currentData) {

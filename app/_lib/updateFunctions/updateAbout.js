@@ -11,6 +11,11 @@ export async function updateAbout(prevState, formData) {
     const updatedData = { firstPara, secondPara, thirdPara };
 
     const { aboutMe } = await getMiscellaneousData();
+
+    if (!aboutMe) {
+      throw new Error('Failed to get about me data');
+    }
+
     const previousData = JSON.stringify(aboutMe);
     const currentData = JSON.stringify(updatedData);
     if (previousData === currentData) {

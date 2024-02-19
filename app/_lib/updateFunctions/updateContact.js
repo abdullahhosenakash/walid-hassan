@@ -13,6 +13,11 @@ export async function updateContact(prevState, formData) {
     };
 
     const { contact } = await getMiscellaneousData();
+
+    if (!contact) {
+      throw new Error('Failed to get contact data');
+    }
+
     const previousData = JSON.stringify(contact);
     const currentData = JSON.stringify(updatedData);
 

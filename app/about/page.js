@@ -3,6 +3,11 @@ import Link from 'next/link';
 
 const About = async () => {
   const { aboutMe } = await getMiscellaneousData();
+
+  if (!aboutMe) {
+    throw new Error('Failed to get about me data');
+  }
+
   const { firstPara, secondPara, thirdPara } = aboutMe || {};
   return (
     <section className='dark:bg-slate-900 lg:pt-4 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>

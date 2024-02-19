@@ -4,7 +4,16 @@ import Link from 'next/link';
 
 const Resume = async () => {
   const { resume } = await getMiscellaneousData();
+
+  if (!resume) {
+    throw new Error('Failed to get resume data');
+  }
+
   const skills = await getSkills();
+
+  if (!skills) {
+    throw new Error('Failed to get skills data for resume');
+  }
 
   return (
     <section className='dark:bg-slate-900 lg:pt-4 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>

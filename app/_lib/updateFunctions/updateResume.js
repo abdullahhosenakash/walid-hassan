@@ -31,6 +31,11 @@ export async function updateResume(prevState, formData) {
     };
 
     const { resume } = await getMiscellaneousData();
+
+    if (!resume) {
+      throw new Error('Failed to get resume data');
+    }
+
     const previousData = JSON.stringify(resume);
     const currentData = JSON.stringify(updatedData);
 

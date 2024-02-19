@@ -1,5 +1,4 @@
-'use client';
-
+import { getSkills } from '@/app/_lib/getFunctions/getSkills';
 import {
   handleDeleteSkill,
   handleEditSkill
@@ -8,10 +7,14 @@ import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const UpdateSkills = () => {
+const UpdateSkills = async () => {
+  const { skills } = await getSkills();
+  if (!skills) {
+    throw new Error('Failed to get skills data');
+  }
   return (
     <section className='lg:w-[60%] mx-auto mt-4 overflow-x-auto'>
-      <table className='mx-auto text-center'>
+      {/* <table className='mx-auto text-center'>
         <caption>Your skills here</caption>
         <thead>
           <tr className='dark:bg-slate-800 bg-slate-400'>
@@ -108,7 +111,7 @@ const UpdateSkills = () => {
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
     </section>
   );
 };

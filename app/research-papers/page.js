@@ -5,6 +5,10 @@ import Link from 'next/link';
 const ResearchPapers = async () => {
   const researchPapers = await getResearchPapers();
 
+  if (!researchPapers) {
+    throw new Error('Failed to get research paper data');
+  }
+
   return (
     <section className='dark:bg-slate-900 lg:pt-4 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl dark:text-white'>Research Papers</h2>

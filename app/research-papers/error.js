@@ -1,10 +1,10 @@
 'use client';
 
-const RootError = ({ error, reset }) => {
+const ResearchPaperError = ({ error, reset }) => {
   return (
     <section className='dark:bg-slate-900 lg:pt-4 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl dark:text-whit text-red-600 lg:mt-12'>
-        Something went wrong!
+        Something went wrong loading research paper!
       </h2>
       <button
         className='block mx-auto mt-3 text-lg hover:text-pink-700 hover:underline'
@@ -15,4 +15,4 @@ const RootError = ({ error, reset }) => {
     </section>
   );
 };
-export default RootError;
+export default ResearchPaperError;
