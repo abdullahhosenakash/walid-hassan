@@ -101,7 +101,7 @@ const UpdateSkillsClient = ({ skills }) => {
                       defaultValue={skill.skillName}
                     />
                     <InputField
-                      inputFieldTitle='Percentage (divisible by 5)'
+                      inputFieldTitle='Percentage'
                       type='text'
                       name={`percentage${skillSetIndex + 1}${index + 1}`}
                       placeholder='Enter your skill percentage'
