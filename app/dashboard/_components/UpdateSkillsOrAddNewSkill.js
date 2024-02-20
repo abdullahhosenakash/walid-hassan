@@ -40,7 +40,7 @@ const UpdateSkillsOrAddNewSkill = ({ skills }) => {
       {isUpdateSkills ? (
         <UpdateSkillsClient skills={skills} />
       ) : (
-        <AddNewSkill />
+        <AddNewSkill skills={skills} />
       )}
     </section>
   );
