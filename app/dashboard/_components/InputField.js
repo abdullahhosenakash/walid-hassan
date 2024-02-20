@@ -4,7 +4,8 @@ const InputField = ({
   name,
   placeholder,
   required = true,
-  defaultValue
+  defaultValue,
+  setInputValue = null
 }) => {
   return (
     <div>
@@ -32,6 +33,7 @@ const InputField = ({
           placeholder={placeholder}
           required={required}
           defaultValue={defaultValue}
+          onChange={(e) => setInputValue && setInputValue(e.target.value)}
           className='py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full'
         />
       )}

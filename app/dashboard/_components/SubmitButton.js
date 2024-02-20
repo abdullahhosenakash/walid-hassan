@@ -8,10 +8,11 @@ const SubmitButton = ({ setErrorMessage, errorMessage }) => {
   return (
     <button
       type='submit'
-      className={`w-fit mx-auto px-10 py-2 rounded-lg hover:bg-slate-600  bg-slate-700 flex items-center gap-2 text-white ${
+      className={`w-fit mx-auto px-10 py-2 rounded-lg hover:bg-slate-600  bg-slate-700 flex items-center gap-2 disabled:cursor-not-allowed text-white ${
         !errorMessage?.errorType && 'mt-2'
       }`}
       onClick={() => setErrorMessage({})}
+      disabled={errorMessage?.errorType === 'inputError'}
     >
       {pending ? (
         <>
