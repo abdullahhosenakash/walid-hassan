@@ -1,4 +1,5 @@
 const StaticSkills = ({ skills }) => {
+  console.log(skills);
   return (
     <section className='flex flex-col gap-6 mt-6'>
       {skills?.map((skill) => (

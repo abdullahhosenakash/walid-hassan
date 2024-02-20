@@ -85,7 +85,6 @@ export async function updateSkills(prevState, formData) {
       );
     }
   } catch (error) {
-    console.log(error);
     return JSON.parse(
       JSON.stringify({
         errorType: 'server',

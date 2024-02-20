@@ -18,10 +18,8 @@ const UpdateSkillsClient = ({ skills }) => {
   const [errorMessage, setErrorMessage] = useState(initialState);
   const [state, formAction] = useFormState(updateSkills, initialState);
   const [inputValue, setInputValue] = useState('');
-  const [inputError, setInputError] = useState('');
 
   const { push } = useRouter();
-
   useEffect(() => {
     const generatedError = {
       errorType: state?.errorType || null,
@@ -72,50 +70,53 @@ const UpdateSkillsClient = ({ skills }) => {
   }, [inputValue]);
 
   return (
-    <form action={formAction}>
-      {skills?.skillsDeveloped?.map((skillSet, index) => {
-        let skillSetIndex = index;
-        return (
-          <div className='mt-4' key={skillSet.skillType}>
-            <div className='border rounded-lg border-slate-600 p-1'>
-              <InputField
-                inputFieldTitle='Skill Type'
-                type='text'
-                name={`skillType${index + 1}`}
-                placeholder='Enter skill type'
-                required
-                defaultValue={skillSet.skillType}
-              />
-              <div className='flex flex-col gap-2 mt-2'>
-                {skillSet?.skills?.map((skill, index) => (
-                  <div
-                    className='flex gap-1 border border-slate-700 p-1 rounded-lg'
-                    key={skill.skillName}
-                  >
-                    <InputField
-                      inputFieldTitle='Skill Name'
-                      type='text'
-                      name={`skillName${skillSetIndex + 1}${index + 1}`}
-                      placeholder='Enter your skill name'
-                      required
-                      defaultValue={skill.skillName}
-                    />
-                    <InputField
-                      inputFieldTitle='Percentage'
-                      type='text'
-                      name={`percentage${skillSetIndex + 1}${index + 1}`}
-                      placeholder='Enter your skill percentage'
-                      required
-                      setInputValue={setInputValue}
-                      defaultValue={skill.percentage}
-                    />
-                  </div>
-                ))}
+    <form action={formAction} className='mt-4'>
+      <h3 className='text-xl text-center'>Update Skills</h3>
+      <div className='flex flex-col gap-6'>
+        {skills?.skillsDeveloped?.map((skillSet, index) => {
+          let skillSetIndex = index;
+          return (
+            <div key={skillSet.skillType}>
+              <div className='border rounded-lg border-slate-600 p-1'>
+                <InputField
+                  inputFieldTitle='Skill Type'
+                  type='text'
+                  name={`skillType${index + 1}`}
+                  placeholder='Enter skill type'
+                  required
+                  defaultValue={skillSet.skillType}
+                />
+                <div className='flex flex-col gap-2 mt-2'>
+                  {skillSet?.skills?.map((skill, index) => (
+                    <div
+                      className='flex gap-1 border border-slate-700 p-1 rounded-lg'
+                      key={skill.skillName}
+                    >
+                      <InputField
+                        inputFieldTitle='Skill Name'
+                        type='text'
+                        name={`skillName${skillSetIndex + 1}${index + 1}`}
+                        placeholder='Enter your skill name'
+                        required
+                        defaultValue={skill.skillName}
+                      />
+                      <InputField
+                        inputFieldTitle='Percentage'
+                        type='text'
+                        name={`percentage${skillSetIndex + 1}${index + 1}`}
+                        placeholder='Enter your skill percentage'
+                        required
+                        setInputValue={setInputValue}
+                        defaultValue={skill.percentage}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
 
       {errorMessage?.errorType && (
         <p className='text-center text-red-700 text-lg'>

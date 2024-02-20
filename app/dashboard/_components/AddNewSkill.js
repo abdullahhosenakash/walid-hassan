@@ -1,56 +1,142 @@
+import { addNewSkill } from '@/app/_lib/addFunctions/addNewSkill';
+import InputField from '@/app/dashboard/_components/InputField';
+import SubmitButton from '@/app/dashboard/_components/SubmitButton';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useFormState } from 'react-dom';
+import toast from 'react-hot-toast';
+
+const initialState = {
+  errorType: null,
+  status: null,
+  message: ''
+};
+
 const AddNewSkill = ({ skills }) => {
-  // const skillTypes = skills?.skillsDeveloped?.map(
-  //   (skillSet) => skillSet.skillType
-  // );
-  const skillTypes = [
-    'Languages',
-    'Machine Learning',
-    'Playing',
-    'Studying',
-    'Journey'
-  ];
+  const [errorMessage, setErrorMessage] = useState(initialState);
+  const [state, formAction] = useFormState(addNewSkill, initialState);
+  const [inputValue, setInputValue] = useState('');
+  const [inputtedSkillType, setInputtedSkillType] = useState('');
+  const { push } = useRouter();
+
+  const skillTypes = skills?.skillsDeveloped?.map(
+    (skillSet) => skillSet.skillType
+  );
+
+  useEffect(() => {
+    const generatedError = {
+      errorType: state?.errorType || null,
+      status: state?.status || null,
+      message: state?.message || ''
+    };
+    setErrorMessage(generatedError);
+
+    if (state?.status === 'success') {
+      toast.success('Skill added successfully!');
+      push('/skills');
+    }
+  }, [state, push]);
+
+  useEffect(() => {
+    if (inputValue) {
+      if (!inputValue.includes('%')) {
+        return setErrorMessage({
+          status: null,
+          errorType: 'inputError',
+          message: 'Percentage input must contain % sign'
+        });
+      }
+      const inputWithoutWhiteSpace = inputValue.trim();
+      const percentage = inputWithoutWhiteSpace.split('%')[0];
+      if (percentage < 30) {
+        return setErrorMessage({
+          status: null,
+          errorType: 'inputError',
+          message: 'Percentage input must be greater than or equal 30%'
+        });
+      } else if (percentage > 100) {
+        return setErrorMessage({
+          status: null,
+          errorType: 'inputError',
+          message: 'Percentage input must be less than or equal 100%'
+        });
+      } else if (percentage % 5 !== 0) {
+        return setErrorMessage({
+          status: null,
+          errorType: 'inputError',
+          message: 'Percentage input must be divisible by 5'
+        });
+      } else {
+        return setErrorMessage(initialState);
+      }
+    }
+  }, [inputValue]);
+
   return (
-    <section className='mt-4'>
-      <form className='border border-slate-700 p-1 rounded-lg'>
-        <label htmlFor='skillType'>
-          <span className='block text-lg'>Skill Type</span>
-        </label>
-        <div className='flex flex-wrap gap-2 border border-slate-700 p-1 rounded-lg'>
-          {skillTypes?.map((skillType) => {
-            const skillId = skillType.toLowerCase()?.replace(/\s+/g, '-');
-            return (
-              <label
-                key={skillType}
-                htmlFor={skillId}
-                className='cursor-pointer flex items-center gap-1 w-fit'
-              >
-                <input
-                  id={skillId}
-                  type='radio'
-                  name='hmm'
-                  className='w-4 h-4'
-                />
-                {skillType}
-              </label>
-            );
-          })}
-          <label
-            htmlFor='add-new'
-            className='ms-2 font-medium cursor-pointer text-gray-900 dark:text-gray-300 flex items-center gap-1 text-lg w-fit'
-          >
-            <input
-              id='add-new'
-              type='radio'
-              name='hmm'
-              className='w-4 h-4'
-              // onChange={e=>}
-              defaultChecked
-            />
-            Add New
-          </label>
+    <form action={formAction} className='mt-4'>
+      <h3 className='text-xl text-center'>Add New Skill</h3>
+      <div className='border border-slate-700 rounded-lg p-1'>
+        Stored Skills
+        <div className='flex flex-grow gap-3 text-blue-400'>
+          {skillTypes?.map((skillType) => (
+            <span
+              key={skillType}
+              onClick={() => setInputtedSkillType(skillType)}
+              className='cursor-pointer'
+            >
+              #{skillType}
+            </span>
+          ))}
         </div>
-      </form>
-    </section>
+      </div>
+      <div className='mt-2'>
+        <div className='flex flex-col gap-2'>
+          <div>
+            <label htmlFor='skillType'>
+              <span className='block text-lg'>Skill Type</span>
+            </label>
+            <input
+              type='text'
+              name='skillType'
+              id='skillType'
+              placeholder='Enter new skill type or select from above #tag'
+              required
+              value={inputtedSkillType}
+              onChange={(e) => setInputtedSkillType(e.target.value)}
+              className='py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full'
+            />
+          </div>
+
+          <InputField
+            inputFieldTitle='Skill Name'
+            type='text'
+            name='skillName'
+            placeholder='Enter skill name'
+            required
+          />
+
+          <InputField
+            inputFieldTitle='Percentage'
+            type='text'
+            name='percentage'
+            placeholder='Enter skill percentage'
+            required
+            setInputValue={setInputValue}
+          />
+        </div>
+      </div>
+
+      {errorMessage?.errorType && (
+        <p className='text-center text-red-700 text-lg'>
+          {errorMessage?.message}
+        </p>
+      )}
+
+      <SubmitButton
+        errorMessage={errorMessage}
+        setErrorMessage={setErrorMessage}
+      />
+    </form>
   );
 };
 export default AddNewSkill;

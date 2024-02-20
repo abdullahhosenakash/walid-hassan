@@ -4,7 +4,7 @@ const InputField = ({
   name,
   placeholder,
   required = true,
-  defaultValue,
+  defaultValue = '',
   setInputValue = null
 }) => {
   return (
