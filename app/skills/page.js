@@ -9,7 +9,7 @@ const Skills = async () => {
   if (!skills) {
     throw new Error('Failed to get skills data');
   }
-
+  console.log(skills);
   return (
     <section className='dark:bg-slate-900 lg:pt-4 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl dark:text-white'>My Skills</h2>
