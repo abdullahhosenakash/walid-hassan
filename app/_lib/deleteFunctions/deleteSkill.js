@@ -1,5 +1,5 @@
 'use server';
 
-export async function deleteSkill(parameter) {
-  console.log('clicked');
+export async function deleteSkill(selectedSkill) {
+  console.log(selectedSkill);
 }

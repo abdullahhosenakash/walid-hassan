@@ -1,13 +1,11 @@
 import { DB } from '@/app/_utils/mongoDB';
 
-export async function getMiscellaneousData() {
+export async function GET(request) {
   try {
-    console.log(new Date(), 'before fetch');
     const { miscellaneousCollection } = await DB();
     const [data] = await miscellaneousCollection.find()?.toArray();
-    console.log(new Date(), 'after fetch');
-    return JSON.parse(JSON.stringify(data));
+    return Response.json(data);
   } catch (error) {
-    return {};
+    return Response.json({ message: 'failed to get data' }, { status: 500 });
   }
 }
