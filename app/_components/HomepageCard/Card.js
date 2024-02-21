@@ -5,7 +5,7 @@ import Link from 'next/link';
 const Card = ({ card }) => {
   const { title, description, link, linkText } = card || {};
   return (
-    <div className='rounded-xl hover:shadow-lg dark:shadow-blue-700 shadow-md transition delay-50'>
+    <div className='rounded-xl hover:shadow-lg dark:shadow-blue-700 shadow-md transition delay-50 lg:p-0 p-2'>
       <div className='py-12 bg-blue-700 rounded-t-xl' />
       <div className='flex justify-center mt-[-40px]'>
         <FontAwesomeIcon

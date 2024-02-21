@@ -21,19 +21,40 @@ export async function addNewSkill(prevState, formData) {
     );
 
     let updatedSkills = [];
+    let skillsDeveloped = [];
 
     if (availableSkillSet) {
+      const availableSkillSetIndex =
+        skills?.skillsDeveloped?.indexOf(availableSkillSet);
+
+      const previousSkillSets = skills?.skillsDeveloped?.slice(
+        0,
+        availableSkillSetIndex
+      );
+      const nextSkillSets = skills?.skillsDeveloped?.slice(
+        availableSkillSetIndex + 1
+      );
+
       const availableSkills = availableSkillSet.skills;
       updatedSkills = [...availableSkills, newSkill];
+      skillsDeveloped = [
+        ...previousSkillSets,
+        { skillType, skills: updatedSkills },
+        ...nextSkillSets
+      ];
     } else {
       updatedSkills = [newSkill];
+      skillsDeveloped = [
+        ...skills?.skillsDeveloped,
+        { skillType, skills: updatedSkills }
+      ];
     }
 
     const filter = {};
     const updatedDoc = {
       $set: {
         updateTime: new Date().toDateString(),
-        skillsDeveloped: [...restSkillSet, { skillType, skills: updatedSkills }]
+        skillsDeveloped
       }
     };
 
