@@ -1,8 +1,10 @@
-import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 import UpdateResumeClient from '@/app/dashboard/_components/UpdateResumeClient';
 
 const UpdateResume = async () => {
-  const { resume } = await getMiscellaneousData();
+  const response = await fetch(
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
+  );
+  const { resume } = await response.json();
 
   if (!resume) {
     throw new Error('Failed to get resume data');

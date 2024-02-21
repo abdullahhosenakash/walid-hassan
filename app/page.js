@@ -1,9 +1,11 @@
 import Banner from '@/app/_components/Banner/Banner';
 import HomepageCard from '@/app/_components/HomepageCard/HomepageCard';
-import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 
 export default async function Home() {
-  const { homepage } = await getMiscellaneousData();
+  const response = await fetch(
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
+  );
+  const { homepage } = await response.json();
 
   if (!homepage) {
     throw new Error('Failed to get homepage data');

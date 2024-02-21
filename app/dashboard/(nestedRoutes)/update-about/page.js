@@ -1,8 +1,10 @@
-import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 import UpdateAboutClient from '@/app/dashboard/_components/UpdateAboutClient';
 
 const UpdateAbout = async () => {
-  const { aboutMe } = await getMiscellaneousData();
+  const response = await fetch(
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
+  );
+  const { aboutMe } = await response.json();
 
   if (!aboutMe) {
     throw new Error('Failed to get about me data');

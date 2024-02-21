@@ -1,8 +1,10 @@
 import UpdateHomepageClient from '@/app/dashboard/_components/UpdateHomepageClient';
-import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 
 const UpdateHomepage = async () => {
-  const { homepage } = await getMiscellaneousData();
+  const response = await fetch(
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
+  );
+  const { homepage } = await response.json();
 
   if (!homepage) {
     throw new Error('Failed to get homepage data');

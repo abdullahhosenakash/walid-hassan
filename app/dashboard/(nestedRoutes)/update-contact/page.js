@@ -1,8 +1,10 @@
-import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 import UpdateContactClient from '@/app/dashboard/_components/UpdateContactClient';
 
 const UpdateContact = async () => {
-  const { contact } = await getMiscellaneousData();
+  const response = await fetch(
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
+  );
+  const { contact } = await response.json();
 
   if (!contact) {
     throw new Error('Failed to get contact data');

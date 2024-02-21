@@ -1,9 +1,11 @@
-import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 import { getSkills } from '@/app/_lib/getFunctions/getSkills';
 import Link from 'next/link';
 
 const Resume = async () => {
-  const { resume } = await getMiscellaneousData();
+  const response = await fetch(
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
+  );
+  const { resume } = await response.json();
 
   if (!resume) {
     throw new Error('Failed to get resume data');
