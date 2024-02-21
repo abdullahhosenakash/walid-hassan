@@ -1,5 +1,5 @@
 import { getSkills } from '@/app/_lib/getFunctions/getSkills';
-import UpdateSkillsOrAddNewSkill from '@/app/dashboard/_components/UpdateSkillsOrAddNewSkill';
+import ModifySkills from '@/app/dashboard/_components/ModifySkills';
 
 const UpdateSkills = async () => {
   const skills = await getSkills();
@@ -10,7 +10,7 @@ const UpdateSkills = async () => {
   return (
     <section className='lg:w-1/2 mx-auto pb-12'>
       <h2 className='text-center lg:text-3xl text-xl mt-3'>Update Skills</h2>
-      <UpdateSkillsOrAddNewSkill skills={skills} />
+      <ModifySkills skills={skills} />
     </section>
   );
 };
