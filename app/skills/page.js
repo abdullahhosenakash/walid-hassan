@@ -1,10 +1,10 @@
-import { getSkills } from '@/app/_lib/getFunctions/getSkills';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import SkillsClientComponent from '@/app/skills/_components/SkillsClientComponent';
 
 const Skills = async () => {
-  const skills = await getSkills();
+  const response = await fetch('https://walid-hassan.vercel.app/api/projects');
+  const skills = await response.json();
 
   if (!skills) {
     throw new Error('Failed to get skills data');

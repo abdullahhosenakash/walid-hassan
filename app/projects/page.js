@@ -1,12 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import CategoryLink from '@/app/_components/CategoryLink/CategoryLink';
-import { getProjects } from '@/app/_lib/getFunctions/getProjects';
 
 const Projects = async () => {
-  const projects = await getProjects();
-  // const response = await fetch('https://walid-hassan.vercel.app/api/projects');
-  // const projects = await response.json();
+  const response = await fetch('https://walid-hassan.vercel.app/api/projects');
+  const projects = await response.json();
 
   if (!projects) {
     throw new Error('Failed to get projects data');
