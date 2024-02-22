@@ -13,7 +13,7 @@ const Navbar = ({ user, theme }) => {
           </Link>
         </li>
         <li>
-          <ul className='lg:flex gap-8 hidden'>
+          <ul className='lg:flex gap-6 hidden'>
             <NavLinks user={user} />
           </ul>
         </li>

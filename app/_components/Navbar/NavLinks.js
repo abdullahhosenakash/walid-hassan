@@ -20,6 +20,9 @@ const NavLinks = ({ user }) => {
         <CustomLink href='/experience'>Experience</CustomLink>
       </li>
       <li>
+        <CustomLink href='/certifications'>Certifications</CustomLink>
+      </li>
+      <li>
         <CustomLink href='/research-papers'>Research Papers</CustomLink>
       </li>
       <li>
