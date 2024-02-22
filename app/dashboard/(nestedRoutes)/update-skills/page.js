@@ -3,7 +3,7 @@ import ModifySkills from '@/app/dashboard/_components/ModifySkills';
 const UpdateSkills = async () => {
   const response = await fetch(
     'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { next: { tags: ['skills'] } }
+    { cache: 'no-store' }
   );
   const skills = await response.json();
 

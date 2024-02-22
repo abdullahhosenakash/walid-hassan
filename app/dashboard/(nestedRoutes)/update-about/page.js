@@ -3,7 +3,7 @@ import UpdateAboutClient from '@/app/dashboard/_components/UpdateAboutClient';
 const UpdateAbout = async () => {
   const response = await fetch(
     'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { next: { tags: ['about'] } }
+    { cache: 'no-store' }
   );
   const { aboutMe } = await response.json();
 

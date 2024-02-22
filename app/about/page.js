@@ -3,9 +3,11 @@ import Link from 'next/link';
 const About = async () => {
   const response = await fetch(
     'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { next: { tags: ['about'] } }
+    { cache: 'no-store' }
   );
   const { aboutMe } = await response.json();
+
+  console.log('node env', process.env.NODE_ENV);
 
   if (!aboutMe) {
     throw new Error('Failed to get about me data');

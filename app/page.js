@@ -5,7 +5,7 @@ export default async function Home() {
   const response = await fetch(
     'https://walid-hassan.vercel.app/api/miscellaneous-data',
     {
-      next: { tags: ['homepage'] }
+      cache: 'no-store'
     }
   );
   const { homepage } = await response.json();
