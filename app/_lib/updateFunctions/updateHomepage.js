@@ -92,7 +92,7 @@ export async function updateHomepage(prevState, formData) {
 
     const result = await miscellaneousCollection.updateOne(filter, updatedDoc);
     if (result.acknowledged) {
-      revalidatePath('https://walid-hassan.vercel.app/');
+      revalidatePath('/');
       return JSON.parse(
         JSON.stringify({
           errorType: null,
