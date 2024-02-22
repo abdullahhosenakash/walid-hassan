@@ -1,16 +1,8 @@
-import { USER_COOKIE } from '@/app/_constants/constants';
 import ContactCard from '@/app/contact/_components/ContactCard';
-import { cookies } from 'next/headers';
 
 const Contact = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    {
-      method: 'GET',
-      headers: {
-        authorization: `Bearer ${cookies().get(USER_COOKIE)}`
-      }
-    }
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
   );
   const { contact } = await response.json();
 
