@@ -1,6 +1,6 @@
 import { DB } from '@/app/_utils/mongoDB';
 
-export async function GET(request) {
+export async function POST(request) {
   try {
     const { miscellaneousCollection } = await DB();
     const [data] = await miscellaneousCollection.find()?.toArray();

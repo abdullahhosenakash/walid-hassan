@@ -55,7 +55,13 @@ export async function updateHomepage(prevState, formData) {
 
     const response = await fetch(
       'https://walid-hassan.vercel.app/api/miscellaneous-data',
-      { cache: 'no-store' }
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ time: new Date().toISOString() })
+      }
     );
     const { homepage } = await response.json();
 
@@ -82,7 +88,7 @@ export async function updateHomepage(prevState, formData) {
 
     const result = await miscellaneousCollection.updateOne(filter, updatedDoc);
     if (result.acknowledged) {
-      revalidateTag('homepage');
+      revalidatePath('/');
       return JSON.parse(
         JSON.stringify({
           errorType: null,
