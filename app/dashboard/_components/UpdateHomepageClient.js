@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
 import toast from 'react-hot-toast';
 import SubmitButton from '@/app/dashboard/_components/SubmitButton';
-import { revalidateTag } from 'next/cache';
 
 const initialState = {
   errorType: null,

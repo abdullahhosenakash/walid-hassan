@@ -1,7 +1,7 @@
 'use server';
 
 import { DB } from '@/app/_utils/mongoDB';
-import { revalidateTag } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 
 async function getFormData(formData) {
   const passion = formData.get('passion');
@@ -62,7 +62,6 @@ export async function updateHomepage(prevState, formData) {
       throw new Error('Failed to get homepage data');
     }
 
-    revalidateTag('homepage');
     const previousData = JSON.stringify(homepage);
     const currentData = JSON.stringify(updatedData);
     if (previousData === currentData) {

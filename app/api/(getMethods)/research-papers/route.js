@@ -9,3 +9,5 @@ export async function GET(request) {
     return Response.json({ message: 'failed to get data' }, { status: 500 });
   }
 }
+
+export const dynamic = 'force-dynamic';

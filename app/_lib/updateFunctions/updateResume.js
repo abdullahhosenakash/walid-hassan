@@ -42,7 +42,6 @@ export async function updateResume(prevState, formData) {
     const currentData = JSON.stringify(updatedData);
 
     if (currentData === previousData) {
-      console.log('aa');
       return JSON.parse(
         JSON.stringify({
           errorType: 'data',
