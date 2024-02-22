@@ -3,7 +3,9 @@ import UpdateResumeClient from '@/app/dashboard/_components/UpdateResumeClient';
 const UpdateResume = async () => {
   const response = await fetch(
     'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { cache: 'no-store' }
+    {
+      cache: 'no-store'
+    }
   );
   const { resume } = await response.json();
 

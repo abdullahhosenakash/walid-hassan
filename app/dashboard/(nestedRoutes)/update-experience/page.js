@@ -3,7 +3,9 @@ import UpdateExperienceClient from '@/app/dashboard/_components/UpdateExperience
 const UpdateExperience = async () => {
   const response = await fetch(
     'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { cache: 'no-store' }
+    {
+      cache: 'no-store'
+    }
   );
   const { experience } = await response.json();
 

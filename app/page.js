@@ -19,15 +19,15 @@ export default async function Home() {
   //   })();
   // }, []);
 
+  // const response = await fetch('https://walid-hassan.vercel.app/api/miscellaneous-data', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify({ time: new Date().toISOString() })
+  // });
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ time: new Date().toISOString() })
-    }
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
   );
   const { homepage } = await response.json();
 

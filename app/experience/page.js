@@ -3,7 +3,9 @@ import Link from 'next/link';
 const Experience = async () => {
   const response = await fetch(
     'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { cache: 'no-store' }
+    {
+      cache: 'no-store'
+    }
   );
   const { experience } = await response.json();
 
