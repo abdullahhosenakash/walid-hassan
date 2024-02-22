@@ -1,5 +1,7 @@
 import { DB } from '@/app/_utils/mongoDB';
 
+export const revalidate = 0;
+
 export async function GET(request) {
   try {
     const { projectCollection } = await DB();

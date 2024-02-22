@@ -1,6 +1,7 @@
 'use server';
 
 import { DB } from '@/app/_utils/mongoDB';
+import { revalidatePath } from 'next/cache';
 
 export async function updateSkills(prevState, formData) {
   try {
@@ -39,9 +40,7 @@ export async function updateSkills(prevState, formData) {
       skillsDeveloped
     };
 
-    const response = await fetch('https://walid-hassan.vercel.app/api/skills', {
-      cache: 'no-store'
-    });
+    const response = await fetch('https://walid-hassan.vercel.app/api/skills');
     const skills = await response.json();
 
     if (!skills) {
@@ -69,6 +68,7 @@ export async function updateSkills(prevState, formData) {
 
     const result = await skillCollection.updateOne(filter, updatedDoc);
     if (result.acknowledged) {
+      revalidatePath('/skills');
       return JSON.parse(
         JSON.stringify({
           errorType: null,

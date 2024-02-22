@@ -1,7 +1,5 @@
 const UpdateProjects = async () => {
-  const response = await fetch('https://walid-hassan.vercel.app/api/projects', {
-    cache: 'no-store'
-  });
+  const response = await fetch('https://walid-hassan.vercel.app/api/projects');
   const projects = await response.json();
 
   if (!projects) {

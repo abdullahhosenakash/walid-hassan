@@ -2,8 +2,7 @@ import UpdateHomepageClient from '@/app/dashboard/_components/UpdateHomepageClie
 
 const UpdateHomepage = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { next: { tags: ['homepage'] } }
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
   );
   const { homepage } = await response.json();
 

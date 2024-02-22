@@ -2,8 +2,7 @@ import Link from 'next/link';
 
 const Resume = async () => {
   const resumeResponse = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { cache: 'no-store' }
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
   );
   const { resume } = await resumeResponse.json();
 

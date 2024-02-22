@@ -1,5 +1,6 @@
 'use server';
 import { DB } from '@/app/_utils/mongoDB';
+import { revalidatePath } from 'next/cache';
 
 export async function updateAbout(prevState, formData) {
   try {
@@ -10,8 +11,7 @@ export async function updateAbout(prevState, formData) {
     };
 
     const response = await fetch(
-      'https://walid-hassan.vercel.app/api/miscellaneous-data',
-      { cache: 'no-store' }
+      'https://walid-hassan.vercel.app/api/miscellaneous-data'
     );
     const { aboutMe } = await response.json();
 
@@ -39,6 +39,7 @@ export async function updateAbout(prevState, formData) {
 
     const result = await miscellaneousCollection.updateOne(filter, updatedDoc);
     if (result.acknowledged) {
+      revalidatePath('/about');
       return JSON.parse(
         JSON.stringify({
           errorType: null,

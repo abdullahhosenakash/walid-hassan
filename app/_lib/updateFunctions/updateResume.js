@@ -1,6 +1,7 @@
 'use server';
 
 import { DB } from '@/app/_utils/mongoDB';
+import { revalidatePath } from 'next/cache';
 
 export async function updateResume(prevState, formData) {
   try {
@@ -30,8 +31,7 @@ export async function updateResume(prevState, formData) {
     };
 
     const response = await fetch(
-      'https://walid-hassan.vercel.app/api/miscellaneous-data',
-      { cache: 'no-store' }
+      'https://walid-hassan.vercel.app/api/miscellaneous-data'
     );
     const { resume } = await response.json();
 
@@ -60,6 +60,7 @@ export async function updateResume(prevState, formData) {
 
     const result = await miscellaneousCollection.updateOne(filter, updatedDoc);
     if (result.acknowledged) {
+      revalidatePath('/resume');
       return JSON.parse(
         JSON.stringify({
           errorType: null,

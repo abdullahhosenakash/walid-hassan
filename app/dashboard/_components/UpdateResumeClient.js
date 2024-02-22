@@ -18,8 +18,6 @@ const UpdateResumeClient = ({ resume }) => {
   const [errorMessage, setErrorMessage] = useState(initialState);
   const [state, formAction] = useFormState(updateResume, initialState);
 
-  console.log(resume);
-
   const { push } = useRouter();
 
   useEffect(() => {

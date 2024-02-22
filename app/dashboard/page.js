@@ -2,7 +2,6 @@ import { getUser } from '@/app/_lib/getFunctions/getUser';
 
 const Dashboard = async () => {
   const { user } = await getUser();
-  // console.log(user);
 
   return (
     <section className='dark:bg-slate-900 dark:text-white lg:px-0 px-3'>
