@@ -12,7 +12,8 @@ export async function updateContact(prevState, formData) {
     };
 
     const response = await fetch(
-      'https://walid-hassan.vercel.app/api/miscellaneous-data'
+      'https://walid-hassan.vercel.app/api/miscellaneous-data',
+      { next: { tags: ['contact'] } }
     );
     const { contact } = await response.json();
 

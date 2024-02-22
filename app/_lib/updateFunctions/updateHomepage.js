@@ -1,6 +1,7 @@
 'use server';
 
 import { DB } from '@/app/_utils/mongoDB';
+import { revalidateTag } from 'next/cache';
 
 async function getFormData(formData) {
   const passion = formData.get('passion');
@@ -53,7 +54,8 @@ export async function updateHomepage(prevState, formData) {
     const updatedData = await getFormData(formData);
 
     const response = await fetch(
-      'https://walid-hassan.vercel.app/api/miscellaneous-data'
+      'https://walid-hassan.vercel.app/api/miscellaneous-data',
+      { next: { tags: ['homepage'] } }
     );
     const { homepage } = await response.json();
 
@@ -79,6 +81,7 @@ export async function updateHomepage(prevState, formData) {
 
     const result = await miscellaneousCollection.updateOne(filter, updatedDoc);
     if (result.acknowledged) {
+      revalidateTag('homepage');
       return JSON.parse(
         JSON.stringify({
           errorType: null,

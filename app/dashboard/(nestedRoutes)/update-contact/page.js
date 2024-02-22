@@ -2,7 +2,8 @@ import UpdateContactClient from '@/app/dashboard/_components/UpdateContactClient
 
 const UpdateContact = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data'
+    'https://walid-hassan.vercel.app/api/miscellaneous-data',
+    { next: { tags: ['contact'] } }
   );
   const { contact } = await response.json();
 
