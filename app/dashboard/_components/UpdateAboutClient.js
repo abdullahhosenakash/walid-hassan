@@ -86,6 +86,7 @@ const UpdateAboutClient = ({ aboutMe }) => {
       <SubmitButton
         setErrorMessage={setErrorMessage}
         errorMessage={errorMessage}
+        buttonText='Update'
       />
     </form>
   );

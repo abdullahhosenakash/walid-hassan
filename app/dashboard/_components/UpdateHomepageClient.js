@@ -188,6 +188,7 @@ const UpdateHomepageClient = ({ homepage }) => {
       <SubmitButton
         setErrorMessage={setErrorMessage}
         errorMessage={errorMessage}
+        buttonText='Update'
       />
     </form>
   );

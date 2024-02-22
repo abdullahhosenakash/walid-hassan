@@ -1,6 +1,5 @@
 'use server';
 
-import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 import { DB } from '@/app/_utils/mongoDB';
 
 export async function updateContact(prevState, formData) {
@@ -12,7 +11,10 @@ export async function updateContact(prevState, formData) {
       address: formData.get('address')
     };
 
-    const { contact } = await getMiscellaneousData();
+    const response = await fetch(
+      'https://walid-hassan.vercel.app/api/miscellaneous-data'
+    );
+    const { contact } = await response.json();
 
     if (!contact) {
       throw new Error('Failed to get contact data');

@@ -1,6 +1,5 @@
 'use server';
 
-import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 import { DB } from '@/app/_utils/mongoDB';
 
 export async function updateResume(prevState, formData) {
@@ -30,7 +29,10 @@ export async function updateResume(prevState, formData) {
       ]
     };
 
-    const { resume } = await getMiscellaneousData();
+    const response = await fetch(
+      'https://walid-hassan.vercel.app/api/miscellaneous-data'
+    );
+    const { resume } = await response.json();
 
     if (!resume) {
       throw new Error('Failed to get resume data');

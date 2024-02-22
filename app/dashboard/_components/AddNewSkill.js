@@ -135,6 +135,7 @@ const AddNewSkill = ({ skills }) => {
       <SubmitButton
         errorMessage={errorMessage}
         setErrorMessage={setErrorMessage}
+        buttonText='Add Skill'
       />
     </form>
   );

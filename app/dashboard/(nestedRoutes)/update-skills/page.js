@@ -1,8 +1,11 @@
-import { getSkills } from '@/app/_lib/getFunctions/getSkills';
 import ModifySkills from '@/app/dashboard/_components/ModifySkills';
 
 const UpdateSkills = async () => {
-  const skills = await getSkills();
+  const response = await fetch(
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
+  );
+  const skills = await response.json();
+
   if (!skills) {
     throw new Error('Failed to get skills data');
   }

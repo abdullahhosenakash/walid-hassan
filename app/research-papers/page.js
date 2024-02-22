@@ -1,9 +1,11 @@
 import CategoryLink from '@/app/_components/CategoryLink/CategoryLink';
-import { getResearchPapers } from '@/app/_lib/getFunctions/getResearchPapers';
 import Link from 'next/link';
 
 const ResearchPapers = async () => {
-  const researchPapers = await getResearchPapers();
+  const response = await fetch(
+    'https://walid-hassan.vercel.app/api/research-papers'
+  );
+  const researchPapers = await response.json();
 
   if (!researchPapers) {
     throw new Error('Failed to get research paper data');

@@ -1,7 +1,5 @@
 'use server';
 
-import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
-import { getSkills } from '@/app/_lib/getFunctions/getSkills';
 import { DB } from '@/app/_utils/mongoDB';
 
 export async function updateSkills(prevState, formData) {
@@ -41,7 +39,8 @@ export async function updateSkills(prevState, formData) {
       skillsDeveloped
     };
 
-    const skills = await getSkills();
+    const response = await fetch('https://walid-hassan.vercel.app/api/skills');
+    const skills = await response.json();
 
     if (!skills) {
       throw new Error('Failed to get skills data');

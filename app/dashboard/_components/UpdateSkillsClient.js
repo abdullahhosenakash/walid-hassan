@@ -127,6 +127,7 @@ const UpdateSkillsClient = ({ skills }) => {
       <SubmitButton
         setErrorMessage={setErrorMessage}
         errorMessage={errorMessage}
+        buttonText='Update'
       />
     </form>
   );

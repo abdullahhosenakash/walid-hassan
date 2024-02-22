@@ -86,6 +86,7 @@ const UpdateExperienceClient = ({ experience }) => {
       <SubmitButton
         setErrorMessage={setErrorMessage}
         errorMessage={errorMessage}
+        buttonText='Update'
       />
     </form>
   );

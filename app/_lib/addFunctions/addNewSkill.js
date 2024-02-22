@@ -1,6 +1,5 @@
 'use server';
 
-import { getSkills } from '@/app/_lib/getFunctions/getSkills';
 import { DB } from '@/app/_utils/mongoDB';
 
 export async function addNewSkill(prevState, formData) {
@@ -11,7 +10,9 @@ export async function addNewSkill(prevState, formData) {
       percentage: formData.get('percentage')
     };
 
-    const skills = await getSkills();
+    const response = await fetch('https://walid-hassan.vercel.app/api/skills');
+    const skills = await response.json();
+
     const availableSkillSet = skills?.skillsDeveloped?.find(
       (skillSet) => skillSet.skillType === skillType
     );

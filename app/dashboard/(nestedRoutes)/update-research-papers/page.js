@@ -1,9 +1,10 @@
-import { getResearchPapers } from '@/app/_lib/getFunctions/getResearchPapers';
-
 const UpdateResearchPapers = async () => {
-  const researchPaper = await getResearchPapers();
+  const response = await fetch(
+    'https://walid-hassan.vercel.app/api/research-papers'
+  );
+  const researchPapers = await response.json();
 
-  if (!researchPaper) {
+  if (!researchPapers) {
     throw new Error('Failed to get research paper data');
   }
 

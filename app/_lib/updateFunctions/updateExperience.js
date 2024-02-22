@@ -1,6 +1,5 @@
 'use server';
 
-import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 import { DB } from '@/app/_utils/mongoDB';
 
 export async function updateExperience(prevState, formData) {
@@ -16,7 +15,11 @@ export async function updateExperience(prevState, formData) {
         }
       ];
     }
-    const { experience } = await getMiscellaneousData();
+
+    const response = await fetch(
+      'https://walid-hassan.vercel.app/api/miscellaneous-data'
+    );
+    const { experience } = await response.json();
 
     if (!experience) {
       throw new Error('Failed to get experience data');

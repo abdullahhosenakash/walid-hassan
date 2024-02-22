@@ -1,16 +1,18 @@
 'use server';
-
-import { getMiscellaneousData } from '@/app/_lib/getFunctions/getMiscellaneousData';
 import { DB } from '@/app/_utils/mongoDB';
 
 export async function updateAbout(prevState, formData) {
   try {
-    const firstPara = formData.get('firstPara');
-    const secondPara = formData.get('secondPara');
-    const thirdPara = formData.get('thirdPara');
-    const updatedData = { firstPara, secondPara, thirdPara };
+    const updatedData = {
+      firstPara: formData.get('firstPara'),
+      secondPara: formData.get('secondPara'),
+      thirdPara: formData.get('thirdPara')
+    };
 
-    const { aboutMe } = await getMiscellaneousData();
+    const response = await fetch(
+      'https://walid-hassan.vercel.app/api/miscellaneous-data'
+    );
+    const { aboutMe } = await response.json();
 
     if (!aboutMe) {
       throw new Error('Failed to get about me data');

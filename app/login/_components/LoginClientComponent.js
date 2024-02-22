@@ -1,6 +1,7 @@
 'use client';
 
 import { login } from '@/app/_lib/authentication/login';
+import SubmitButton from '@/app/dashboard/_components/SubmitButton';
 import { useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
 
@@ -20,6 +21,7 @@ const LoginClientComponent = () => {
     };
     setErrorMessage(generatedError);
   }, [state]);
+
   return (
     <form action={formAction}>
       <div>
@@ -79,12 +81,11 @@ const LoginClientComponent = () => {
         {errorMessage.errorType === 'credential' && errorMessage.message}
       </p>
       <div className='mt-4'>
-        <button
-          type='submit'
-          className='py-2 rounded bg-blue-700 w-full hover:bg-blue-600 text-white disabled:bg-slate-500'
-        >
-          Login
-        </button>
+        <SubmitButton
+          errorMessage={errorMessage}
+          setErrorMessage={setErrorMessage}
+          buttonText='Login'
+        />
       </div>
     </form>
   );

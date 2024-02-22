@@ -135,6 +135,7 @@ const UpdateResumeClient = ({ resume }) => {
       <SubmitButton
         setErrorMessage={setErrorMessage}
         errorMessage={errorMessage}
+        buttonText='Update'
       />
     </form>
   );

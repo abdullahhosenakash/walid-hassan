@@ -81,6 +81,7 @@ const UpdateContactClient = ({ contact }) => {
       <SubmitButton
         setErrorMessage={setErrorMessage}
         errorMessage={errorMessage}
+        buttonText='Update'
       />
     </form>
   );
