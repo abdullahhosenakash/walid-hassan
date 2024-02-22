@@ -54,14 +54,15 @@ export async function updateHomepage(prevState, formData) {
     const updatedData = await getFormData(formData);
 
     const response = await fetch(
-      'https://walid-hassan.vercel.app/api/miscellaneous-data',
-      { next: { tags: ['homepage'] } }
+      'https://walid-hassan.vercel.app/api/miscellaneous-data'
     );
     const { homepage } = await response.json();
 
     if (!homepage) {
       throw new Error('Failed to get homepage data');
     }
+
+    revalidateTag('homepage');
     const previousData = JSON.stringify(homepage);
     const currentData = JSON.stringify(updatedData);
     if (previousData === currentData) {
