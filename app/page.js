@@ -9,6 +9,7 @@ export default async function Home() {
     }
   );
   const { homepage } = await response.json();
+  console.log('from homepage', homepage);
 
   if (!homepage) {
     throw new Error('Failed to get homepage data');

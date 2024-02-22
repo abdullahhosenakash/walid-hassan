@@ -1,7 +1,5 @@
 import { DB } from '@/app/_utils/mongoDB';
 
-export const dynamic = 'force-dynamic';
-
 export async function GET(request) {
   try {
     const { miscellaneousCollection } = await DB();
@@ -11,3 +9,5 @@ export async function GET(request) {
     return Response.json({ message: 'Failed to get data' }, { status: 500 });
   }
 }
+
+export const dynamic = 'force-dynamic';
