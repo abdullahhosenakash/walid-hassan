@@ -1,6 +1,7 @@
 'use server';
 
 import { DB } from '@/app/_utils/mongoDB';
+import { revalidatePath } from 'next/cache';
 
 export async function addNewSkill(prevState, formData) {
   try {
@@ -65,6 +66,7 @@ export async function addNewSkill(prevState, formData) {
     const result = await skillCollection.updateOne(filter, updatedDoc);
 
     if (result.acknowledged) {
+      revalidatePath('/skills');
       return JSON.parse(
         JSON.stringify({
           errorType: null,
