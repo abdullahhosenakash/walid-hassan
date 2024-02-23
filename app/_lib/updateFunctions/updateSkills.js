@@ -68,7 +68,7 @@ export async function updateSkills(prevState, formData) {
 
     const result = await skillCollection.updateOne(filter, updatedDoc);
     if (result.acknowledged) {
-      // revalidatePath('/skills');
+      revalidatePath('/skills');
       return JSON.parse(
         JSON.stringify({
           errorType: null,
