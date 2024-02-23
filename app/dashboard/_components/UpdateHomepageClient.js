@@ -57,7 +57,7 @@ const UpdateHomepageClient = ({ homepage }) => {
         <label htmlFor='designation'>
           <span className='block text-lg'>Designations</span>
         </label>
-        <div className='flex flex-col gap-2 border border-slate-400 p-2 rounded-lg'>
+        <div className='flex flex-col gap-2 border dark:border-slate-500 border-slate-300 p-2 rounded-lg'>
           {designations?.map((designation, index) => (
             <InputField
               inputFieldTitle={`Designation ${index + 1}`}
@@ -77,7 +77,7 @@ const UpdateHomepageClient = ({ homepage }) => {
         <label htmlFor='socialLinks'>
           <span className='block text-lg'>Social Links</span>
         </label>
-        <div className='flex flex-col gap-2 border border-slate-400 rounded-lg p-2'>
+        <div className='flex flex-col gap-2 border dark:border-slate-500 border-slate-300 rounded-lg p-2'>
           <InputField
             inputFieldTitle='Facebook'
             type='text'
@@ -125,7 +125,7 @@ const UpdateHomepageClient = ({ homepage }) => {
           placeholder='Enter your highlighted skills'
           required
           defaultValue={highlightedSkills?.map((skill) => skill)}
-          className='py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full lg:h-24 h-32'
+          className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full lg:h-24 h-32'
         />
       </div>
 
@@ -134,13 +134,13 @@ const UpdateHomepageClient = ({ homepage }) => {
         <label htmlFor='homepageCards'>
           <span className='block text-lg'>Homepage Cards</span>
         </label>
-        <div className='flex flex-col gap-2 border border-slate-400 p-2 rounded-lg'>
+        <div className='flex flex-col gap-2 border dark:border-slate-500 border-slate-300 p-2 rounded-lg'>
           {homepageCards?.map((card, index) => (
             <div className='' key={card.title}>
               <label htmlFor={`card${index + 1}`}>
                 <span className='block text-lg'>Card {index + 1}</span>
               </label>
-              <div className='border border-slate-400 rounded-lg p-1'>
+              <div className='border dark:border-slate-500 border-slate-300 rounded-lg p-1'>
                 <InputField
                   inputFieldTitle='Title'
                   type='text'

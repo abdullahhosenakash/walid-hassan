@@ -54,7 +54,7 @@ export async function updateHomepage(prevState, formData) {
     const updatedData = await getFormData(formData);
 
     const response = await fetch(
-      'https://walid-hassan.vercel.app/api/miscellaneous-data'
+      'http://localhost:3000/api/miscellaneous-data'
     );
     const { homepage } = await response.json();
 

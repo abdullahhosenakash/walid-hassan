@@ -36,19 +36,19 @@ const Modal = ({ setDeleteSelectedSkill, selectedSkill, setSelectedSkill }) => {
     <section className='overflow-y-auto'>
       <form
         action={formAction}
-        className='h-48 max-w-lg w-full bg-gray-400 transition duration-300 z-50 shadow-xl shadow-slate-600 fixed top-40 p-4 rounded-lg flex flex-col justify-between text-lg text-black'
+        className='h-48 lg:max-w-lg lg:w-full w-[90%] bg-gray-400 transition duration-300 z-50 shadow-xl shadow-slate-600 fixed top-40 left-0 right-0 mx-auto lg:p-4 p-2 rounded-lg flex flex-col justify-between text-lg text-black'
       >
         <div>
           <p>
             Are you sure you want to delete this skill
             {selectedSkill?.skillsLength && ' set'}?
           </p>
-          <p className='text-slate-700 text-base mt-2'>
-            Skill Type:{' '}
+          <p className='text-slate-700 text-base mt-2 flex gap-2'>
+            <span>Skill Type:</span>
             <input
               type='text'
               name='skillType'
-              className='bg-gray-400 focus:outline-none hover:cursor-auto'
+              className='bg-gray-400 focus:outline-none hover:cursor-auto w-[68%]'
               readOnly
               defaultValue={selectedSkill?.skillType}
             />
@@ -60,22 +60,22 @@ const Modal = ({ setDeleteSelectedSkill, selectedSkill, setSelectedSkill }) => {
             </p>
           ) : (
             <>
-              <p className='text-slate-700 text-base'>
-                Skill Name:{' '}
+              <p className='text-slate-700 text-base flex gap-2'>
+                <span>Skill Name:</span>
                 <input
                   type='text'
                   name='skillName'
-                  className='bg-gray-400 focus:outline-none hover:cursor-auto'
+                  className='bg-gray-400 focus:outline-none hover:cursor-auto w-1/2'
                   readOnly
                   defaultValue={selectedSkill?.skillName}
                 />
               </p>
-              <p className='text-slate-700 text-base'>
-                Percentage:{' '}
+              <p className='text-slate-700 text-base flex gap-2'>
+                <span> Percentage:</span>
                 <input
                   type='text'
                   name='percentage'
-                  className='bg-gray-400 focus:outline-none hover:cursor-auto'
+                  className='bg-gray-400 focus:outline-none hover:cursor-auto w-1/2'
                   readOnly
                   defaultValue={selectedSkill?.percentage}
                 />

@@ -77,7 +77,7 @@ const UpdateSkillsClient = ({ skills }) => {
           let skillSetIndex = index;
           return (
             <div key={skillSet.skillType}>
-              <div className='border rounded-lg border-slate-600 p-1'>
+              <div className='border rounded-lg dark:border-slate-600 border-slate-300 p-1'>
                 <InputField
                   inputFieldTitle='Skill Type'
                   type='text'
@@ -89,7 +89,7 @@ const UpdateSkillsClient = ({ skills }) => {
                 <div className='flex flex-col gap-2 mt-2'>
                   {skillSet?.skills?.map((skill, index) => (
                     <div
-                      className='flex gap-1 border border-slate-700 p-1 rounded-lg'
+                      className='flex gap-1 border dark:border-slate-500 border-slate-300 p-1 rounded-lg'
                       key={skill.skillName}
                     >
                       <InputField

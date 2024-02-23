@@ -61,6 +61,15 @@ const SideBar = ({ setDropDownToggled }) => {
 
           <li>
             <DashboardLink
+              href='/dashboard/update-certifications'
+              setDropDownToggled={setDropDownToggled}
+            >
+              Update Certifications
+            </DashboardLink>
+          </li>
+
+          <li>
+            <DashboardLink
               href='/dashboard/update-research-papers'
               setDropDownToggled={setDropDownToggled}
             >

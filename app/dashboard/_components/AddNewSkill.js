@@ -75,9 +75,9 @@ const AddNewSkill = ({ skills }) => {
   return (
     <form action={formAction} className='mt-4'>
       <h3 className='text-xl text-center'>Add New Skill</h3>
-      <div className='border border-slate-700 rounded-lg p-1'>
-        Stored Skills
-        <div className='flex flex-grow gap-3 text-blue-400'>
+      <div className='border dark:border-slate-500 border-slate-300 rounded-lg p-1'>
+        Stored Skill Types
+        <div className='flex lg:flex-row flex-col lg:gap-3 gap-1 dark:text-blue-400 text-blue-700'>
           {skillTypes?.map((skillType) => (
             <span
               key={skillType}
@@ -89,6 +89,7 @@ const AddNewSkill = ({ skills }) => {
           ))}
         </div>
       </div>
+
       <div className='mt-2'>
         <div className='flex flex-col gap-2'>
           <div>
@@ -99,11 +100,11 @@ const AddNewSkill = ({ skills }) => {
               type='text'
               name='skillType'
               id='skillType'
-              placeholder='Enter new skill type or select from above #tag'
+              placeholder='Enter skill type or select from above #tag'
               required
               value={inputtedSkillType}
               onChange={(e) => setInputtedSkillType(e.target.value)}
-              className='py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full'
+              className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full'
             />
           </div>
 

@@ -17,11 +17,12 @@ const DeleteASkill = ({ skills }) => {
           setSelectedSkill={setSelectedSkill}
         />
       )}
+
       <div className='flex flex-col gap-8'>
         {skills?.skillsDeveloped?.map((skillSet) => (
           <div
             key={skillSet.skillType}
-            className='border border-slate-700 rounded-lg'
+            className='border dark:border-slate-500 border-slate-300 rounded-lg'
           >
             <p className='text-lg py-1 pl-2 flex items-center gap-2'>
               Skill Type: {skillSet.skillType}

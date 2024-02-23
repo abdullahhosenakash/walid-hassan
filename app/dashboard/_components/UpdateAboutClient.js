@@ -46,7 +46,7 @@ const UpdateAboutClient = ({ aboutMe }) => {
           placeholder='Enter first para'
           required
           defaultValue={firstPara}
-          className='py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full h-60'
+          className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full h-60'
         />
       </div>
 
@@ -60,7 +60,7 @@ const UpdateAboutClient = ({ aboutMe }) => {
           placeholder='Enter second para'
           required
           defaultValue={secondPara}
-          className='py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full h-60'
+          className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full h-60'
         />
       </div>
 
@@ -74,7 +74,7 @@ const UpdateAboutClient = ({ aboutMe }) => {
           placeholder='Enter third para'
           required
           defaultValue={thirdPara}
-          className='py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full h-60'
+          className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full h-60'
         />
       </div>
 

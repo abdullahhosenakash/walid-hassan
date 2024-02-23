@@ -1,7 +1,7 @@
 import ModifySkills from '@/app/dashboard/_components/ModifySkills';
 
 const UpdateSkills = async () => {
-  const response = await fetch('https://walid-hassan.vercel.app/api/skills');
+  const response = await fetch('http://localhost:3000/api/skills');
   const skills = await response.json();
 
   if (!skills) {

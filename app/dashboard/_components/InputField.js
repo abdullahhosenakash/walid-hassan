@@ -13,7 +13,7 @@ const InputField = ({
         <span className='block text-lg'>{inputFieldTitle}</span>
       </label>
       {name === 'phone' || name === 'whatsApp' ? (
-        <div className='flex items-center py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full'>
+        <div className='flex items-center py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full'>
           <span>+88</span>
           <input
             type={type}
@@ -34,7 +34,7 @@ const InputField = ({
           required={required}
           defaultValue={defaultValue}
           onChange={(e) => setInputValue && setInputValue(e.target.value)}
-          className='py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full'
+          className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full'
         />
       )}
     </div>

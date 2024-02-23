@@ -3,7 +3,7 @@ import { faClock } from '@fortawesome/free-solid-svg-icons';
 import SkillsClientComponent from '@/app/skills/_components/SkillsClientComponent';
 
 const Skills = async () => {
-  const response = await fetch('https://walid-hassan.vercel.app/api/skills');
+  const response = await fetch('http://localhost:3000/api/skills');
   const skills = await response.json();
 
   if (!skills) {

@@ -41,7 +41,7 @@ const UpdateExperienceClient = ({ experience }) => {
           <label htmlFor={`experience${index + 1}`}>
             <span className='block text-xl'>Experience {index + 1}</span>
           </label>
-          <div className=' border rounded-lg border-slate-600 p-1'>
+          <div className=' border rounded-lg dark:border-slate-500 border-slate-300 p-1'>
             <div className='flex flex-col gap-2'>
               <InputField
                 inputFieldTitle={`Experience Name ${index + 1}`}
@@ -70,7 +70,7 @@ const UpdateExperienceClient = ({ experience }) => {
                   placeholder={`Enter your experience description ${index + 1}`}
                   required
                   defaultValue={exp.description}
-                  className='py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full h-60'
+                  className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full h-60'
                 />
               </div>
             </div>

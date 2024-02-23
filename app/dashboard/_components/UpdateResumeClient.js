@@ -54,7 +54,7 @@ const UpdateResumeClient = ({ resume }) => {
             placeholder='Enter your resume description'
             required
             defaultValue={resume?.description}
-            className='py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full h-60'
+            className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full h-60'
           />
         </div>
 
