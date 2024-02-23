@@ -14,11 +14,13 @@ export async function DB() {
   const userCollection = db.collection('user');
   const miscellaneousCollection = db.collection('miscellaneous');
   const projectCollection = db.collection('projects');
+  const certificationCollection = db.collection('certifications');
   const researchPaperCollection = db.collection('researchPapers');
   const skillCollection = db.collection('skills');
   const collections = {
     userCollection,
     miscellaneousCollection,
+    certificationCollection,
     projectCollection,
     researchPaperCollection,
     skillCollection
