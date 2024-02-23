@@ -11,17 +11,11 @@ export async function addNewSkill(prevState, formData) {
       percentage: formData.get('percentage')
     };
 
-    const response = await fetch('https://walid-hassan.vercel.app/api/skills', {
-      cache: 'no-store'
-    });
+    const response = await fetch('https://walid-hassan.vercel.app/api/skills');
     const skills = await response.json();
 
     const availableSkillSet = skills?.skillsDeveloped?.find(
       (skillSet) => skillSet.skillType === skillType
-    );
-
-    const restSkillSet = skills?.skillsDeveloped?.filter(
-      (skillSet) => skillSet.skillType !== availableSkillSet?.skillType
     );
 
     let updatedSkills = [];
