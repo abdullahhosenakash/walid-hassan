@@ -11,7 +11,7 @@ export async function updateAbout(prevState, formData) {
     };
 
     const response = await fetch(
-      'http://localhost:3000/api/miscellaneous-data'
+      'https://walid-hassan.vercel.app/api/miscellaneous-data'
     );
     const { aboutMe } = await response.json();
 

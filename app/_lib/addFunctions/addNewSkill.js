@@ -11,7 +11,7 @@ export async function addNewSkill(prevState, formData) {
       percentage: formData.get('percentage')
     };
 
-    const response = await fetch('http://localhost:3000/api/skills');
+    const response = await fetch('https://walid-hassan.vercel.app/api/skills');
     const skills = await response.json();
 
     const availableSkillSet = skills?.skillsDeveloped?.find(

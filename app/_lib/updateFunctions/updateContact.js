@@ -13,7 +13,7 @@ export async function updateContact(prevState, formData) {
     };
 
     const response = await fetch(
-      'http://localhost:3000/api/miscellaneous-data'
+      'https://walid-hassan.vercel.app/api/miscellaneous-data'
     );
     const { contact } = await response.json();
 

@@ -2,7 +2,9 @@ import CategoryLink from '@/app/_components/CategoryLink/CategoryLink';
 import Link from 'next/link';
 
 const ResearchPapers = async () => {
-  const response = await fetch('http://localhost:3000/api/research-papers');
+  const response = await fetch(
+    'https://walid-hassan.vercel.app/api/research-papers'
+  );
   const researchPapers = await response.json();
 
   if (!researchPapers) {

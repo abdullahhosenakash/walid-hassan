@@ -1,5 +1,7 @@
 const UpdateCertifications = async () => {
-  const response = await fetch('http://localhost:3000/api/certifications');
+  const response = await fetch(
+    'https://walid-hassan.vercel.app/api/certifications'
+  );
   const certifications = await response.json();
 
   if (!certifications) {

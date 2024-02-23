@@ -31,7 +31,7 @@ export async function updateResume(prevState, formData) {
     };
 
     const response = await fetch(
-      'http://localhost:3000/api/miscellaneous-data'
+      'https://walid-hassan.vercel.app/api/miscellaneous-data'
     );
     const { resume } = await response.json();
 
