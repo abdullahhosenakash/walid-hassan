@@ -11,10 +11,11 @@ const Resume = async () => {
   }
 
   const skillsResponse = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { cache: 'no-store' }
+    'https://walid-hassan.vercel.app/api/skills'
   );
   const skills = await skillsResponse.json();
+
+  console.log(resume);
 
   if (!skills) {
     throw new Error('Failed to get skills data for resume');
@@ -56,7 +57,7 @@ const Resume = async () => {
           Projects
         </h3>
         {resume?.projects?.map((project) => (
-          <div key={project.projectName} className='mt-3'>
+          <div key={project.projectId} className='mt-3'>
             <h4 className='text-xl font-bold flex justify-between'>
               <span>
                 {project.projectName} -{' '}
@@ -71,8 +72,8 @@ const Resume = async () => {
             </h4>
             <p className='text-lg'>{project.technology}</p>
             <ul className='list-disc text-lg pl-8'>
-              {project.shortDescription?.map((description) => (
-                <li key={description}>{description}</li>
+              {project.description?.map((desc) => (
+                <li key={desc}>{desc}</li>
               ))}
             </ul>
           </div>

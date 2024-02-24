@@ -6,7 +6,11 @@ import { useFormState } from 'react-dom';
 import toast from 'react-hot-toast';
 import SubmitButton from '@/app/dashboard/_components/SubmitButton';
 import InputField from '@/app/dashboard/_components/InputField';
-import { updateProjects } from '@/app/_lib/updateFunctions/updateProjects';
+import ProjectList from '@/app/dashboard/_components/ProjectList';
+import {
+  updateProject,
+  updateProjectType
+} from '@/app/_lib/updateFunctions/updateProject';
 
 const initialState = {
   errorType: null,
@@ -16,166 +20,215 @@ const initialState = {
 
 const UpdateProjectsClient = ({ projects }) => {
   const [errorMessage, setErrorMessage] = useState(initialState);
-  const [state, formAction] = useFormState(updateProjects, initialState);
+  const [state, formAction] = useFormState(updateProject, initialState);
+  const [stateForProjectType, formActionForProjectType] = useFormState(
+    updateProjectType,
+    initialState
+  );
+  const [selectedProject, setSelectedProject] = useState({});
+  const [selectedProjectType, setSelectedProjectType] = useState('');
   const { push } = useRouter();
 
   useEffect(() => {
     const generatedError = {
-      errorType: state?.errorType || null,
-      status: state?.status || null,
-      message: state?.message || ''
+      errorType: state?.errorType || stateForProjectType?.errorType || null,
+      status: state?.status || stateForProjectType?.status || null,
+      message: state?.message || stateForProjectType?.message || ''
     };
     setErrorMessage(generatedError);
 
-    if (state?.status === 'success') {
+    if (
+      state?.status === 'success' ||
+      stateForProjectType?.status === 'success'
+    ) {
       toast.success('Projects updated successfully!');
       push('/projects');
     }
-  }, [state, push]);
+  }, [state, push, stateForProjectType]);
 
-  console.log(projects);
+  console.log(errorMessage);
 
   return (
-    <form action={formAction} className='mt-4'>
-      <h3 className='text-xl text-center'>Update Projects</h3>
-      <div className='flex flex-col gap-6'>
-        {projects?.projectsDeveloped?.map((projectSet, index) => {
-          let projectSetIndex = index;
-          return (
-            <div key={projectSet.projectType}>
-              <div className='border rounded-lg dark:border-slate-600 border-slate-300 p-1'>
-                <InputField
-                  inputFieldTitle='Project Type'
-                  type='text'
-                  name={`projectType${index + 1}`}
-                  placeholder='Enter project type'
-                  required
-                  defaultValue={projectSet.projectType}
-                />
+    <section className='mt-4'>
+      <ProjectList
+        projects={projects}
+        setSelectedProject={setSelectedProject}
+        setSelectedProjectType={setSelectedProjectType}
+      />
 
-                <div className='mt-3'>
-                  {projectSet.projects?.map((project, index) => {
-                    let projectIndex = index;
-                    return (
-                      <div
-                        className='border dark:border-slate-500 border-slate-300 p-1 rounded-lg flex flex-col gap-2'
-                        key={project.projectName}
-                      >
-                        <InputField
-                          inputFieldTitle='Project Name'
-                          type='text'
-                          name={`projectName${projectSetIndex + 1}${
-                            projectIndex + 1
-                          }`}
-                          placeholder='Enter your project name'
-                          required
-                          defaultValue={project.projectName}
-                        />
+      {selectedProject.projectId && (
+        <form action={formAction} className='mt-8' id='form-update'>
+          <h3 className='text-xl text-center'>
+            Project Type: {selectedProject.projectType}
+          </h3>
+          <div className='border rounded-lg dark:border-slate-600 border-slate-300 p-1'>
+            <input
+              type='text'
+              name='projectId'
+              defaultValue={selectedProject.projectId}
+              className='hidden'
+            />
+            <input
+              type='text'
+              name='projectType'
+              defaultValue={selectedProject.projectType}
+              className='hidden'
+            />
+            <InputField
+              inputFieldTitle='Project Name'
+              type='text'
+              name='projectName'
+              placeholder='Enter your project name'
+              required
+              defaultValue={selectedProject.projectName}
+            />
 
-                        <InputField
-                          inputFieldTitle='Role'
-                          type='text'
-                          name={`role${projectSetIndex + 1}${projectIndex + 1}`}
-                          placeholder='Enter your project role'
-                          required
-                          defaultValue={project.role}
-                        />
+            <InputField
+              inputFieldTitle='Role'
+              type='text'
+              name='role'
+              placeholder='Enter your project role'
+              required
+              defaultValue={selectedProject.role}
+            />
 
-                        <InputField
-                          inputFieldTitle='Technology'
-                          type='text'
-                          name={`technology${projectSetIndex + 1}${
-                            projectIndex + 1
-                          }`}
-                          placeholder='Enter used technology'
-                          required
-                          defaultValue={project.technology}
-                        />
+            <InputField
+              inputFieldTitle='Technology'
+              type='text'
+              name='technology'
+              placeholder='Enter used technology'
+              required
+              defaultValue={selectedProject.technology}
+            />
 
-                        <div>
-                          <label htmlFor='description'>
-                            <span className='block text-lg'>Description</span>
-                          </label>
-                          <textarea
-                            name={`description${projectSetIndex + 1}${
-                              projectIndex + 1
-                            }`}
-                            placeholder='Enter your project description'
-                            required
-                            defaultValue={project.description}
-                            className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full lg:h-24 h-32'
-                          />
-                        </div>
+            <div>
+              <label htmlFor='description'>
+                <span className='block text-lg'>Description</span>
+              </label>
+              <textarea
+                name='description'
+                placeholder='Enter your project description'
+                required
+                defaultValue={selectedProject.description}
+                className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full lg:h-24 h-32'
+              />
+            </div>
 
-                        <InputField
-                          inputFieldTitle='Project Link'
-                          type='text'
-                          name={`link${projectSetIndex + 1}${projectIndex + 1}`}
-                          placeholder='Enter your project link'
-                          required
-                          defaultValue={project.link}
-                        />
+            <InputField
+              inputFieldTitle='Project Link'
+              type='text'
+              name='link'
+              placeholder='Enter your project link'
+              required
+              defaultValue={selectedProject.link}
+            />
 
-                        <InputField
-                          inputFieldTitle='Image Link'
-                          type='text'
-                          name={`imageLink${projectSetIndex + 1}${
-                            projectIndex + 1
-                          }`}
-                          placeholder="Enter your project's image link"
-                          required
-                          defaultValue={project.imageLink}
-                        />
+            <InputField
+              inputFieldTitle='Image Link'
+              type='text'
+              name='imageLink'
+              placeholder="Enter your project's image link"
+              required
+              defaultValue={selectedProject.imageLink}
+            />
 
-                        <div>
-                          <label htmlFor='features'>
-                            <span className='block text-lg'>Features</span>
-                          </label>
-                          <div className='flex flex-col gap-2 border dark:border-slate-500 border-slate-300 rounded-lg p-1'>
-                            {project.features?.map((feature, index) => {
-                              let featureIndex = index;
-                              return (
-                                <InputField
-                                  key={feature}
-                                  inputFieldTitle={`Feature ${
-                                    featureIndex + 1
-                                  }`}
-                                  type='text'
-                                  name={`feature${projectSetIndex + 1}${
-                                    projectIndex + 1
-                                  }${featureIndex + 1}`}
-                                  placeholder={`Enter feature ${
-                                    featureIndex + 1
-                                  }`}
-                                  required
-                                  defaultValue={feature}
-                                />
-                              );
-                            })}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+            <div>
+              <label htmlFor='features'>
+                <span className='block text-lg'>Features</span>
+              </label>
+              <div className='flex flex-col gap-2 border dark:border-slate-500 border-slate-300 rounded-lg p-1'>
+                {selectedProject.features?.map((feature, index) => (
+                  <InputField
+                    key={feature}
+                    inputFieldTitle={`Feature ${index + 1}`}
+                    type='text'
+                    name={`feature${index + 1}`}
+                    placeholder={`Enter feature ${index + 1}`}
+                    required
+                    defaultValue={feature}
+                  />
+                ))}
               </div>
             </div>
-          );
-        })}
-      </div>
+          </div>
 
-      {errorMessage?.errorType && (
-        <p className='text-center text-red-700 text-lg'>
-          {errorMessage?.message}
-        </p>
+          {errorMessage?.errorType && (
+            <p className='text-center text-red-700 text-lg'>
+              {errorMessage?.message}
+            </p>
+          )}
+
+          <div className='flex gap-2 justify-center items-center'>
+            <SubmitButton
+              setErrorMessage={setErrorMessage}
+              errorMessage={errorMessage}
+              buttonText='Update'
+              from='update project'
+            />
+
+            <button
+              type='submit'
+              className={`w-fit px-10 py-2 rounded-lg hover:bg-slate-600  bg-slate-700 disabled:cursor-not-allowed text-white ${
+                !errorMessage.errorType && '!mt-2'
+              }`}
+              onClick={() => setSelectedProject({})}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
       )}
 
-      <SubmitButton
-        setErrorMessage={setErrorMessage}
-        errorMessage={errorMessage}
-        buttonText='Update'
-      />
-    </form>
+      {selectedProjectType._id && (
+        <form
+          action={formActionForProjectType}
+          className='mt-8'
+          id='form-update-type'
+        >
+          <div className='border rounded-lg dark:border-slate-600 border-slate-300 p-1'>
+            <input
+              type='text'
+              name='_id'
+              defaultValue={selectedProjectType?._id}
+              className='hidden'
+            />
+            <InputField
+              inputFieldTitle='Project Type'
+              type='text'
+              name='projectType'
+              placeholder='Enter your project type'
+              required
+              defaultValue={selectedProjectType?.projectType}
+            />
+          </div>
+
+          {errorMessage?.errorType && (
+            <p className='text-center text-red-700 text-lg'>
+              {errorMessage?.message}
+            </p>
+          )}
+
+          <div className='flex gap-2 justify-center items-center'>
+            <SubmitButton
+              setErrorMessage={setErrorMessage}
+              errorMessage={errorMessage}
+              buttonText='Update'
+              from='update project'
+            />
+
+            <button
+              type='submit'
+              className={`w-fit px-10 py-2 rounded-lg hover:bg-slate-600  bg-slate-700 disabled:cursor-not-allowed text-white ${
+                !errorMessage.errorType && '!mt-2'
+              }`}
+              onClick={() => setSelectedProjectType({})}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      )}
+    </section>
   );
 };
 export default UpdateProjectsClient;

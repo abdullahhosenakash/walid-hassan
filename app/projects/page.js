@@ -17,69 +17,69 @@ const Projects = async () => {
         <ul className='list-disc pl-4'>
           {projects?.map((project) => (
             <li key={project._id}>
-              <CategoryLink>{project.projectCategory}</CategoryLink>
+              <CategoryLink>{project.projectType}</CategoryLink>
             </li>
           ))}
         </ul>
 
         <div className='flex flex-col gap-8'>
           {projects?.map((project) => {
-            const projectId = project.projectCategory
+            const projectId = project.projectType
               ?.toLowerCase()
               ?.replace(/\s+/g, '-');
             return (
               <div className='mt-6' id={projectId} key={project._id}>
-                <h3 className='text-2xl text-center'>
-                  {project.projectCategory}
-                </h3>
-                {project?.projects?.map((p) => (
-                  <div
-                    className='grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center mt-1 border border-slate-700 rounded-lg p-2'
-                    key={p.projectName}
-                  >
-                    <Image
-                      src={p.imageLink}
-                      alt='web project'
-                      priority
-                      className='shadow-xl h-auto'
-                      width={500}
-                      height={500}
-                    />
-                    <div className='text-lg flex flex-col gap-3'>
-                      <p>
-                        <span className='font-bold'>{p.projectName}</span>
-                        {' - '}
-                        <Link
-                          href={p.link}
-                          target='_blank'
-                          className='dark:text-blue-400 text-blue-700 hover:underline'
-                        >
-                          Live Link
-                        </Link>
-                      </p>
+                <h3 className='text-2xl text-center'>{project.projectType}</h3>
+                <div className='flex flex-col gap-3'>
+                  {project?.projects?.map((p) => (
+                    <div
+                      className='grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center mt-1 border border-slate-700 rounded-lg p-2'
+                      key={p.projectName}
+                    >
+                      <Image
+                        src={p.imageLink}
+                        alt='web project'
+                        priority
+                        className='shadow-xl h-auto'
+                        width={500}
+                        height={500}
+                      />
+                      <div className='text-lg flex flex-col gap-3'>
+                        <p>
+                          <span className='font-bold'>{p.projectName}</span>
+                          {' - '}
+                          <Link
+                            href={p.link}
+                            target='_blank'
+                            className='dark:text-blue-400 text-blue-700 hover:underline'
+                          >
+                            Live Link
+                          </Link>
+                        </p>
 
-                      <p>
-                        <span className='font-bold'>Role:</span> {p.role}
-                      </p>
-                      <p>
-                        <span className='font-bold'>Technology:</span>{' '}
-                        {p.technology}
-                      </p>
-                      <p>
-                        <span className='font-bold'>Description:</span>{' '}
-                        {p.description}
-                      </p>
-                      <div>
-                        <span className='font-bold'>Features:</span>
-                        <ul className='list-disc pl-4'>
-                          {p?.features?.map((feature) => (
-                            <li key={feature}>{feature}</li>
-                          ))}
-                        </ul>
+                        <p>
+                          <span className='font-bold'>Role:</span> {p.role}
+                        </p>
+                        <p>
+                          <span className='font-bold'>Technology:</span>{' '}
+                          {p.technology}
+                        </p>
+                        <p>
+                          <span className='font-bold'>Description:</span>{' '}
+                          {p.description}
+                        </p>
+                        <div>
+                          <span className='font-bold'>Features:</span>
+                          <ul className='list-disc pl-4'>
+                            {p?.features?.map((feature) => (
+                              <li key={feature}>{feature}</li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             );
           })}
