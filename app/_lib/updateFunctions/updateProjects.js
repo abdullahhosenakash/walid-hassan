@@ -9,46 +9,69 @@ export async function updateProjects(prevState, formData) {
     for (const key of formData.keys()) {
       keys = [...keys, key];
     }
-    const skillTypes = keys?.filter(
-      (key) => key.startsWith('skillType') && key
+    const projectTypes = keys?.filter(
+      (key) => key.startsWith('projectType') && key
     );
 
-    let skillsDeveloped = [];
-    for (let i = 1; i <= skillTypes?.length; i++) {
-      const skillNames = keys?.filter(
-        (key) => key.startsWith('skillName' + i) && key
+    let projects = [];
+    for (let i = 1; i <= projectTypes?.length; i++) {
+      const projectNames = keys?.filter(
+        (key) => key.startsWith('projectName' + i) && key
       );
-      const percentages = keys?.filter(
-        (key) => key.startsWith('percentage' + i) && key
+      const role = keys?.filter((key) => key.startsWith('role' + i) && key);
+      const technology = keys?.filter(
+        (key) => key.startsWith('technology' + i) && key
       );
-      const skills = skillNames?.map((skillName, index) => {
-        const skill = {
-          skillName: formData.get(skillName),
-          percentage: formData.get(percentages[index])
+      const description = keys?.filter(
+        (key) => key.startsWith('description' + i) && key
+      );
+      const link = keys?.filter((key) => key.startsWith('link' + i) && key);
+      const imageLink = keys?.filter(
+        (key) => key.startsWith('imageLink' + i) && key
+      );
+      const allFeatures = keys?.filter(
+        (key) => key.startsWith('features' + i) && key
+      );
+
+      let features = [];
+      for (let j = 1; j <= allFeatures?.length; j++) {
+        const singleFeatures = keys?.filter(
+          (key) => key.startsWith('features' + i + j) && key
+        );
+        features = [...features, singleFeatures];
+      }
+
+      const updatedProjects = projectNames?.map((projectName, index) => {
+        const project = {
+          projectName: formData.get(projectName),
+          role: formData.get(role[index]),
+          technology: formData.get(technology[index]),
+          description: formData.get(description[index]),
+          features: formData.get(features[index]),
+          link: formData.get(link[index]),
+          imageLink: formData.get(imageLink[index])
         };
-        return skill;
+        return project;
       });
-      const skillSet = {
-        skillType: formData.get(skillTypes[i - 1]),
-        skills
+
+      const projectSet = {
+        projectType: formData.get(projectTypes[i - 1]),
+        projects: updatedProjects
       };
-      skillsDeveloped = [...skillsDeveloped, skillSet];
+      projects = [...projects, projectSet];
     }
 
-    const updatedData = {
-      updateTime: new Date().toDateString(),
-      skillsDeveloped
-    };
+    const response = await fetch(
+      'https://walid-hassan.vercel.app/api/projects'
+    );
+    const storedProjects = await response.json();
 
-    const response = await fetch('https://walid-hassan.vercel.app/api/skills');
-    const skills = await response.json();
-
-    if (!skills) {
-      throw new Error('Failed to get skills data');
+    if (!storedProjects) {
+      throw new Error('Failed to get projects data');
     }
 
-    const previousData = JSON.stringify(skills.skillsDeveloped);
-    const currentData = JSON.stringify(updatedData.skillsDeveloped);
+    const previousData = JSON.stringify(storedProjects);
+    const currentData = JSON.stringify(projects);
 
     if (currentData === previousData) {
       return JSON.parse(
@@ -60,20 +83,23 @@ export async function updateProjects(prevState, formData) {
       );
     }
 
-    const { skillCollection } = await DB();
+    const { projectCollection } = await DB();
     const filter = {};
     const updatedDoc = {
-      $set: updatedData
+      $set: {
+        updateTime: new Date().toDateString(),
+        projectsDeveloped: projects
+      }
     };
 
-    const result = await skillCollection.updateOne(filter, updatedDoc);
+    const result = await projectCollection.updateOne(filter, updatedDoc);
     if (result.acknowledged) {
-      revalidatePath('/skills');
+      revalidatePath('/projects');
       return JSON.parse(
         JSON.stringify({
           errorType: null,
           status: 'success',
-          message: 'Skills updated successfully!'
+          message: 'Projects updated successfully!'
         })
       );
     } else {
@@ -81,11 +107,12 @@ export async function updateProjects(prevState, formData) {
         JSON.stringify({
           errorType: 'database',
           status: 'failed',
-          message: 'Failed to update skills!'
+          message: 'Failed to update projects!'
         })
       );
     }
   } catch (error) {
+    console.log(error);
     return JSON.parse(
       JSON.stringify({
         errorType: 'server',

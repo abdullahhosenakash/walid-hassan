@@ -17,9 +17,8 @@ const initialState = {
 const UpdateProjectsClient = ({ projects }) => {
   const [errorMessage, setErrorMessage] = useState(initialState);
   const [state, formAction] = useFormState(updateProjects, initialState);
-  const [inputValue, setInputValue] = useState('');
-
   const { push } = useRouter();
+
   useEffect(() => {
     const generatedError = {
       errorType: state?.errorType || null,
@@ -30,44 +29,9 @@ const UpdateProjectsClient = ({ projects }) => {
 
     if (state?.status === 'success') {
       toast.success('Projects updated successfully!');
-      // push('/projects');
+      push('/projects');
     }
   }, [state, push]);
-
-  useEffect(() => {
-    if (inputValue) {
-      if (!inputValue.includes('%')) {
-        return setErrorMessage({
-          status: null,
-          errorType: 'inputError',
-          message: 'Percentage input must contain % sign'
-        });
-      }
-      const inputWithoutWhiteSpace = inputValue.trim();
-      const percentage = inputWithoutWhiteSpace.split('%')[0];
-      if (percentage < 30) {
-        return setErrorMessage({
-          status: null,
-          errorType: 'inputError',
-          message: 'Percentage input must be greater than or equal 30%'
-        });
-      } else if (percentage > 100) {
-        return setErrorMessage({
-          status: null,
-          errorType: 'inputError',
-          message: 'Percentage input must be less than or equal 100%'
-        });
-      } else if (percentage % 5 !== 0) {
-        return setErrorMessage({
-          status: null,
-          errorType: 'inputError',
-          message: 'Percentage input must be divisible by 5'
-        });
-      } else {
-        return setErrorMessage(initialState);
-      }
-    }
-  }, [inputValue]);
 
   console.log(projects);
 
@@ -75,10 +39,10 @@ const UpdateProjectsClient = ({ projects }) => {
     <form action={formAction} className='mt-4'>
       <h3 className='text-xl text-center'>Update Projects</h3>
       <div className='flex flex-col gap-6'>
-        {projects?.map((projectSet, index) => {
+        {projects?.projectsDeveloped?.map((projectSet, index) => {
           let projectSetIndex = index;
           return (
-            <div key={projectSet._id}>
+            <div key={projectSet.projectType}>
               <div className='border rounded-lg dark:border-slate-600 border-slate-300 p-1'>
                 <InputField
                   inputFieldTitle='Project Type'
@@ -146,9 +110,7 @@ const UpdateProjectsClient = ({ projects }) => {
                         <InputField
                           inputFieldTitle='Project Link'
                           type='text'
-                          name={`projectLink${projectSetIndex + 1}${
-                            projectIndex + 1
-                          }`}
+                          name={`link${projectSetIndex + 1}${projectIndex + 1}`}
                           placeholder='Enter your project link'
                           required
                           defaultValue={project.link}
