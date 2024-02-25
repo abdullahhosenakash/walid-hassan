@@ -1,4 +1,4 @@
-import { addNewSkill } from '@/app/_lib/addFunctions/addNewSkill';
+import { addNewProject } from '@/app/_lib/addFunctions/addNewProject';
 import InputField from '@/app/dashboard/_components/InputField';
 import SubmitButton from '@/app/dashboard/_components/SubmitButton';
 import { useRouter } from 'next/navigation';
@@ -12,16 +12,39 @@ const initialState = {
   message: ''
 };
 
-const AddNewProject = ({ skills }) => {
+const AddNewProject = ({ projects }) => {
   const [errorMessage, setErrorMessage] = useState(initialState);
-  const [state, formAction] = useFormState(addNewSkill, initialState);
+  const [state, formAction] = useFormState(addNewProject, initialState);
+  const [inputtedProjectType, setInputtedProjectType] = useState('');
   const [inputValue, setInputValue] = useState('');
-  const [inputtedSkillType, setInputtedSkillType] = useState('');
   const { push } = useRouter();
 
-  const skillTypes = skills?.skillsDeveloped?.map(
-    (skillSet) => skillSet.skillType
-  );
+  const projectTypes = projects?.map((projectSet) => projectSet.projectType);
+
+  useEffect(() => {
+    if (inputValue) {
+      const isImageLinkOk = inputValue.startsWith('https://i.ibb.co/');
+      if (!isImageLinkOk) {
+        setErrorMessage({
+          errorType: 'inputError',
+          status: null,
+          message: 'Image link must be started with https://i.ibb.co/'
+        });
+      } else {
+        setErrorMessage({
+          errorType: state?.errorType || null,
+          status: state?.status || null,
+          message: state?.message || ''
+        });
+      }
+    } else {
+      setErrorMessage({
+        errorType: state?.errorType || null,
+        status: state?.status || null,
+        message: state?.message || ''
+      });
+    }
+  }, [inputValue, state]);
 
   useEffect(() => {
     const generatedError = {
@@ -32,59 +55,24 @@ const AddNewProject = ({ skills }) => {
     setErrorMessage(generatedError);
 
     if (state?.status === 'success') {
-      toast.success('Skill added successfully!');
-      push('/skills');
+      toast.success('Project added successfully!');
+      push('/projects');
     }
   }, [state, push]);
 
-  useEffect(() => {
-    if (inputValue) {
-      if (!inputValue.includes('%')) {
-        return setErrorMessage({
-          status: null,
-          errorType: 'inputError',
-          message: 'Percentage input must contain % sign'
-        });
-      }
-      const inputWithoutWhiteSpace = inputValue.trim();
-      const percentage = inputWithoutWhiteSpace.split('%')[0];
-      if (percentage < 30) {
-        return setErrorMessage({
-          status: null,
-          errorType: 'inputError',
-          message: 'Percentage input must be greater than or equal 30%'
-        });
-      } else if (percentage > 100) {
-        return setErrorMessage({
-          status: null,
-          errorType: 'inputError',
-          message: 'Percentage input must be less than or equal 100%'
-        });
-      } else if (percentage % 5 !== 0) {
-        return setErrorMessage({
-          status: null,
-          errorType: 'inputError',
-          message: 'Percentage input must be divisible by 5'
-        });
-      } else {
-        return setErrorMessage(initialState);
-      }
-    }
-  }, [inputValue]);
-
   return (
     <form action={formAction} className='mt-4'>
-      <h3 className='text-xl text-center'>Add New Skill</h3>
+      <h3 className='text-xl text-center'>Add New Project</h3>
       <div className='border dark:border-slate-500 border-slate-300 rounded-lg p-1'>
-        Stored Skill Types
-        <div className='flex lg:flex-row flex-col lg:gap-3 gap-1 dark:text-blue-400 text-blue-700'>
-          {skillTypes?.map((skillType) => (
+        Stored Project Types
+        <div className='flex lg:flex-row flex-col lg:gap-2 gap-1 dark:text-blue-400 text-blue-700'>
+          {projectTypes?.map((projectType) => (
             <span
-              key={skillType}
-              onClick={() => setInputtedSkillType(skillType)}
+              key={projectType}
+              onClick={() => setInputtedProjectType(projectType)}
               className='cursor-pointer'
             >
-              #{skillType}
+              #{projectType}
             </span>
           ))}
         </div>
@@ -93,34 +81,82 @@ const AddNewProject = ({ skills }) => {
       <div className='mt-2'>
         <div className='flex flex-col gap-2'>
           <div>
-            <label htmlFor='skillType'>
-              <span className='block text-lg'>Skill Type</span>
+            <label htmlFor='projectType'>
+              <span className='block text-lg'>Project Type</span>
             </label>
             <input
               type='text'
-              name='skillType'
-              id='skillType'
-              placeholder='Enter skill type or select from above #tag'
+              name='projectType'
+              id='projectType'
+              placeholder='Enter project type or select from above #tag'
               required
-              value={inputtedSkillType}
-              onChange={(e) => setInputtedSkillType(e.target.value)}
+              value={inputtedProjectType}
+              onChange={(e) => setInputtedProjectType(e.target.value)}
               className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full'
             />
           </div>
 
           <InputField
-            inputFieldTitle='Skill Name'
+            inputFieldTitle='Project Name'
             type='text'
-            name='skillName'
-            placeholder='Enter skill name'
+            name='projectName'
+            placeholder='Enter project name'
             required
           />
 
           <InputField
-            inputFieldTitle='Percentage'
+            inputFieldTitle='Role'
             type='text'
-            name='percentage'
-            placeholder='Enter skill percentage'
+            name='role'
+            placeholder='Enter project role'
+            required
+          />
+
+          <InputField
+            inputFieldTitle='Used Technology'
+            type='text'
+            name='technology'
+            placeholder='Enter used technology'
+            required
+          />
+
+          <div>
+            <label htmlFor='description'>
+              <span className='block text-lg'>Description</span>
+            </label>
+            <textarea
+              name='description'
+              placeholder='Enter project description'
+              required
+              className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full h-32'
+            />
+          </div>
+
+          <div>
+            <label htmlFor='features'>
+              <span className='text-lg flex'>Features (Separated by +)</span>
+            </label>
+            <textarea
+              name='features'
+              placeholder="Enter your project's features"
+              required
+              className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full lg:h-24 h-32'
+            />
+          </div>
+
+          <InputField
+            inputFieldTitle='Project Link'
+            type='text'
+            name='link'
+            placeholder='Enter project link'
+            required
+          />
+
+          <InputField
+            inputFieldTitle='Project Image Link'
+            type='text'
+            name='imageLink'
+            placeholder='Enter project image link'
             required
             setInputValue={setInputValue}
           />
@@ -136,7 +172,7 @@ const AddNewProject = ({ skills }) => {
       <SubmitButton
         errorMessage={errorMessage}
         setErrorMessage={setErrorMessage}
-        buttonText='Add Skill'
+        buttonText='Add Project'
       />
     </form>
   );

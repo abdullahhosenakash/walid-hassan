@@ -35,9 +35,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-text.js
-homepage.json
-projects.json
-skills.json
-researchPapers.json
-certifications.json
+.local-data
