@@ -24,7 +24,7 @@ const DeleteASkill = ({ skills }) => {
             key={skillSet.skillType}
             className='border dark:border-slate-500 border-slate-300 rounded-lg'
           >
-            <p className='text-lg py-1 pl-2 flex items-center gap-2'>
+            <p className='text-lg py-1 pl-2 flex items-center justify-center gap-2'>
               Skill Type: {skillSet.skillType}
               <FontAwesomeIcon
                 icon={faTrashCan}

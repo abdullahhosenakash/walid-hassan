@@ -3,7 +3,8 @@ import Link from 'next/link';
 
 const ResearchPapers = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/research-papers'
+    'https://walid-hassan.vercel.app/api/research-papers',
+    { cache: 'no-store' }
   );
   const researchPapers = await response.json();
 
@@ -19,25 +20,25 @@ const ResearchPapers = async () => {
         <ul className='list-disc pl-4'>
           {researchPapers?.map((researchPaper) => (
             <li key={researchPaper._id}>
-              <CategoryLink>{researchPaper.paperCategory}</CategoryLink>
+              <CategoryLink>{researchPaper.paperType}</CategoryLink>
             </li>
           ))}
         </ul>
 
         {researchPapers?.map((researchPaper) => {
-          const researchPaperId = researchPaper.paperCategory
+          const researchPaperId = researchPaper.paperType
             ?.toLowerCase()
             ?.replace(/\s+/g, '-');
           return (
             <div className='mt-6' id={researchPaperId} key={researchPaper._id}>
               <h3 className='text-2xl text-center'>
-                {researchPaper.paperCategory}
+                {researchPaper.paperType}
               </h3>
               <div className='flex flex-col gap-2'>
                 {researchPaper.papers?.map((paper) => {
                   return (
-                    <div className='flex flex-col gap-2' key={paper.paperName}>
-                      <div className='flex flex-col gap-2 border border-slate-600 rounded-lg p-2'>
+                    <div className='flex flex-col gap-2' key={paper.paperId}>
+                      <div className='flex flex-col gap-2 border dark:border-slate-700 border-slate-300 rounded-lg p-2'>
                         <p>
                           <span className='font-bold'>Paper Name: </span>
                           {paper.paperName}
