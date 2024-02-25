@@ -4,7 +4,8 @@ import CategoryLink from '@/app/_components/CategoryLink/CategoryLink';
 
 const Certifications = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/certifications'
+    'https://walid-hassan.vercel.app/api/certifications',
+    { cache: 'no-store' }
   );
   const certifications = await response.json();
 

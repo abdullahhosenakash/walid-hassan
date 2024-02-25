@@ -8,7 +8,9 @@ export async function deleteSkill(prevState, formData) {
     const skillType = formData.get('skillType');
     const skillName = formData.get('skillName');
 
-    const response = await fetch('https://walid-hassan.vercel.app/api/skills');
+    const response = await fetch('https://walid-hassan.vercel.app/api/skills', {
+      cache: 'no-store'
+    });
     const skills = await response.json();
 
     if (!skills) {

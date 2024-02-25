@@ -65,12 +65,12 @@ const AddNewProject = ({ projects }) => {
       <h3 className='text-xl text-center'>Add New Project</h3>
       <div className='border dark:border-slate-500 border-slate-300 rounded-lg p-1'>
         Stored Project Types
-        <div className='flex lg:flex-row flex-col lg:gap-2 gap-1 dark:text-blue-400 text-blue-700'>
+        <div className='dark:text-blue-400 text-blue-700'>
           {projectTypes?.map((projectType) => (
             <span
               key={projectType}
               onClick={() => setInputtedProjectType(projectType)}
-              className='cursor-pointer'
+              className='cursor-pointer mr-4 hover:underline'
             >
               #{projectType}
             </span>

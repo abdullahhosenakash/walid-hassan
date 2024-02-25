@@ -2,7 +2,8 @@ import Link from 'next/link';
 
 const About = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data'
+    'https://walid-hassan.vercel.app/api/miscellaneous-data',
+    { cache: 'no-store' }
   );
   const { aboutMe } = await response.json();
 

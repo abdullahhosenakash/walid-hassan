@@ -77,12 +77,12 @@ const AddNewSkill = ({ skills }) => {
       <h3 className='text-xl text-center'>Add New Skill</h3>
       <div className='border dark:border-slate-500 border-slate-300 rounded-lg p-1'>
         Stored Skill Types
-        <div className='flex lg:flex-row flex-col lg:gap-3 gap-1 dark:text-blue-400 text-blue-700'>
+        <div className='dark:text-blue-400 text-blue-700'>
           {skillTypes?.map((skillType) => (
             <span
               key={skillType}
               onClick={() => setInputtedSkillType(skillType)}
-              className='cursor-pointer'
+              className='cursor-pointer mr-4 hover:underline'
             >
               #{skillType}
             </span>

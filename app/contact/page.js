@@ -2,7 +2,8 @@ import ContactCard from '@/app/contact/_components/ContactCard';
 
 const Contact = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data'
+    'https://walid-hassan.vercel.app/api/miscellaneous-data',
+    { cache: 'no-store' }
   );
   const { contact } = await response.json();
 
