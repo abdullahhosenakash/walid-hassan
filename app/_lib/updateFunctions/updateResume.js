@@ -12,18 +12,18 @@ export async function updateResume(prevState, formData) {
         {
           link: formData.get('link1'),
           projectName: formData.get('projectName1'),
-          shortDescription: [
-            formData.get('shortDescription11'),
-            formData.get('shortDescription12')
+          description: [
+            formData.get('description11'),
+            formData.get('description12')
           ],
           technology: formData.get('technology1')
         },
         {
           link: formData.get('link2'),
           projectName: formData.get('projectName2'),
-          shortDescription: [
-            formData.get('shortDescription21'),
-            formData.get('shortDescription22')
+          description: [
+            formData.get('description21'),
+            formData.get('description22')
           ],
           technology: formData.get('technology2')
         }

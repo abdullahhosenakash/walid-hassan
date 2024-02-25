@@ -95,21 +95,17 @@ const UpdateResumeClient = ({ resume }) => {
                   />
 
                   <div className='flex flex-col gap-2'>
-                    {project.shortDescription?.map((desc, index) => (
+                    {project.description?.map((desc, index) => (
                       <div key={desc}>
                         <label
-                          htmlFor={`shortDescription${projectIndex}${
-                            index + 1
-                          }`}
+                          htmlFor={`description${projectIndex}${index + 1}`}
                         >
                           <span className='block text-lg'>{`Short Description ${
                             index + 1
                           }`}</span>
                         </label>
                         <textarea
-                          name={`shortDescription${projectIndex + 1}${
-                            index + 1
-                          }`}
+                          name={`description${projectIndex + 1}${index + 1}`}
                           placeholder='Enter project short description'
                           required
                           defaultValue={desc}
