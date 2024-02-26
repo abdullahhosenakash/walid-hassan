@@ -1,7 +1,7 @@
 'use client';
 
 import { INITIAL_STATE } from '@/app/_constants/constants';
-import { deleteResearchPaper } from '@/app/_lib/deleteFunctions/deleteResearchPaper';
+import { deleteCertification } from '@/app/_lib/deleteFunctions/deleteCertification';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
@@ -13,7 +13,7 @@ const DeleteCertificationModal = ({
   setSelectedCertificationToDelete
 }) => {
   const [errorMessage, setErrorMessage] = useState(INITIAL_STATE);
-  const [state, formAction] = useFormState(deleteResearchPaper, INITIAL_STATE);
+  const [state, formAction] = useFormState(deleteCertification, INITIAL_STATE);
   const [pending, setPending] = useState(false);
   const { push } = useRouter();
 
@@ -27,8 +27,8 @@ const DeleteCertificationModal = ({
 
     if (state?.status === 'success') {
       setDeleteSelectedCertification(false);
-      toast.success('Research paper(s) deleted successfully!');
-      push('/research-papers');
+      toast.success('Certification(s) deleted successfully!');
+      push('/certifications');
     }
   }, [state, push, setDeleteSelectedCertification]);
 
@@ -40,35 +40,39 @@ const DeleteCertificationModal = ({
       >
         <div>
           <p>
-            Are you sure you want to delete this research paper
-            {selectedCertificationToDelete?.papersLength && ' set'}?
+            Are you sure you want to delete this certification
+            {selectedCertificationToDelete?.certificationsLength && ' set'}?
           </p>
           <p className='text-slate-700 text-base mt-2 flex gap-2'>
-            <span>Paper Type: {selectedCertificationToDelete?.paperType}</span>
+            <span>
+              Certification Type:{' '}
+              {selectedCertificationToDelete?.certificationType}
+            </span>
             <input
               type='text'
-              name='paperType'
+              name='certificationType'
               className='hidden'
-              defaultValue={selectedCertificationToDelete?.paperType}
+              defaultValue={selectedCertificationToDelete?.certificationType}
             />
           </p>
-          {selectedCertificationToDelete?.papersLength ? (
+          {selectedCertificationToDelete?.certificationsLength ? (
             <p className='text-slate-700 text-base'>
-              This research paper set contains{' '}
-              {selectedCertificationToDelete?.papersLength} paper
-              {selectedCertificationToDelete?.papersLength > 1 && 's'}
+              This certification set contains{' '}
+              {selectedCertificationToDelete?.certificationsLength} paper
+              {selectedCertificationToDelete?.certificationsLength > 1 && 's'}
             </p>
           ) : (
             <>
               <p className='text-slate-700 text-base flex gap-2'>
                 <span>
-                  Paper Name: {selectedCertificationToDelete?.paperName}
+                  Certification Name:{' '}
+                  {selectedCertificationToDelete?.certificationName}
                 </span>
                 <input
                   type='text'
-                  name='paperId'
+                  name='certificationId'
                   className='hidden'
-                  defaultValue={selectedCertificationToDelete?.paperId}
+                  defaultValue={selectedCertificationToDelete?.certificationId}
                 />
               </p>
             </>
