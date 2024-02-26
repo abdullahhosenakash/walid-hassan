@@ -8,7 +8,9 @@ import { useState } from 'react';
 
 const ProjectList = ({
   projects,
+  selectedProject,
   setSelectedProject,
+  selectedProjectType,
   setSelectedProjectType = ''
 }) => {
   const [selectedProjectToDelete, setSelectedProjectToDelete] = useState({});
@@ -23,6 +25,7 @@ const ProjectList = ({
           setSelectedProjectToDelete={setSelectedProjectToDelete}
         />
       )}
+
       {projects?.map((projectSet) => (
         <div
           key={projectSet._id}
@@ -30,8 +33,19 @@ const ProjectList = ({
         >
           <p className='text-lg font-bold flex justify-center items-center gap-4'>
             <span>{projectSet.projectType}</span>
-            <span className='flex gap-2 items-center'>
-              <Link href='#form-update-type'>
+            <p
+              className={`flex gap-2 items-center ${
+                (selectedProject?.projectId || selectedProjectType?._id) &&
+                'cursor-not-allowed'
+              }`}
+            >
+              <Link
+                href='#form-update-type'
+                className={`${
+                  (selectedProject?.projectId || selectedProjectType?._id) &&
+                  'pointer-events-none'
+                }`}
+              >
                 <FontAwesomeIcon
                   icon={faPenToSquare}
                   onClick={() => {
@@ -41,12 +55,15 @@ const ProjectList = ({
                         projectType: projectSet.projectType
                       });
                   }}
-                  className='inline-block w-5 h-5 text-2xl text-pink-700 hover:cursor-pointer'
+                  className='inline-block w-5 h-5 text-2xl text-pink-700'
                 />
               </Link>
               <FontAwesomeIcon
                 icon={faTrashCan}
-                className='inline-block w-5 text-xl text-pink-700 hover:cursor-pointer'
+                className={`inline-block w-5 text-xl text-pink-700 cursor-pointer ${
+                  (selectedProject?.projectId || selectedProjectType?._id) &&
+                  'pointer-events-none'
+                }`}
                 onClick={() => {
                   setSelectedProjectToDelete({
                     projectType: projectSet.projectType,
@@ -55,7 +72,7 @@ const ProjectList = ({
                   setDeleteSelectedProject(true);
                 }}
               />
-            </span>
+            </p>
           </p>
           <div className='grid grid-cols-3 text-center dark:bg-slate-600 bg-slate-400 rounded-t-lg'>
             <span className='py-3 grid gird-cols-subgrid cols-start-1 col-span-2'>
@@ -72,8 +89,19 @@ const ProjectList = ({
               <p className='py-3 grid gird-cols-subgrid cols-start-1 col-span-2'>
                 {project.projectName}
               </p>
-              <p className='py-3 flex gap-2 justify-center items-center'>
-                <Link href='#form-update'>
+              <p
+                className={`w-fit mx-auto py-3 flex gap-2 items-center ${
+                  (selectedProject?.projectId || selectedProjectType?._id) &&
+                  'cursor-not-allowed'
+                }`}
+              >
+                <Link
+                  href='#form-update'
+                  className={`${
+                    (selectedProject?.projectId || selectedProjectType?._id) &&
+                    'pointer-events-none'
+                  }`}
+                >
                   <FontAwesomeIcon
                     icon={faPenToSquare}
                     onClick={() => {
@@ -82,12 +110,16 @@ const ProjectList = ({
                         ...project
                       });
                     }}
-                    className='inline-block w-5 text-2xl text-pink-700 hover:cursor-pointer'
+                    className='inline-block w-5 text-2xl text-pink-700'
                   />
                 </Link>
+
                 <FontAwesomeIcon
                   icon={faTrashCan}
-                  className='inline-block w-5 text-xl text-pink-700 hover:cursor-pointer'
+                  className={`inline-block w-5 text-xl text-pink-700 cursor-pointer ${
+                    (selectedProject?.projectId || selectedProjectType?._id) &&
+                    'pointer-events-none'
+                  }`}
                   onClick={() => {
                     setSelectedProjectToDelete({
                       projectType: projectSet.projectType,

@@ -51,7 +51,9 @@ const UpdateProjectsClient = ({ projects }) => {
     <section className='mt-4'>
       <ProjectList
         projects={projects}
+        selectedProject={selectedProject}
         setSelectedProject={setSelectedProject}
+        selectedProjectType={selectedProjectType}
         setSelectedProjectType={setSelectedProjectType}
       />
 

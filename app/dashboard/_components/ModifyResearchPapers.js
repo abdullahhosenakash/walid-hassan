@@ -1,10 +1,11 @@
 'use client';
 
 import AddNewProject from '@/app/dashboard/_components/AddNewProject';
-import UpdateProjectsClient from '@/app/dashboard/_components/UpdateProjectsClient';
+import AddNewResearchPaper from '@/app/dashboard/_components/AddNewResearchPaper';
+import UpdateResearchPapersClient from '@/app/dashboard/_components/UpdateResearchPapersClient';
 import { useState } from 'react';
 
-const ModifyProjects = ({ projects }) => {
+const ModifyResearchPapers = ({ researchPapers }) => {
   const [modificationType, setModificationType] = useState('update');
   return (
     <section className='mt-6'>
@@ -15,7 +16,7 @@ const ModifyProjects = ({ projects }) => {
               className='text-blue-700 dark:text-blue-400 hover:underline'
               onClick={() => setModificationType('update')}
             >
-              Update or delete projects
+              Update or delete research papers
             </button>
             {modificationType === 'update' && (
               <span className='text-pink-700'>(Selected)</span>
@@ -28,7 +29,7 @@ const ModifyProjects = ({ projects }) => {
               className='text-blue-700 dark:text-blue-400 hover:underline'
               onClick={() => setModificationType('add')}
             >
-              Add new project
+              Add new research paper
             </button>
             {modificationType === 'add' && (
               <span className='text-pink-700'>(Selected)</span>
@@ -38,10 +39,12 @@ const ModifyProjects = ({ projects }) => {
       </ul>
 
       {modificationType === 'update' && (
-        <UpdateProjectsClient projects={projects} />
+        <UpdateResearchPapersClient researchPapers={researchPapers} />
       )}
-      {modificationType === 'add' && <AddNewProject projects={projects} />}
+      {modificationType === 'add' && (
+        <AddNewResearchPaper researchPapers={researchPapers} />
+      )}
     </section>
   );
 };
-export default ModifyProjects;
+export default ModifyResearchPapers;
