@@ -25,55 +25,61 @@ const ResearchPapers = async () => {
           ))}
         </ul>
 
-        {researchPapers?.map((researchPaper) => {
-          const researchPaperId = researchPaper.paperType
-            ?.toLowerCase()
-            ?.replace(/\s+/g, '-');
-          return (
-            <div className='mt-6' id={researchPaperId} key={researchPaper._id}>
-              <h3 className='text-2xl text-center'>
-                {researchPaper.paperType}
-              </h3>
-              <div className='flex flex-col gap-2'>
-                {researchPaper.papers?.map((paper) => {
-                  return (
-                    <div className='flex flex-col gap-2' key={paper.paperId}>
-                      <div className='flex flex-col gap-2 border dark:border-slate-700 border-slate-300 rounded-lg p-2'>
-                        <p>
-                          <span className='font-bold'>Paper Name: </span>
-                          {paper.paperName}
-                        </p>
-                        <p>
-                          <span className='font-bold'>Author Name: </span>
-                          {paper.authorName}
-                        </p>
-                        <p>
-                          <span className='font-bold'>Description: </span>
-                          {paper.description}
-                        </p>
-                        <p>
-                          <span className='font-bold'>Status: </span>
-                          {paper.status}
-                        </p>
-                        {paper.DOI && (
+        <div className='flex flex-col gap-8'>
+          {researchPapers?.map((researchPaper) => {
+            const researchPaperId = researchPaper.paperType
+              ?.toLowerCase()
+              ?.replace(/\s+/g, '-');
+            return (
+              <div
+                className='mt-6'
+                id={researchPaperId}
+                key={researchPaper._id}
+              >
+                <h3 className='text-2xl text-center'>
+                  {researchPaper.paperType}
+                </h3>
+                <div className='flex flex-col gap-3'>
+                  {researchPaper.papers?.map((paper) => {
+                    return (
+                      <div className='flex flex-col gap-2' key={paper.paperId}>
+                        <div className='flex flex-col gap-2 border dark:border-slate-700 border-slate-300 rounded-lg p-2'>
                           <p>
-                            <span className='font-bold'>DOI: </span>
-                            <Link
-                              href={paper.DOI}
-                              className='dark:text-blue-400 text-blue-700 hover:underline'
-                            >
-                              Click here
-                            </Link>
+                            <span className='font-bold'>Paper Name: </span>
+                            {paper.paperName}
                           </p>
-                        )}
+                          <p>
+                            <span className='font-bold'>Author Name: </span>
+                            {paper.authorName}
+                          </p>
+                          <p>
+                            <span className='font-bold'>Description: </span>
+                            {paper.description}
+                          </p>
+                          <p>
+                            <span className='font-bold'>Status: </span>
+                            {paper.status}
+                          </p>
+                          {paper.DOI && (
+                            <p>
+                              <span className='font-bold'>DOI: </span>
+                              <Link
+                                href={paper.DOI}
+                                className='dark:text-blue-400 text-blue-700 hover:underline'
+                              >
+                                Click here
+                              </Link>
+                            </p>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

@@ -39,41 +39,44 @@ const Certifications = async () => {
                 <h3 className='text-2xl text-center'>
                   {certification.certificationType}
                 </h3>
-                {certification?.certifications?.map((singleCertification) => (
-                  <div
-                    className='grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center mt-1 border border-slate-700 p-2 rounded-lg'
-                    key={singleCertification.certificationName}
-                  >
-                    <Image
-                      src={singleCertification.imageLink}
-                      alt='web project'
-                      priority
-                      className='shadow-xl h-auto'
-                      width={500}
-                      height={500}
-                    />
-                    <div className='text-lg flex flex-col gap-3'>
-                      <p>
-                        <span className='font-bold'>
-                          {singleCertification.certificationName}
-                        </span>
-                        {' - '}
-                        <Link
-                          href={singleCertification.link}
-                          target='_blank'
-                          className='dark:text-blue-400 text-blue-700 hover:underline'
-                        >
-                          Live Link
-                        </Link>
-                      </p>
+                <div className='flex flex-col gap-2'>
+                  {' '}
+                  {certification?.certifications?.map((singleCertification) => (
+                    <div
+                      className='grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center mt-1 border border-slate-700 p-2 rounded-lg'
+                      key={singleCertification.certificationName}
+                    >
+                      <Image
+                        src={singleCertification.imageLink}
+                        alt='web project'
+                        priority
+                        className='shadow-xl h-auto'
+                        width={500}
+                        height={500}
+                      />
+                      <div className='text-lg flex flex-col gap-3'>
+                        <p>
+                          <span className='font-bold'>
+                            {singleCertification.certificationName}
+                          </span>
+                          {' - '}
+                          <Link
+                            href={singleCertification.link}
+                            target='_blank'
+                            className='dark:text-blue-400 text-blue-700 hover:underline'
+                          >
+                            Live Link
+                          </Link>
+                        </p>
 
-                      <p>
-                        <span className='font-bold'>Description:</span>{' '}
-                        {singleCertification.description}
-                      </p>
+                        <p>
+                          <span className='font-bold'>Description:</span>{' '}
+                          {singleCertification.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             );
           })}
