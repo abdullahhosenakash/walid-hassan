@@ -106,16 +106,16 @@ export async function updateResearchPaper(prevState, formData) {
 
 export async function updateResearchPaperType(prevState, formData) {
   try {
-    console.log(formData);
-    return;
     const _id = formData.get('_id');
-    const projectType = formData.get('projectType');
+    const paperType = formData.get('paperType');
 
     const objectId = { _id: new ObjectId(_id) };
-    const { projectCollection } = await DB();
-    const selectedProjectSet = await projectCollection.findOne(objectId);
+    const { researchPaperCollection } = await DB();
+    const selectedResearchPaperSet = await researchPaperCollection.findOne(
+      objectId
+    );
 
-    if (selectedProjectSet.projectType === projectType) {
+    if (selectedResearchPaperSet.paperType === paperType) {
       return JSON.parse(
         JSON.stringify({
           errorType: 'data',
@@ -125,19 +125,22 @@ export async function updateResearchPaperType(prevState, formData) {
       );
     }
 
-    selectedProjectSet.projectType = projectType;
+    selectedResearchPaperSet.paperType = paperType;
 
     const updatedDoc = {
-      $set: selectedProjectSet
+      $set: selectedResearchPaperSet
     };
-    const result = await projectCollection.updateOne(objectId, updatedDoc);
+    const result = await researchPaperCollection.updateOne(
+      objectId,
+      updatedDoc
+    );
     if (result.acknowledged) {
-      revalidatePath('/projects');
+      revalidatePath('/research-papers');
       return JSON.parse(
         JSON.stringify({
           errorType: null,
           status: 'success',
-          message: 'Projects updated successfully!'
+          message: 'Research paper updated successfully!'
         })
       );
     } else {
@@ -145,7 +148,7 @@ export async function updateResearchPaperType(prevState, formData) {
         JSON.stringify({
           errorType: 'database',
           status: 'failed',
-          message: 'Failed to update projects!'
+          message: 'Failed to update research papers!'
         })
       );
     }

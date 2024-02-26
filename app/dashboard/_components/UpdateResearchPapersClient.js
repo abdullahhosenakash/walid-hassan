@@ -183,7 +183,7 @@ const UpdateResearchPapersClient = ({ researchPapers }) => {
               name='paperType'
               placeholder='Enter your paper type'
               required
-              defaultValue={selectedResearchPaperType?.projectType}
+              defaultValue={selectedResearchPaperType?.paperType}
             />
           </div>
 
