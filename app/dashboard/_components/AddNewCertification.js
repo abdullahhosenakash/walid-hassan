@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
 import toast from 'react-hot-toast';
 
-const AddNewResearchPaper = ({ researchPapers }) => {
+const AddNewCertification = ({ researchPapers }) => {
   const [errorMessage, setErrorMessage] = useState(INITIAL_STATE);
   const [state, formAction] = useFormState(addNewResearchPaper, INITIAL_STATE);
   const [inputtedResearchPaperType, setInputtedResearchPaperType] =
@@ -139,4 +139,4 @@ const AddNewResearchPaper = ({ researchPapers }) => {
     </form>
   );
 };
-export default AddNewResearchPaper;
+export default AddNewCertification;

@@ -111,7 +111,7 @@ const UpdateResearchPapersClient = ({ researchPapers }) => {
                 <select
                   name='status'
                   id='status'
-                  className='py-2 outline-none dark:bg-slate-800 w-full'
+                  className='py-2 outline-none dark:bg-slate-800 bg-white w-full'
                   defaultValue={selectedResearchPaper.status}
                   onChange={(e) => setStatus(e.target.value)}
                   required

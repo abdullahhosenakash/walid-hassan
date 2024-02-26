@@ -1,10 +1,10 @@
 'use client';
 
-import AddNewResearchPaper from '@/app/dashboard/_components/AddNewResearchPaper';
-import UpdateResearchPapersClient from '@/app/dashboard/_components/UpdateResearchPapersClient';
+import AddNewCertification from '@/app/dashboard/_components/AddNewCertification';
+import UpdateCertificationsClient from '@/app/dashboard/_components/UpdateCertificationsClient';
 import { useState } from 'react';
 
-const ModifyResearchPapers = ({ researchPapers }) => {
+const ModifyCertifications = ({ certifications }) => {
   const [modificationType, setModificationType] = useState('update');
   return (
     <section className='mt-6'>
@@ -15,7 +15,7 @@ const ModifyResearchPapers = ({ researchPapers }) => {
               className='text-blue-700 dark:text-blue-400 hover:underline'
               onClick={() => setModificationType('update')}
             >
-              Update research papers
+              Update certifications
             </button>
             {modificationType === 'update' && (
               <span className='text-pink-700'>(Selected)</span>
@@ -28,7 +28,7 @@ const ModifyResearchPapers = ({ researchPapers }) => {
               className='text-blue-700 dark:text-blue-400 hover:underline'
               onClick={() => setModificationType('add')}
             >
-              Add new research paper
+              Add new certification
             </button>
             {modificationType === 'add' && (
               <span className='text-pink-700'>(Selected)</span>
@@ -38,12 +38,12 @@ const ModifyResearchPapers = ({ researchPapers }) => {
       </ul>
 
       {modificationType === 'update' && (
-        <UpdateResearchPapersClient researchPapers={researchPapers} />
+        <UpdateCertificationsClient certifications={certifications} />
       )}
       {modificationType === 'add' && (
-        <AddNewResearchPaper researchPapers={researchPapers} />
+        <AddNewCertification certifications={certifications} />
       )}
     </section>
   );
 };
-export default ModifyResearchPapers;
+export default ModifyCertifications;

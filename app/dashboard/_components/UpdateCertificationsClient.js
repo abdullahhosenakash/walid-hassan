@@ -6,27 +6,21 @@ import { useFormState } from 'react-dom';
 import toast from 'react-hot-toast';
 import SubmitButton from '@/app/dashboard/_components/SubmitButton';
 import InputField from '@/app/dashboard/_components/InputField';
-import ProjectList from '@/app/dashboard/_components/ProjectList';
+import { INITIAL_STATE } from '@/app/_constants/constants';
 import {
-  updateProject,
-  updateProjectType
-} from '@/app/_lib/updateFunctions/updateProject';
+  updateCertificationType,
+  updateCertifications
+} from '@/app/_lib/updateFunctions/updateCertifications';
+import CertificationList from '@/app/dashboard/_components/CertificationList';
 
-const initialState = {
-  errorType: null,
-  status: null,
-  message: ''
-};
-
-const UpdateProjectsClient = ({ projects }) => {
-  const [errorMessage, setErrorMessage] = useState(initialState);
-  const [state, formAction] = useFormState(updateProject, initialState);
-  const [stateForProjectType, formActionForProjectType] = useFormState(
-    updateProjectType,
-    initialState
-  );
-  const [selectedProject, setSelectedProject] = useState({});
-  const [selectedProjectType, setSelectedProjectType] = useState('');
+const UpdateCertificationsClient = ({ certifications }) => {
+  const [errorMessage, setErrorMessage] = useState(INITIAL_STATE);
+  const [state, formAction] = useFormState(updateCertifications, INITIAL_STATE);
+  const [stateForCertificationType, formActionForCertificationType] =
+    useFormState(updateCertificationType, INITIAL_STATE);
+  const [selectedCertification, setSelectedCertification] = useState({});
+  const [selectedCertificationType, setSelectedCertificationType] =
+    useState('');
   const [inputValue, setInputValue] = useState('');
 
   const { push } = useRouter();
@@ -58,74 +52,57 @@ const UpdateProjectsClient = ({ projects }) => {
 
   useEffect(() => {
     const generatedError = {
-      errorType: state?.errorType || stateForProjectType?.errorType || null,
-      status: state?.status || stateForProjectType?.status || null,
-      message: state?.message || stateForProjectType?.message || ''
+      errorType:
+        state?.errorType || stateForCertificationType?.errorType || null,
+      status: state?.status || stateForCertificationType?.status || null,
+      message: state?.message || stateForCertificationType?.message || ''
     };
     setErrorMessage(generatedError);
 
     if (
       state?.status === 'success' ||
-      stateForProjectType?.status === 'success'
+      stateForCertificationType?.status === 'success'
     ) {
-      toast.success('Projects updated successfully!');
-      push('/projects');
+      toast.success('Certifications updated successfully!');
+      push('/certifications');
     }
-  }, [state, push, stateForProjectType]);
+  }, [state, push, stateForCertificationType]);
 
   return (
     <section className='mt-4'>
-      <ProjectList
-        projects={projects}
-        selectedProject={selectedProject}
-        setSelectedProject={setSelectedProject}
-        selectedProjectType={selectedProjectType}
-        setSelectedProjectType={setSelectedProjectType}
+      <CertificationList
+        selectedCertification={selectedCertification}
+        selectedCertificationType={selectedCertificationType}
+        certifications={certifications}
+        setSelectedCertification={setSelectedCertification}
+        setSelectedCertificationType={setSelectedCertificationType}
       />
 
-      {selectedProject.projectId && (
-        <form action={formAction} className='mt-8' id='form-update'>
+      {selectedCertification.certificationId && (
+        <form action={formAction} className='mt-12' id='form-update'>
           <h3 className='text-xl text-center'>
-            Project Type: {selectedProject.projectType}
+            Certification Type: {selectedCertification.certificationType}
           </h3>
           <div className='border rounded-lg dark:border-slate-600 border-slate-300 p-1'>
             <input
               type='text'
-              name='projectId'
-              defaultValue={selectedProject.projectId}
+              name='certificationId'
+              defaultValue={selectedCertification.certificationId}
               className='hidden'
             />
             <input
               type='text'
-              name='projectType'
-              defaultValue={selectedProject.projectType}
+              name='certificationType'
+              defaultValue={selectedCertification.certificationType}
               className='hidden'
             />
             <InputField
-              inputFieldTitle='Project Name'
+              inputFieldTitle='Certification Name'
               type='text'
-              name='projectName'
-              placeholder='Enter your project name'
+              name='certificationName'
+              placeholder='Enter your certification name'
               required
-              defaultValue={selectedProject.projectName}
-            />
-
-            <InputField
-              inputFieldTitle='Role'
-              type='text'
-              name='role'
-              placeholder='Enter your project role'
-              required
-              defaultValue={selectedProject.role}
-            />
-
-            <InputField
-              inputFieldTitle='Technology'
-              type='text'
-              name='technology'
-              placeholder='Enter used technology'
-              required
-              defaultValue={selectedProject.technology}
+              defaultValue={selectedCertification.certificationName}
             />
 
             <div>
@@ -134,50 +111,31 @@ const UpdateProjectsClient = ({ projects }) => {
               </label>
               <textarea
                 name='description'
-                placeholder='Enter your project description'
+                placeholder='Enter your certification description'
                 required
-                defaultValue={selectedProject.description}
+                defaultValue={selectedCertification.description}
                 className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full lg:h-24 h-32'
               />
             </div>
 
             <InputField
-              inputFieldTitle='Project Link'
+              inputFieldTitle='Certification Link'
               type='text'
               name='link'
-              placeholder='Enter your project link'
+              placeholder='Enter certification link'
               required
-              defaultValue={selectedProject.link}
+              defaultValue={selectedCertification.link}
             />
 
             <InputField
-              inputFieldTitle='Image Link'
+              inputFieldTitle='Project Image Link'
               type='text'
               name='imageLink'
-              placeholder="Enter your project's image link"
+              placeholder='Enter project image link'
               required
-              defaultValue={selectedProject.imageLink}
+              defaultValue={selectedCertification.imageLink}
               setInputValue={setInputValue}
             />
-
-            <div>
-              <label htmlFor='features'>
-                <span className='block text-lg'>Features</span>
-              </label>
-              <div className='flex flex-col gap-2 border dark:border-slate-500 border-slate-300 rounded-lg p-1'>
-                {selectedProject.features?.map((feature, index) => (
-                  <InputField
-                    key={feature}
-                    inputFieldTitle={`Feature ${index + 1}`}
-                    type='text'
-                    name={`feature${index + 1}`}
-                    placeholder={`Enter feature ${index + 1}`}
-                    required
-                    defaultValue={feature}
-                  />
-                ))}
-              </div>
-            </div>
           </div>
 
           {errorMessage?.errorType && (
@@ -191,7 +149,7 @@ const UpdateProjectsClient = ({ projects }) => {
               setErrorMessage={setErrorMessage}
               errorMessage={errorMessage}
               buttonText='Update'
-              from='update project'
+              from='update certifications'
             />
 
             <button
@@ -199,7 +157,7 @@ const UpdateProjectsClient = ({ projects }) => {
               className={`w-fit px-10 py-2 rounded-lg hover:bg-slate-600  bg-slate-700 disabled:cursor-not-allowed text-white ${
                 !errorMessage.errorType && '!mt-2'
               }`}
-              onClick={() => setSelectedProject({})}
+              onClick={() => setSelectedCertification({})}
             >
               Cancel
             </button>
@@ -207,26 +165,27 @@ const UpdateProjectsClient = ({ projects }) => {
         </form>
       )}
 
-      {selectedProjectType._id && (
+      {selectedCertificationType._id && (
         <form
-          action={formActionForProjectType}
-          className='mt-8'
+          action={formActionForCertificationType}
+          className='mt-12'
           id='form-update-type'
         >
+          <h3 className='text-xl text-center'>Update Certification Type</h3>
           <div className='border rounded-lg dark:border-slate-600 border-slate-300 p-1'>
             <input
               type='text'
               name='_id'
-              defaultValue={selectedProjectType?._id}
+              defaultValue={selectedCertificationType?._id}
               className='hidden'
             />
             <InputField
-              inputFieldTitle='Project Type'
+              inputFieldTitle='Certification Type'
               type='text'
-              name='projectType'
-              placeholder='Enter your project type'
+              name='certificationType'
+              placeholder='Enter your certification type'
               required
-              defaultValue={selectedProjectType?.projectType}
+              defaultValue={selectedCertificationType?.certificationType}
             />
           </div>
 
@@ -241,7 +200,7 @@ const UpdateProjectsClient = ({ projects }) => {
               setErrorMessage={setErrorMessage}
               errorMessage={errorMessage}
               buttonText='Update'
-              from='update project'
+              from='update certification'
             />
 
             <button
@@ -249,7 +208,7 @@ const UpdateProjectsClient = ({ projects }) => {
               className={`w-fit px-10 py-2 rounded-lg hover:bg-slate-600  bg-slate-700 disabled:cursor-not-allowed text-white ${
                 !errorMessage.errorType && '!mt-2'
               }`}
-              onClick={() => setSelectedProjectType({})}
+              onClick={() => setSelectedCertificationType({})}
             >
               Cancel
             </button>
@@ -259,4 +218,4 @@ const UpdateProjectsClient = ({ projects }) => {
     </section>
   );
 };
-export default UpdateProjectsClient;
+export default UpdateCertificationsClient;

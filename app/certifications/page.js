@@ -20,14 +20,14 @@ const Certifications = async () => {
         <ul className='list-disc pl-4'>
           {certifications?.map((certification) => (
             <li key={certification._id}>
-              <CategoryLink>{certification.certificationCategory}</CategoryLink>
+              <CategoryLink>{certification.certificationType}</CategoryLink>
             </li>
           ))}
         </ul>
 
         <div className='flex flex-col gap-8'>
           {certifications?.map((certification) => {
-            const certificationId = certification.certificationCategory
+            const certificationId = certification.certificationType
               ?.toLowerCase()
               ?.replace(/\s+/g, '-');
             return (
@@ -37,7 +37,7 @@ const Certifications = async () => {
                 key={certification._id}
               >
                 <h3 className='text-2xl text-center'>
-                  {certification.certificationCategory}
+                  {certification.certificationType}
                 </h3>
                 {certification?.certifications?.map((singleCertification) => (
                   <div
