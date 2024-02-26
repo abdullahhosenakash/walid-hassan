@@ -16,7 +16,7 @@ const ModifyResearchPapers = ({ researchPapers }) => {
               className='text-blue-700 dark:text-blue-400 hover:underline'
               onClick={() => setModificationType('update')}
             >
-              Update or delete research papers
+              Update research papers
             </button>
             {modificationType === 'update' && (
               <span className='text-pink-700'>(Selected)</span>

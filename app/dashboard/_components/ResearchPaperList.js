@@ -1,5 +1,6 @@
 'use client';
 
+import DeleteResearchPaperModal from '@/app/dashboard/_components/DeleteResearchPaperModal';
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
@@ -20,13 +21,13 @@ const ResearchPaperList = ({
 
   return (
     <section className='flex flex-col gap-6'>
-      {/* {deleteSelectedResearchPaper && (
-        <DeleteProjectModal
-          setDeleteSelectedProject={setDeleteSelectedResearchPaper}
-          selectedProjectToDelete={selectedResearchPaperToDelete}
-          setSelectedProjectToDelete={setSelectedResearchPaperToDelete}
+      {deleteSelectedResearchPaper && (
+        <DeleteResearchPaperModal
+          setDeleteSelectedResearchPaper={setDeleteSelectedResearchPaper}
+          selectedResearchPaperToDelete={selectedResearchPaperToDelete}
+          setSelectedResearchPaperToDelete={setSelectedResearchPaperToDelete}
         />
-      )} */}
+      )}
       {researchPapers?.map((researchPaperSet) => (
         <div
           key={researchPaperSet._id}
