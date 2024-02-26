@@ -6,63 +6,59 @@ import { revalidatePath } from 'next/cache';
 
 export async function updateResearchPaper(prevState, formData) {
   try {
-    console.log(formData);
-    return;
-    const projectType = formData.get('projectType');
-    const projectId = formData.get('projectId');
+    const paperType = formData.get('paperType');
+    const status = formData.get('status');
+    let DOI = '';
 
-    let keys = [];
-    for (const key of formData.keys()) {
-      keys = [...keys, key];
+    if (status === 'Published') {
+      DOI = formData.get('DOI');
     }
 
-    const featureKeys = keys?.filter((key) => key.startsWith('feature') && key);
-
-    const features = featureKeys?.map((featureKey) => formData.get(featureKey));
-
-    const updatedProject = {
-      projectId,
-      projectName: formData.get('projectName'),
-      role: formData.get('role'),
-      technology: formData.get('technology'),
+    const updatedResearchPaper = {
+      paperId: formData.get('paperId'),
+      paperName: formData.get('paperName'),
+      authorName: formData.get('authorName'),
       description: formData.get('description'),
-      features,
-      link: formData.get('link'),
-      imageLink: formData.get('imageLink')
+      status,
+      DOI
     };
 
-    const filter = { projectType };
-    const { projectCollection } = await DB();
-    const storedProject = await projectCollection.findOne(filter);
+    const filter = { paperType };
+    const { researchPaperCollection } = await DB();
+    const storedResearchPaperSet = await researchPaperCollection.findOne(
+      filter
+    );
 
-    if (!storedProject) {
-      throw new Error('Failed to get project data');
+    if (!storedResearchPaperSet) {
+      throw new Error('Failed to get research paper data');
     }
 
-    const selectedProject = storedProject?.projects?.find(
-      (project) => project.projectId === projectId
+    const selectedResearchPaper = storedResearchPaperSet?.papers?.find(
+      (paper) => paper.paperId === updatedResearchPaper.paperId
+    );
+    const selectedResearchPaperIndex = storedResearchPaperSet?.papers?.indexOf(
+      selectedResearchPaper
     );
 
-    const selectedProjectIndex =
-      storedProject?.projects?.indexOf(selectedProject);
-
-    const previousProjects = storedProject?.projects?.slice(
+    const previousPapers = storedResearchPaperSet?.papers?.slice(
       0,
-      selectedProjectIndex
+      selectedResearchPaperIndex
     );
-    const nextProjects = storedProject?.projects?.slice(
-      selectedProjectIndex + 1
+    const nextPapers = storedResearchPaperSet?.papers?.slice(
+      selectedResearchPaperIndex + 1
     );
-    const updatedProjects = [
-      ...previousProjects,
-      updatedProject,
-      ...nextProjects
-    ];
-    const updatedProjectSet = { projectType, projects: updatedProjects };
 
-    const { _id, ...storedProjectWithoutId } = storedProject;
-    const previousData = JSON.stringify(storedProjectWithoutId);
-    const currentData = JSON.stringify(updatedProjectSet);
+    const updatedPapers = [
+      ...previousPapers,
+      updatedResearchPaper,
+      ...nextPapers
+    ];
+
+    const updatedResearchPaperSet = { paperType, papers: updatedPapers };
+
+    const { _id, ...storedResearchPaperSetWithoutId } = storedResearchPaperSet;
+    const previousData = JSON.stringify(storedResearchPaperSetWithoutId.papers);
+    const currentData = JSON.stringify(updatedPapers);
 
     if (currentData === previousData) {
       return JSON.parse(
@@ -75,17 +71,17 @@ export async function updateResearchPaper(prevState, formData) {
     }
 
     const updatedDoc = {
-      $set: updatedProjectSet
+      $set: updatedResearchPaperSet
     };
 
-    const result = await projectCollection.updateOne(filter, updatedDoc);
+    const result = await researchPaperCollection.updateOne(filter, updatedDoc);
     if (result.acknowledged) {
-      revalidatePath('/projects');
+      revalidatePath('/research-papers');
       return JSON.parse(
         JSON.stringify({
           errorType: null,
           status: 'success',
-          message: 'Projects updated successfully!'
+          message: 'Research papers updated successfully!'
         })
       );
     } else {
@@ -93,7 +89,7 @@ export async function updateResearchPaper(prevState, formData) {
         JSON.stringify({
           errorType: 'database',
           status: 'failed',
-          message: 'Failed to update projects!'
+          message: 'Failed to update research papers!'
         })
       );
     }
