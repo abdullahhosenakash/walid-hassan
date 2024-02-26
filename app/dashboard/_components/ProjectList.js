@@ -1,34 +1,61 @@
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+'use client';
+
+import DeleteProjectModal from '@/app/dashboard/_components/DeleteProjectModal';
+import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
+import { useState } from 'react';
 
 const ProjectList = ({
   projects,
   setSelectedProject,
   setSelectedProjectType = ''
 }) => {
+  const [selectedProjectToDelete, setSelectedProjectToDelete] = useState({});
+  const [deleteSelectedProject, setDeleteSelectedProject] = useState(false);
+
   return (
     <section className='flex flex-col gap-6'>
+      {deleteSelectedProject && (
+        <DeleteProjectModal
+          setDeleteSelectedProject={setDeleteSelectedProject}
+          selectedProjectToDelete={selectedProjectToDelete}
+          setSelectedProjectToDelete={setSelectedProjectToDelete}
+        />
+      )}
       {projects?.map((projectSet) => (
         <div
           key={projectSet._id}
           className='border dark:border-slate-700 border-slate-300 p-1 rounded-lg'
         >
-          <p className='text-lg font-bold flex justify-center items-center gap-2'>
+          <p className='text-lg font-bold flex justify-center items-center gap-4'>
             <span>{projectSet.projectType}</span>
-            <Link href='#form-update-type'>
+            <span className='flex gap-2 items-center'>
+              <Link href='#form-update-type'>
+                <FontAwesomeIcon
+                  icon={faPenToSquare}
+                  onClick={() => {
+                    setSelectedProjectType &&
+                      setSelectedProjectType({
+                        _id: projectSet._id,
+                        projectType: projectSet.projectType
+                      });
+                  }}
+                  className='inline-block w-5 h-5 text-2xl text-pink-700 hover:cursor-pointer'
+                />
+              </Link>
               <FontAwesomeIcon
-                icon={faPenToSquare}
+                icon={faTrashCan}
+                className='inline-block w-5 text-xl text-pink-700 hover:cursor-pointer'
                 onClick={() => {
-                  setSelectedProjectType &&
-                    setSelectedProjectType({
-                      _id: projectSet._id,
-                      projectType: projectSet.projectType
-                    });
+                  setSelectedProjectToDelete({
+                    projectType: projectSet.projectType,
+                    projectsLength: projectSet.projects?.length
+                  });
+                  setDeleteSelectedProject(true);
                 }}
-                className='inline-block w-5 text-2xl text-pink-700 hover:cursor-pointer'
               />
-            </Link>
+            </span>
           </p>
           <div className='grid grid-cols-3 text-center dark:bg-slate-600 bg-slate-400 rounded-t-lg'>
             <span className='py-3 grid gird-cols-subgrid cols-start-1 col-span-2'>
@@ -45,7 +72,7 @@ const ProjectList = ({
               <p className='py-3 grid gird-cols-subgrid cols-start-1 col-span-2'>
                 {project.projectName}
               </p>
-              <p className='py-3 flex gap-4 justify-center'>
+              <p className='py-3 flex gap-2 justify-center items-center'>
                 <Link href='#form-update'>
                   <FontAwesomeIcon
                     icon={faPenToSquare}
@@ -58,6 +85,18 @@ const ProjectList = ({
                     className='inline-block w-5 text-2xl text-pink-700 hover:cursor-pointer'
                   />
                 </Link>
+                <FontAwesomeIcon
+                  icon={faTrashCan}
+                  className='inline-block w-5 text-xl text-pink-700 hover:cursor-pointer'
+                  onClick={() => {
+                    setSelectedProjectToDelete({
+                      projectType: projectSet.projectType,
+                      projectName: project.projectName,
+                      projectId: project.projectId
+                    });
+                    setDeleteSelectedProject(true);
+                  }}
+                />
               </p>
             </div>
           ))}

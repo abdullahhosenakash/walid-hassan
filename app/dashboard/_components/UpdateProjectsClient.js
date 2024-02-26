@@ -27,6 +27,7 @@ const UpdateProjectsClient = ({ projects }) => {
   );
   const [selectedProject, setSelectedProject] = useState({});
   const [selectedProjectType, setSelectedProjectType] = useState('');
+
   const { push } = useRouter();
 
   useEffect(() => {
@@ -45,8 +46,6 @@ const UpdateProjectsClient = ({ projects }) => {
       push('/projects');
     }
   }, [state, push, stateForProjectType]);
-
-  console.log(errorMessage);
 
   return (
     <section className='mt-4'>

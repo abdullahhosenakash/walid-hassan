@@ -88,7 +88,7 @@ const AddNewProject = ({ projects }) => {
               type='text'
               name='projectType'
               id='projectType'
-              placeholder='Enter project type or select from above #tag'
+              placeholder='Enter project type or select from #tag'
               required
               value={inputtedProjectType}
               onChange={(e) => setInputtedProjectType(e.target.value)}
