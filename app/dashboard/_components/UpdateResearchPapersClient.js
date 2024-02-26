@@ -43,8 +43,6 @@ const UpdateResearchPapersClient = ({ researchPapers }) => {
     }
   }, [state, push, stateForResearchPaperType]);
 
-  console.log(selectedResearchPaper.status);
-
   return (
     <section className='mt-4'>
       <ResearchPaperList
@@ -116,6 +114,7 @@ const UpdateResearchPapersClient = ({ researchPapers }) => {
                   className='py-2 outline-none dark:bg-slate-800 w-full'
                   defaultValue={selectedResearchPaper.status}
                   onChange={(e) => setStatus(e.target.value)}
+                  required
                 >
                   <option value=''>- - Select Paper Status - -</option>
                   <option value='Peer review'>Peer review</option>
@@ -130,7 +129,7 @@ const UpdateResearchPapersClient = ({ researchPapers }) => {
                 type='text'
                 name='DOI'
                 placeholder='Enter DOI'
-                required={false}
+                required={status === 'Published'}
                 defaultValue={selectedResearchPaper.DOI}
               />
             )}

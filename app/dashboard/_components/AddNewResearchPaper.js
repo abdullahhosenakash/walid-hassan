@@ -1,4 +1,5 @@
-import { addNewProject } from '@/app/_lib/addFunctions/addNewProject';
+import { INITIAL_STATE } from '@/app/_constants/constants';
+import { addNewResearchPaper } from '@/app/_lib/addFunctions/addNewResearchPaper';
 import InputField from '@/app/dashboard/_components/InputField';
 import SubmitButton from '@/app/dashboard/_components/SubmitButton';
 import { useRouter } from 'next/navigation';
@@ -6,47 +7,17 @@ import { useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
 import toast from 'react-hot-toast';
 
-const initialState = {
-  errorType: null,
-  status: null,
-  message: ''
-};
-
 const AddNewResearchPaper = ({ researchPapers }) => {
-  const [errorMessage, setErrorMessage] = useState(initialState);
-  const [state, formAction] = useFormState(addNewProject, initialState);
-  const [inputtedProjectType, setInputtedProjectType] = useState('');
-  const [inputValue, setInputValue] = useState('');
+  const [errorMessage, setErrorMessage] = useState(INITIAL_STATE);
+  const [state, formAction] = useFormState(addNewResearchPaper, INITIAL_STATE);
+  const [inputtedResearchPaperType, setInputtedResearchPaperType] =
+    useState('');
+  const [status, setStatus] = useState('');
   const { push } = useRouter();
 
-  const projectTypes = researchPapers?.map(
-    (projectSet) => projectSet.projectType
+  const researchPaperTypes = researchPapers?.map(
+    (researchPaperSet) => researchPaperSet.paperType
   );
-
-  useEffect(() => {
-    if (inputValue) {
-      const isImageLinkOk = inputValue.startsWith('https://i.ibb.co/');
-      if (!isImageLinkOk) {
-        setErrorMessage({
-          errorType: 'inputError',
-          status: null,
-          message: 'Image link must be started with https://i.ibb.co/'
-        });
-      } else {
-        setErrorMessage({
-          errorType: state?.errorType || null,
-          status: state?.status || null,
-          message: state?.message || ''
-        });
-      }
-    } else {
-      setErrorMessage({
-        errorType: state?.errorType || null,
-        status: state?.status || null,
-        message: state?.message || ''
-      });
-    }
-  }, [inputValue, state]);
 
   useEffect(() => {
     const generatedError = {
@@ -55,26 +26,26 @@ const AddNewResearchPaper = ({ researchPapers }) => {
       message: state?.message || ''
     };
     setErrorMessage(generatedError);
-
     if (state?.status === 'success') {
-      toast.success('Project added successfully!');
-      push('/projects');
+      toast.success('Research paper added successfully!');
+      push('/research-papers');
     }
   }, [state, push]);
+  console.log(state);
 
   return (
     <form action={formAction} className='mt-4'>
-      <h3 className='text-xl text-center'>Add New Project</h3>
+      <h3 className='text-xl text-center'>Add New Research Paper</h3>
       <div className='border dark:border-slate-500 border-slate-300 rounded-lg p-1'>
-        Stored Project Types
+        Stored Research Paper Types
         <div className='dark:text-blue-400 text-blue-700'>
-          {projectTypes?.map((projectType) => (
+          {researchPaperTypes?.map((paperType) => (
             <span
-              key={projectType}
-              onClick={() => setInputtedProjectType(projectType)}
+              key={paperType}
+              onClick={() => setInputtedResearchPaperType(paperType)}
               className='cursor-pointer mr-4 hover:underline'
             >
-              #{projectType}
+              #{paperType}
             </span>
           ))}
         </div>
@@ -83,42 +54,34 @@ const AddNewResearchPaper = ({ researchPapers }) => {
       <div className='mt-2'>
         <div className='flex flex-col gap-2'>
           <div>
-            <label htmlFor='projectType'>
-              <span className='block text-lg'>Project Type</span>
+            <label htmlFor='paperType'>
+              <span className='block text-lg'>Paper Type</span>
             </label>
             <input
               type='text'
-              name='projectType'
-              id='projectType'
-              placeholder='Enter project type or select from #tag'
+              name='paperType'
+              id='paperType'
+              placeholder='Enter paper type or select from #tag'
               required
-              value={inputtedProjectType}
-              onChange={(e) => setInputtedProjectType(e.target.value)}
+              value={inputtedResearchPaperType}
+              onChange={(e) => setInputtedResearchPaperType(e.target.value)}
               className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full'
             />
           </div>
 
           <InputField
-            inputFieldTitle='Project Name'
+            inputFieldTitle='Paper Name'
             type='text'
-            name='projectName'
-            placeholder='Enter project name'
+            name='paperName'
+            placeholder='Enter paper name'
             required
           />
 
           <InputField
-            inputFieldTitle='Role'
+            inputFieldTitle='Author Name'
             type='text'
-            name='role'
-            placeholder='Enter project role'
-            required
-          />
-
-          <InputField
-            inputFieldTitle='Used Technology'
-            type='text'
-            name='technology'
-            placeholder='Enter used technology'
+            name='authorName'
+            placeholder='Enter author name'
             required
           />
 
@@ -128,39 +91,37 @@ const AddNewResearchPaper = ({ researchPapers }) => {
             </label>
             <textarea
               name='description'
-              placeholder='Enter project description'
+              placeholder='Enter description'
               required
               className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full h-32'
             />
           </div>
 
           <div>
-            <label htmlFor='features'>
-              <span className='text-lg flex'>Features (Separated by +)</span>
+            <label htmlFor='status'>
+              <span className='block text-lg'>Status</span>
             </label>
-            <textarea
-              name='features'
-              placeholder="Enter your project's features"
-              required
-              className='py-2 border dark:border-slate-500 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full lg:h-24 h-32'
-            />
+            <div className='border dark:border-slate-500 border-slate-300 px-2 dark:bg-slate-800 rounded'>
+              <select
+                name='status'
+                id='status'
+                className='py-2 outline-none dark:bg-slate-800 w-full'
+                onChange={(e) => setStatus(e.target.value)}
+                required
+              >
+                <option value=''>- - Select Paper Status - -</option>
+                <option value='Peer review'>Peer review</option>
+                <option value='Published'>Published</option>
+              </select>
+            </div>
           </div>
 
           <InputField
-            inputFieldTitle='Project Link'
+            inputFieldTitle='DOI'
             type='text'
-            name='link'
-            placeholder='Enter project link'
-            required
-          />
-
-          <InputField
-            inputFieldTitle='Project Image Link'
-            type='text'
-            name='imageLink'
-            placeholder='Enter project image link'
-            required
-            setInputValue={setInputValue}
+            name='DOI'
+            placeholder='Enter DOI'
+            required={status === 'Published'}
           />
         </div>
       </div>
@@ -174,7 +135,7 @@ const AddNewResearchPaper = ({ researchPapers }) => {
       <SubmitButton
         errorMessage={errorMessage}
         setErrorMessage={setErrorMessage}
-        buttonText='Add Project'
+        buttonText='Add Research Paper'
       />
     </form>
   );
