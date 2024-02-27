@@ -2,7 +2,7 @@
 
 import { INITIAL_STATE } from '@/app/_constants/constants';
 import { login } from '@/app/_lib/authentication/login';
-import SubmitButton from '@/app/dashboard/_components/SubmitButton';
+import SubmitButton from '@/app/dashboard/_components/Shared/SubmitButton';
 import { useEffect, useState } from 'react';
 import { useFormState } from 'react-dom';
 
