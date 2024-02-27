@@ -2,12 +2,19 @@
 
 import { faBarsStaggered, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NavLinks from '@/app/_components/Navbar/NavLinks';
 import CustomLink from '@/app/_components/Navbar/CustomLink';
 
 const DropDownNavItems = ({ user }) => {
   const [toggle, setToggle] = useState(false);
+  useEffect(() => {
+    if (toggle) {
+      document.body.classList.add('overflow-y-hidden');
+    } else {
+      document.body.classList.remove('overflow-y-hidden');
+    }
+  }, [toggle]);
   return (
     <div className='lg:hidden block'>
       {toggle ? (
