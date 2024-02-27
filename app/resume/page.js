@@ -17,8 +17,6 @@ const Resume = async () => {
   );
   const skills = await skillsResponse.json();
 
-  console.log(resume);
-
   if (!skills) {
     throw new Error('Failed to get skills data for resume');
   }
@@ -26,6 +24,7 @@ const Resume = async () => {
   return (
     <section className='dark:bg-slate-900 lg:pt-4 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl dark:text-white'>My Resume</h2>
+
       <div className='lg:w-[60%] mx-auto'>
         <Link
           href={resume?.resumeLink}
@@ -43,14 +42,17 @@ const Resume = async () => {
           {skills?.skillsDeveloped?.map((skill) => (
             <li key={skill.skillType}>
               <span className='font-bold'>{skill.skillType}: </span>
-              {skill.skills?.map((s, index) => (
-                <span key={s.skillName}>
-                  {s.skillName}
-                  {skill.skills?.length !== index + 1 && (
-                    <span className='mr-1'>,</span>
-                  )}
-                </span>
-              ))}
+              <br />
+              <p className='lg:flex grid grid-cols-2'>
+                {skill.skills?.map((s, index) => (
+                  <span key={s.skillName}>
+                    {s.skillName}
+                    {skill.skills?.length !== index + 1 && (
+                      <span className='mr-1 lg:inline-block hidden'>,</span>
+                    )}
+                  </span>
+                ))}
+              </p>
             </li>
           ))}
         </ul>
