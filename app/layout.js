@@ -23,7 +23,7 @@ export default async function RootLayout({ children }) {
     <html lang='en' className={`scroll-smooth ${theme}`}>
       <body className={`${inter.className} dark:bg-slate-900`}>
         <Navbar user={user} theme={theme} />
-        <div className='pt-20'>{children}</div>
+        <main className='pt-20'>{children}</main>
         <Toaster
           toastOptions={{
             className: '',

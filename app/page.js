@@ -10,9 +10,9 @@ export default async function Home() {
 
   const { homepageCards, ...bannerData } = homepage || {};
   return (
-    <main className='bg-white dark:bg-slate-900 text-black dark:text-white pb-20 dark:min-h-screen'>
+    <section className='bg-white dark:bg-slate-900 text-black dark:text-white pb-20 dark:min-h-screen'>
       <Banner bannerData={bannerData} />
       <HomepageCard homepageCards={homepageCards} />
-    </main>
+    </section>
   );
 }

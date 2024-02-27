@@ -1,4 +1,3 @@
-import localFont from 'next/font/local';
 import walidHassanImage from '@/app/_assets/images/walidHassan.jpeg';
 import Image from 'next/image';
 import TypewriterEffect from '@/app/_components/TypewriterEffect/TypewriterEffect';
@@ -10,10 +9,7 @@ import {
   faSquareGithub
 } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
-const protestGuerrilla = localFont({
-  src: '../../_assets/fonts/ProtestGuerrilla-Regular.ttf',
-  display: 'swap'
-});
+import { PROTEST_GUERRILLA } from '@/app/_constants/constants';
 
 const Banner = ({ bannerData }) => {
   const { passion, designations, socialLinks, highlightedSkills } =
@@ -33,12 +29,12 @@ const Banner = ({ bannerData }) => {
       <h2 className='text-4xl text-center uppercase mt-4 font-bold text-cyan-500'>
         Walid{' '}
         <span
-          className={`${protestGuerrilla.className} !font-thin !text-cyan-700`}
+          className={`${PROTEST_GUERRILLA.className} !font-thin !text-cyan-700`}
         >
           Hassan
         </span>
       </h2>
-      <h4 className='text-x text-center uppercase text-pink-700'>{passion}</h4>
+      <h4 className='text-center uppercase text-pink-700'>{passion}</h4>
       <h3 className='lg:text-2xl text-lg text-slate-800 dark:text-slate-400 my-4 flex lg:flex-row flex-col justify-center items-center gap-2'>
         <span>{designations && designations[0]}</span>
         <span className='text-lg lg:inline-block hidden'>|</span>

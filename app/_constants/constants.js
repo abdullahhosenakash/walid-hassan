@@ -8,3 +8,9 @@ export const INITIAL_STATE = {
   status: null,
   message: ''
 };
+
+import localFont from 'next/font/local';
+export const PROTEST_GUERRILLA = localFont({
+  src: '../_assets/fonts/ProtestGuerrilla-Regular.ttf',
+  display: 'swap'
+});
