@@ -43,14 +43,14 @@ const Certifications = async () => {
                   {' '}
                   {certification?.certifications?.map((singleCertification) => (
                     <div
-                      className='grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center mt-1 border border-slate-700 p-2 rounded-lg'
+                      className='grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center mt-1 border dark:border-slate-700 border-slate-300 p-2 rounded-lg'
                       key={singleCertification.certificationName}
                     >
                       <Image
                         src={singleCertification.imageLink}
                         alt='web project'
                         priority
-                        className='shadow-xl h-auto'
+                        className='shadow-xl h-auto rounded-lg'
                         width={500}
                         height={500}
                       />

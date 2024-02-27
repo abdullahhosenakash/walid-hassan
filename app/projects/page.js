@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import CategoryLink from '@/app/_components/CategoryLink/CategoryLink';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faImage } from '@fortawesome/free-solid-svg-icons';
 
 const Projects = async () => {
   const response = await fetch('https://walid-hassan.vercel.app/api/projects', {
@@ -45,7 +43,7 @@ const Projects = async () => {
                         src={p.imageLink}
                         alt='web project'
                         priority
-                        className='shadow-xl h-auto'
+                        className='shadow-xl h-auto rounded-lg'
                         width={500}
                         height={500}
                       />

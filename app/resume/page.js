@@ -41,9 +41,8 @@ const Resume = async () => {
         <ul className='list-disc pl-4 text-lg'>
           {skills?.skillsDeveloped?.map((skill) => (
             <li key={skill.skillType}>
-              <span className='font-bold'>{skill.skillType}: </span>
-              <br />
-              <p className='lg:flex grid grid-cols-2'>
+              <span className='font-bold mr-1'>{skill.skillType}: </span>
+              <p className='lg:inline-flex grid grid-cols-2'>
                 {skill.skills?.map((s, index) => (
                   <span key={s.skillName}>
                     {s.skillName}
