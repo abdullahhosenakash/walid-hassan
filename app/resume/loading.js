@@ -5,10 +5,10 @@ const ResumeLoading = () => {
       <div className='animate-pulse mt-6'>
         <div className='lg:w-[60%] mx-auto'>
           {/* download button */}
-          <div className='py-5 w-[20%] mx-auto bg-slate-300 dark:bg-slate-600 rounded-lg' />
+          <div className='py-5 lg:w-[20%] w-[47%] mx-auto bg-slate-300 dark:bg-slate-600 rounded-lg' />
 
           {/* description */}
-          <div className='mt-4 flex flex-col gap-4'>
+          <div className='mt-5 flex flex-col gap-4'>
             <div className='py-2 bg-slate-300 dark:bg-slate-600 rounded-full' />
             <div className='py-2 bg-slate-300 dark:bg-slate-600 rounded-full' />
             <div className='py-2 w-1/4 bg-slate-300 dark:bg-slate-600 rounded-full' />

@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import CategoryLink from '@/app/_components/CategoryLink/CategoryLink';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
 
 const Projects = async () => {
   const response = await fetch('https://walid-hassan.vercel.app/api/projects', {
@@ -15,6 +17,7 @@ const Projects = async () => {
   return (
     <section className='dark:bg-slate-900 lg:pt-4 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl'>My Projects</h2>
+
       <div className='lg:w-[60%] mx-auto mt-6'>
         <ul className='list-disc pl-4'>
           {projects?.map((project) => (
@@ -35,7 +38,7 @@ const Projects = async () => {
                 <div className='flex flex-col gap-3'>
                   {project?.projects?.map((p) => (
                     <div
-                      className='grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center mt-1 border border-slate-700 rounded-lg p-2'
+                      className='grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center mt-1 border dark:border-slate-700 border-slate-300 rounded-lg p-2'
                       key={p.projectName}
                     >
                       <Image
