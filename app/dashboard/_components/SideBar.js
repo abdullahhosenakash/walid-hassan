@@ -3,7 +3,7 @@ import DashboardLink from '@/app/dashboard/_components/DashboardLink';
 const SideBar = ({ setDropDownToggled }) => {
   return (
     <aside className='lg:fixed absolute left-0 lg:top-14 h-screen lg:w-[20%]'>
-      <div className='lg:h-full px-3 py-4 overflow-y-auto bg-slate-200 dark:bg-slate-800 shadow-md shadow-slate-300 dark:shadow-slate-700'>
+      <div className='lg:h-full px-3 py-4 overflow-y-auto bg-slate-200 dark:bg-slate-800 shadow-md shadow-slate-300 dark:shadow-slate-700 lg:rounded-none rounded-r-lg'>
         <h3 className='text-xl text-center pt-2 pb-1 px-0'>
           <DashboardLink
             href='/dashboard'
@@ -12,7 +12,7 @@ const SideBar = ({ setDropDownToggled }) => {
             Dashboard
           </DashboardLink>
         </h3>
-        <hr className='border-slate-600 py-1' />
+        <hr className='dark:border-slate-600 border-slate-400 py-1' />
         <ul className='flex flex-col gap-3'>
           <li>
             <DashboardLink

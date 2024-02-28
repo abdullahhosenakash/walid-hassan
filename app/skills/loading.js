@@ -14,18 +14,24 @@ const SkillsLoading = () => {
           </span>
         </label>
 
-        <div className='mt-8 flex flex-col gap-12'>
+        <div className='mt-8 flex flex-col gap-8'>
           <div>
-            <div className='py-3 w-[20%] bg-slate-300 dark:bg-slate-600 rounded-full' />
+            <div className='py-3 lg:w-[20%] w-[40%] bg-slate-300 dark:bg-slate-600 rounded-full' />
             <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full mt-4' />
+            <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full lg:hidden mt-2' />
+            <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full lg:hidden mt-2' />
           </div>
           <div>
-            <div className='py-3 w-[20%] bg-slate-300 dark:bg-slate-600 rounded-full' />
+            <div className='py-3 lg:w-[20%] w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
             <div className='py-2 w-3/4 bg-slate-300 dark:bg-slate-600 rounded-full mt-4' />
+            <div className='py-2 w-3/4 bg-slate-300 dark:bg-slate-600 rounded-full mt-2 lg:hidden' />
+            <div className='py-2 w-3/4 bg-slate-300 dark:bg-slate-600 rounded-full mt-2 lg:hidden' />
           </div>
           <div>
-            <div className='py-3 w-[20%] bg-slate-300 dark:bg-slate-600 rounded-full' />
+            <div className='py-3 lg:w-[20%] w-[40%] bg-slate-300 dark:bg-slate-600 rounded-full' />
             <div className='py-2 w-1/4 bg-slate-300 dark:bg-slate-600 rounded-full mt-4' />
+            <div className='py-2 w-1/4 bg-slate-300 dark:bg-slate-600 rounded-full mt-2 lg:hidden' />
+            <div className='py-2 w-1/4 bg-slate-300 dark:bg-slate-600 rounded-full mt-2 lg:hidden' />
           </div>
         </div>
         <p className='mt-6 flex gap-3 items-center text-slate-600 dark:text-slate-400'>

@@ -58,7 +58,7 @@ const UpdateResumeClient = ({ resume }) => {
               <label htmlFor={`experience${index + 1}`}>
                 <span className='block text-xl'>Project {index + 1}</span>
               </label>
-              <div className='border rounded-lg border-slate-600 p-1'>
+              <div className='border rounded-lg dark:border-slate-600 border-slate-300 p-1'>
                 <div className='flex flex-col gap-2'>
                   <InputField
                     title='Project Name'

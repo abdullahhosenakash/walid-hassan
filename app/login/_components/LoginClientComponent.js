@@ -31,7 +31,7 @@ const LoginClientComponent = () => {
           placeholder='Enter your secret key'
           required
           onFocus={() => setErrorMessage(INITIAL_STATE)}
-          className={`py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full ${
+          className={`py-2 border dark:border-slate-600 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full ${
             errorMessage.errorType === 'userSecret' && '!border-red-500'
           }`}
         />
@@ -51,7 +51,7 @@ const LoginClientComponent = () => {
           required
           placeholder='Enter your email'
           onFocus={() => setErrorMessage(INITIAL_STATE)}
-          className={`py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full ${
+          className={`py-2 border dark:border-slate-600 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full ${
             errorMessage.errorType === 'credential' && '!border-red-500'
           }`}
         />
@@ -68,7 +68,7 @@ const LoginClientComponent = () => {
           required
           placeholder='Enter your password'
           onFocus={() => setErrorMessage(INITIAL_STATE)}
-          className={`py-2 border border-slate-500 outline-none rounded px-2 dark:bg-slate-800 w-full ${
+          className={`py-2 border dark:border-slate-600 border-slate-300 outline-none rounded px-2 dark:bg-slate-800 w-full ${
             errorMessage.errorType === 'credential' && '!border-red-500'
           }`}
         />

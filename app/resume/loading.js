@@ -59,25 +59,25 @@ const ResumeLoading = () => {
 
           <div className='block lg:hidden'>
             <div className='py-2 w-1/4 bg-slate-300 dark:bg-slate-600 rounded-full' />
-            <div className='grid grid-cols-2 gap-3 mt-4'>
-              <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
-              <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
-              <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
-              <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
-              <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
-              <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
+            <div className='flex flx-wrap gap-2 mt-4'>
+              <div className='py-2 w-24 bg-slate-300 dark:bg-slate-600 rounded-full' />
+              <div className='py-2 w-24 bg-slate-300 dark:bg-slate-600 rounded-full' />
+              <div className='py-2 w-24 bg-slate-300 dark:bg-slate-600 rounded-full' />
+              <div className='py-2 w-24 bg-slate-300 dark:bg-slate-600 rounded-full' />
+              <div className='py-2 w-24 bg-slate-300 dark:bg-slate-600 rounded-full' />
+              <div className='py-2 w-24 bg-slate-300 dark:bg-slate-600 rounded-full' />
             </div>
           </div>
 
           <div className='block lg:hidden mt-8'>
             <div className='py-2 w-1/4 bg-slate-300 dark:bg-slate-600 rounded-full' />
-            <div className='grid grid-cols-2 gap-3 mt-4'>
-              <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
-              <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
-              <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
-              <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
-              <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
-              <div className='py-2 w-1/2 bg-slate-300 dark:bg-slate-600 rounded-full' />
+            <div className='flex flex-wrap gap-2 mt-4'>
+              <div className='py-2 w-24 bg-slate-300 dark:bg-slate-600 rounded-full' />
+              <div className='py-2 w-24 bg-slate-300 dark:bg-slate-600 rounded-full' />
+              <div className='py-2 w-24 bg-slate-300 dark:bg-slate-600 rounded-full' />
+              <div className='py-2 w-24 bg-slate-300 dark:bg-slate-600 rounded-full' />
+              <div className='py-2 w-24 bg-slate-300 dark:bg-slate-600 rounded-full' />
+              <div className='py-2 w-24 bg-slate-300 dark:bg-slate-600 rounded-full' />
             </div>
           </div>
 

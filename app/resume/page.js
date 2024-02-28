@@ -42,12 +42,12 @@ const Resume = async () => {
           {skills?.skillsDeveloped?.map((skill) => (
             <li key={skill.skillType}>
               <span className='font-bold mr-1'>{skill.skillType}: </span>
-              <p className='lg:inline-flex grid grid-cols-2'>
+              <p className='inline-flex flex-wrap'>
                 {skill.skills?.map((s, index) => (
                   <span key={s.skillName}>
                     {s.skillName}
                     {skill.skills?.length !== index + 1 && (
-                      <span className='mr-1 lg:inline-block hidden'>,</span>
+                      <span className='mr-1 inline-block'>,</span>
                     )}
                   </span>
                 ))}

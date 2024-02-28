@@ -13,7 +13,7 @@ const Projects = async () => {
   }
 
   return (
-    <section className='dark:bg-slate-900 lg:pt-4 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
+    <section className='dark:bg-slate-900 lg:pt-4 lg:pb-16 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl'>My Projects</h2>
 
       <div className='lg:w-[60%] mx-auto mt-6'>

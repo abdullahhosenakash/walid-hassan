@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 
 const DropDownDashboard = () => {
   const [dropDownToggled, setDropDownToggled] = useState(false);
+
   useEffect(() => {
     if (dropDownToggled) {
       document.body.classList.add('overflow-y-hidden');
@@ -15,6 +16,7 @@ const DropDownDashboard = () => {
       document.body.classList.remove('overflow-y-hidden');
     }
   }, [dropDownToggled]);
+
   return (
     <div>
       <div className='flex justify-between items-center'>
