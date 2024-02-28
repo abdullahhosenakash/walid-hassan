@@ -2,8 +2,7 @@ import UpdateContactClient from '@/app/dashboard/update-contact/_components/Upda
 
 const UpdateContact = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { cache: 'no-store' }
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
   );
   const { contact } = await response.json();
 
@@ -12,7 +11,7 @@ const UpdateContact = async () => {
   }
 
   return (
-    <section className='lg:w-1/2 mx-auto pb-12'>
+    <section className='lg:w-1/2 mx-auto pb-20'>
       <h2 className='text-center lg:text-3xl text-xl mt-3'>Update Contact</h2>
       <UpdateContactClient contact={contact} />
     </section>

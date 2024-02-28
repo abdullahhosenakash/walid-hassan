@@ -40,9 +40,7 @@ export async function updateSkills(prevState, formData) {
       skillsDeveloped
     };
 
-    const response = await fetch('https://walid-hassan.vercel.app/api/skills', {
-      cache: 'no-store'
-    });
+    const response = await fetch('https://walid-hassan.vercel.app/api/skills');
     const skills = await response.json();
 
     if (!skills) {

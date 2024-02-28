@@ -3,8 +3,7 @@ import Link from 'next/link';
 
 const ResearchPapers = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/research-papers',
-    { cache: 'no-store' }
+    'https://walid-hassan.vercel.app/api/research-papers'
   );
   const researchPapers = await response.json();
 
@@ -13,7 +12,7 @@ const ResearchPapers = async () => {
   }
 
   return (
-    <section className='dark:bg-slate-900 lg:pt-4 lg:pb-16 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
+    <section className='dark:bg-slate-900 lg:pt-4 lg:pb-16 pb-20 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl dark:text-white'>Research Papers</h2>
 
       <div className='lg:w-[60%] mx-auto mt-6'>

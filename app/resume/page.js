@@ -2,8 +2,7 @@ import Link from 'next/link';
 
 const Resume = async () => {
   const resumeResponse = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { cache: 'no-store' }
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
   );
   const { resume } = await resumeResponse.json();
 
@@ -12,8 +11,7 @@ const Resume = async () => {
   }
 
   const skillsResponse = await fetch(
-    'https://walid-hassan.vercel.app/api/skills',
-    { cache: 'no-store' }
+    'https://walid-hassan.vercel.app/api/skills'
   );
   const skills = await skillsResponse.json();
 
@@ -22,7 +20,7 @@ const Resume = async () => {
   }
 
   return (
-    <section className='dark:bg-slate-900 lg:pt-4 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
+    <section className='dark:bg-slate-900 lg:pt-4 pb-20 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl dark:text-white'>My Resume</h2>
 
       <div className='lg:w-[60%] mx-auto'>

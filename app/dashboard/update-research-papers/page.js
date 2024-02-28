@@ -2,8 +2,7 @@ import ModifyResearchPapers from '@/app/dashboard/update-research-papers/_compon
 
 const UpdateResearchPapers = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/research-papers',
-    { cache: 'no-store' }
+    'https://walid-hassan.vercel.app/api/research-papers'
   );
   const researchPapers = await response.json();
 
@@ -13,7 +12,7 @@ const UpdateResearchPapers = async () => {
 
   return (
     <section>
-      <section className='lg:w-1/2 mx-auto pb-12'>
+      <section className='lg:w-1/2 mx-auto pb-20'>
         <h2 className='text-center lg:text-3xl text-xl mt-3'>
           Update Research Papers
         </h2>

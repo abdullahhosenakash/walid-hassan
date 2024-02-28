@@ -2,8 +2,7 @@ import Link from 'next/link';
 
 const Experience = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { cache: 'no-store' }
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
   );
   const { experience } = await response.json();
 
@@ -12,7 +11,7 @@ const Experience = async () => {
   }
 
   return (
-    <section className='dark:bg-slate-900 lg:pt-4 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
+    <section className='dark:bg-slate-900 lg:pt-4 pb-20 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl'>My Experience</h2>
       <div className='flex flex-col gap-6 text-lg mt-6 lg:w-[65%] mx-auto text-justify'>
         {experience?.map((e) => (

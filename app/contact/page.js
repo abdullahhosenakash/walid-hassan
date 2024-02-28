@@ -2,8 +2,7 @@ import ContactCard from '@/app/contact/_components/ContactCard';
 
 const Contact = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { cache: 'no-store' }
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
   );
   const { contact } = await response.json();
 
@@ -12,7 +11,7 @@ const Contact = async () => {
   }
 
   return (
-    <section className='dark:bg-slate-900 lg:pt-4 pb-4 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
+    <section className='dark:bg-slate-900 lg:pt-4 pb-20 dark:text-white lg:px-0 px-3 dark:min-h-screen'>
       <h2 className='text-center text-3xl dark:text-white'>My Contacts</h2>
       <p className='text-center dark:text-white'>
         Feel free to contact me if you think I can help somehow

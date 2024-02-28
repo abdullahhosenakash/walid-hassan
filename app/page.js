@@ -3,8 +3,7 @@ import HomepageCard from '@/app/_components/HomepageCard/HomepageCard';
 
 export default async function Home() {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/miscellaneous-data',
-    { cache: 'no-store' }
+    'https://walid-hassan.vercel.app/api/miscellaneous-data'
   );
   const { homepage } = await response.json();
 

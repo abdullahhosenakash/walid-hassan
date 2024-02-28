@@ -19,7 +19,7 @@ export async function updateExperience(prevState, formData) {
 
     const response = await fetch(
       'https://walid-hassan.vercel.app/api/miscellaneous-data',
-      { cache: 'no-store' }
+      
     );
     const { experience } = await response.json();
 

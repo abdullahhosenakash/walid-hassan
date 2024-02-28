@@ -4,7 +4,7 @@ const Dashboard = async () => {
   const { user } = await getUser();
 
   return (
-    <section className='dark:bg-slate-900 dark:text-white lg:px-0 px-3'>
+    <section className='dark:bg-slate-900 dark:text-white lg:px-0 px-3 pb-20'>
       <h2 className='text-center text-xl mt-6'>
         Welcome to your dashboard {user?.userName}
       </h2>

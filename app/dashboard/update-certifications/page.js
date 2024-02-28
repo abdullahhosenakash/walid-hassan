@@ -2,8 +2,7 @@ import ModifyCertifications from '@/app/dashboard/update-certifications/_compone
 
 const UpdateCertifications = async () => {
   const response = await fetch(
-    'https://walid-hassan.vercel.app/api/certifications',
-    { cache: 'no-store' }
+    'https://walid-hassan.vercel.app/api/certifications'
   );
   const certifications = await response.json();
 
@@ -12,7 +11,7 @@ const UpdateCertifications = async () => {
   }
   return (
     <section>
-      <section className='lg:w-1/2 mx-auto pb-12'>
+      <section className='lg:w-1/2 mx-auto pb-20'>
         <h2 className='text-center lg:text-3xl text-xl mt-3'>
           Update Certifications
         </h2>
