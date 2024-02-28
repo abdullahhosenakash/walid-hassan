@@ -25,7 +25,7 @@ const ResearchPapers = async () => {
           ))}
         </ul>
 
-        <div className='flex flex-col gap-8'>
+        <div className='flex flex-col gap-6'>
           {researchPapers?.map((researchPaper) => {
             const researchPaperId = researchPaper.paperType
               ?.toLowerCase()

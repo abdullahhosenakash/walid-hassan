@@ -1,10 +1,15 @@
 'use client';
 
-import { faBarsStaggered, faX } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBarsStaggered,
+  faRightFromBracket,
+  faX
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import NavLinks from '@/app/_components/Navbar/NavLinks';
 import CustomLink from '@/app/_components/Navbar/CustomLink';
+import { logout } from '@/app/_lib/authentication/logout';
 
 const DropDownNavItems = ({ user }) => {
   const [toggle, setToggle] = useState(false);
@@ -15,6 +20,7 @@ const DropDownNavItems = ({ user }) => {
       document.body.classList.remove('overflow-y-hidden');
     }
   }, [toggle]);
+
   return (
     <div className='lg:hidden block'>
       {toggle ? (
@@ -40,7 +46,20 @@ const DropDownNavItems = ({ user }) => {
         </ul>
 
         <div className='lg:hidden inline-block px-32 pt-4'>
-          {!user && <CustomLink href='/login'>Login</CustomLink>}
+          {user && (
+            <button
+              className='hover:text-pink-700'
+              onClick={async () => {
+                await logout();
+              }}
+            >
+              Logout{' '}
+              <FontAwesomeIcon
+                icon={faRightFromBracket}
+                className='w-4 inline-block'
+              />
+            </button>
+          )}
         </div>
       </div>
     </div>

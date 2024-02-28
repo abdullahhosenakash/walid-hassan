@@ -25,7 +25,7 @@ const Projects = async () => {
           ))}
         </ul>
 
-        <div className='flex flex-col gap-8'>
+        <div className='flex flex-col gap-6'>
           {projects?.map((project) => {
             const projectId = project.projectType
               ?.toLowerCase()

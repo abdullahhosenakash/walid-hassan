@@ -13,7 +13,7 @@ const AuthenticationLinks = ({ user }) => {
           <li>
             <CustomLink href='/dashboard'>Dashboard</CustomLink>
           </li>
-          <li>
+          <li className='lg:block hidden'>
             <button
               className='hover:text-pink-700'
               onClick={async () => {
@@ -29,7 +29,7 @@ const AuthenticationLinks = ({ user }) => {
           </li>
         </>
       ) : (
-        <li className='lg:block hidden'>
+        <li className='block'>
           <CustomLink href='/login'>Login</CustomLink>
         </li>
       )}
