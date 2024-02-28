@@ -28,10 +28,12 @@ const Certifications = async () => {
         </ul>
 
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center mt-2 border dark:border-slate-700 border-slate-300 rounded-lg p-2'>
-          <FontAwesomeIcon
-            icon={faImage}
-            className='w-full block lg:h-52 h-40 rounded-lg text-slate-700 bg-slate-600'
-          />
+          <div className='w-full lg:h-52 h-40'>
+            <FontAwesomeIcon
+              icon={faImage}
+              className='w-full !h-full rounded-lg text-slate-700 bg-slate-600'
+            />
+          </div>
           <div className='flex flex-col gap-4'>
             <div className='py-3 bg-slate-300 dark:bg-slate-600 rounded-full' />
             <div className='flex flex-col gap-2'>
