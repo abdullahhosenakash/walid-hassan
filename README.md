@@ -2,4 +2,20 @@
 
 ## Here is the [live link](http://walid-hassan.vercel.app) of the project.
 
-### This project is under development
+### Features:
+
+- Full stack web app
+- Fully customizable content in each pages
+- Dark/Light mode
+- Cookie based authentication
+- Admin dashboard (Secured with jwt token)
+- Responsiveness
+- Typewriter effect
+
+### Technologies used:
+
+- Next.js (App Router)
+- TailwindCSS
+- MongoDB
+- FontAwesome
+- Google Font

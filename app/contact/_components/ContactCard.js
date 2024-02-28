@@ -20,23 +20,27 @@ const ContactCard = ({ children, contactInfo }) => {
         className='text-3xl inline-block w-8'
       />
       <p className='text-2xl'>{children}</p>
-      <Link
-        href={
-          children === 'Email'
-            ? `mailto:${contactInfo}`
-            : children === 'Phone'
-            ? `tel:+88${contactInfo}`
-            : children === 'WhatsApp'
-            ? `https://wa.me/88${contactInfo}`
-            : contactInfo
-        }
-        target='_blank'
-        className='dark:text-blue-400 text-blue-700 text-xl hover:underline'
-      >
-        {children === 'Phone' || children === 'WhatsApp'
-          ? `+88${contactInfo}`
-          : contactInfo}
-      </Link>
+      {children === 'Address' ? (
+        <p className='text-xl'>{contactInfo}</p>
+      ) : (
+        <Link
+          href={
+            children === 'Email'
+              ? `mailto:${contactInfo}`
+              : children === 'Phone'
+              ? `tel:+88${contactInfo}`
+              : children === 'WhatsApp'
+              ? `https://wa.me/88${contactInfo}`
+              : ''
+          }
+          target='_blank'
+          className='dark:text-blue-400 text-blue-700 text-xl hover:underline'
+        >
+          {children === 'Phone' || children === 'WhatsApp'
+            ? `+88${contactInfo}`
+            : contactInfo}
+        </Link>
+      )}
     </div>
   );
 };
