@@ -4,7 +4,7 @@ import DeleteProjectModal from '@/app/dashboard/update-projects/_components/Dele
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ProjectList = ({
   projects,
@@ -15,6 +15,14 @@ const ProjectList = ({
 }) => {
   const [selectedProjectToDelete, setSelectedProjectToDelete] = useState({});
   const [deleteSelectedProject, setDeleteSelectedProject] = useState(false);
+
+  useEffect(() => {
+    if (deleteSelectedProject) {
+      document.body.classList.add('overflow-y-hidden');
+    } else {
+      document.body.classList.remove('overflow-y-hidden');
+    }
+  }, [deleteSelectedProject]);
 
   return (
     <section className='flex flex-col gap-6'>
@@ -35,15 +43,21 @@ const ProjectList = ({
             <span>{projectSet.projectType}</span>
             <span
               className={`flex gap-2 items-center ${
-                (selectedProject?.projectId || selectedProjectType?._id) &&
-                'cursor-not-allowed'
+                selectedProject?.projectId ||
+                selectedProjectType?._id ||
+                deleteSelectedProject
+                  ? 'cursor-not-allowed'
+                  : ''
               }`}
             >
               <Link
                 href='#form-update-type'
                 className={`${
-                  (selectedProject?.projectId || selectedProjectType?._id) &&
-                  'pointer-events-none'
+                  selectedProject?.projectId ||
+                  selectedProjectType?._id ||
+                  deleteSelectedProject
+                    ? 'pointer-events-none'
+                    : ''
                 }`}
               >
                 <FontAwesomeIcon
@@ -61,8 +75,11 @@ const ProjectList = ({
               <FontAwesomeIcon
                 icon={faTrashCan}
                 className={`inline-block w-5 text-xl text-pink-700 cursor-pointer ${
-                  (selectedProject?.projectId || selectedProjectType?._id) &&
-                  'pointer-events-none'
+                  selectedProject?.projectId ||
+                  selectedProjectType?._id ||
+                  deleteSelectedProject
+                    ? 'pointer-events-none'
+                    : ''
                 }`}
                 onClick={() => {
                   setSelectedProjectToDelete({
@@ -91,15 +108,21 @@ const ProjectList = ({
               </p>
               <p
                 className={`w-fit mx-auto py-3 flex gap-2 items-center ${
-                  (selectedProject?.projectId || selectedProjectType?._id) &&
-                  'cursor-not-allowed'
+                  selectedProject?.projectId ||
+                  selectedProjectType?._id ||
+                  deleteSelectedProject
+                    ? 'cursor-not-allowed'
+                    : ''
                 }`}
               >
                 <Link
                   href='#form-update'
                   className={`${
-                    (selectedProject?.projectId || selectedProjectType?._id) &&
-                    'pointer-events-none'
+                    selectedProject?.projectId ||
+                    selectedProjectType?._id ||
+                    deleteSelectedProject
+                      ? 'pointer-events-none'
+                      : ''
                   }`}
                 >
                   <FontAwesomeIcon
@@ -117,10 +140,14 @@ const ProjectList = ({
                 <FontAwesomeIcon
                   icon={faTrashCan}
                   className={`inline-block w-5 text-xl text-pink-700 cursor-pointer ${
-                    (selectedProject?.projectId || selectedProjectType?._id) &&
-                    'pointer-events-none'
+                    selectedProject?.projectId ||
+                    selectedProjectType?._id ||
+                    deleteSelectedProject
+                      ? 'pointer-events-none'
+                      : ''
                   }`}
                   onClick={() => {
+                    if (deleteSelectedProject) return;
                     setSelectedProjectToDelete({
                       projectType: projectSet.projectType,
                       projectName: project.projectName,

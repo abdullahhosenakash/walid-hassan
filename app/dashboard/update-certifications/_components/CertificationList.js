@@ -4,7 +4,7 @@ import DeleteCertificationModal from '@/app/dashboard/update-certifications/_com
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const CertificationList = ({
   certifications,
@@ -17,6 +17,14 @@ const CertificationList = ({
     useState({});
   const [deleteSelectedCertification, setDeleteSelectedCertification] =
     useState(false);
+
+  useEffect(() => {
+    if (deleteSelectedCertification) {
+      document.body.classList.add('overflow-y-hidden');
+    } else {
+      document.body.classList.remove('overflow-y-hidden');
+    }
+  }, [deleteSelectedCertification]);
 
   return (
     <section className='flex flex-col gap-6'>
@@ -36,17 +44,21 @@ const CertificationList = ({
             <span>{certificationSet.certificationType}</span>
             <p
               className={`flex gap-2 items-center ${
-                (selectedCertification?.certificationId ||
-                  selectedCertificationType?._id) &&
-                'cursor-not-allowed'
+                selectedCertification?.certificationId ||
+                selectedCertificationType?._id ||
+                deleteSelectedCertification
+                  ? 'cursor-not-allowed'
+                  : ''
               }`}
             >
               <Link
                 href='#form-update-type'
                 className={
-                  (selectedCertification?.certificationId ||
-                    selectedCertificationType?._id) &&
-                  'pointer-events-none'
+                  selectedCertification?.certificationId ||
+                  selectedCertificationType?._id ||
+                  deleteSelectedCertification
+                    ? 'pointer-events-none'
+                    : ''
                 }
                 onClick={() => {
                   setSelectedCertificationType &&
@@ -66,12 +78,15 @@ const CertificationList = ({
                 icon={faTrashCan}
                 className={`inline-block w-5 text-xl text-pink-700 cursor-pointer
                     ${
-                      (selectedCertification?.certificationId ||
-                        selectedCertificationType?._id) &&
-                      '!cursor-not-allowed'
+                      selectedCertification?.certificationId ||
+                      selectedCertificationType?._id ||
+                      deleteSelectedCertification
+                        ? '!cursor-not-allowed'
+                        : ''
                     }
                     `}
                 onClick={() => {
+                  if (deleteSelectedCertification) return;
                   setSelectedCertificationToDelete({
                     certificationType: certificationSet.certificationType,
                     certificationsLength:
@@ -100,17 +115,21 @@ const CertificationList = ({
               </p>
               <p
                 className={`w-fit mx-auto py-3 flex gap-2 items-center ${
-                  (selectedCertification?.certificationId ||
-                    selectedCertificationType?._id) &&
-                  'cursor-not-allowed'
+                  selectedCertification?.certificationId ||
+                  selectedCertificationType?._id ||
+                  deleteSelectedCertification
+                    ? 'cursor-not-allowed'
+                    : ''
                 }`}
               >
                 <Link
                   href='#form-update'
                   className={
-                    (selectedCertification?.certificationId ||
-                      selectedCertificationType?._id) &&
-                    'pointer-events-none'
+                    selectedCertification?.certificationId ||
+                    selectedCertificationType?._id ||
+                    deleteSelectedCertification
+                      ? 'pointer-events-none'
+                      : ''
                   }
                   onClick={() => {
                     setSelectedCertification({
@@ -128,11 +147,14 @@ const CertificationList = ({
                 <FontAwesomeIcon
                   icon={faTrashCan}
                   className={`inline-block w-5 text-xl text-pink-700 cursor-pointer ${
-                    (selectedCertification?.certificationId ||
-                      selectedCertificationType?._id) &&
-                    '!cursor-not-allowed'
+                    selectedCertification?.certificationId ||
+                    selectedCertificationType?._id ||
+                    deleteSelectedCertification
+                      ? '!cursor-not-allowed'
+                      : ''
                   }`}
                   onClick={() => {
+                    if (deleteSelectedCertification) return;
                     setSelectedCertificationToDelete({
                       certificationType: certificationSet.certificationType,
                       certificationName: certification.certificationName,

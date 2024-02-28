@@ -1,11 +1,20 @@
 import DeleteSkillModal from '@/app/dashboard/update-skills/_components/DeleteSkillModal';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const DeleteASkill = ({ skills }) => {
   const [deleteSelectedSkill, setDeleteSelectedSkill] = useState(false);
   const [selectedSkill, setSelectedSkill] = useState({});
+
+  useEffect(() => {
+    if (deleteSelectedSkill) {
+      document.body.classList.add('overflow-y-hidden');
+    } else {
+      document.body.classList.remove('overflow-y-hidden');
+    }
+  }, [deleteSelectedSkill]);
+
   return (
     <section className='mx-auto mt-6'>
       <h3 className='text-xl text-center'>Delete a Skill</h3>
@@ -25,17 +34,30 @@ const DeleteASkill = ({ skills }) => {
           >
             <p className='text-lg py-1 pl-2 flex items-center justify-center gap-2'>
               Skill Type: {skillSet.skillType}
-              <FontAwesomeIcon
-                icon={faTrashCan}
-                onClick={() => {
-                  setSelectedSkill({
-                    skillType: skillSet.skillType,
-                    skillsLength: skillSet.skills?.length
-                  });
-                  setDeleteSelectedSkill(true);
-                }}
-                className='inline-block w-5 text-2xl text-pink-700 hover:cursor-pointer'
-              />
+              <span
+                className={
+                  selectedSkill?.skillType || deleteSelectedSkill
+                    ? 'cursor-not-allowed'
+                    : ''
+                }
+              >
+                <FontAwesomeIcon
+                  icon={faTrashCan}
+                  onClick={() => {
+                    if (deleteSelectedSkill) return;
+                    setSelectedSkill({
+                      skillType: skillSet.skillType,
+                      skillsLength: skillSet.skills?.length
+                    });
+                    setDeleteSelectedSkill(true);
+                  }}
+                  className={`inline-block w-5 text-2xl text-pink-700 hover:cursor-pointer ${
+                    selectedSkill?.skillType || deleteSelectedSkill
+                      ? 'pointer-events-none'
+                      : ''
+                  }`}
+                />
+              </span>
             </p>
 
             <div className='grid grid-cols-4 text-center dark:bg-slate-600 bg-slate-400'>
@@ -55,10 +77,17 @@ const DeleteASkill = ({ skills }) => {
                   {skill.skillName}
                 </p>
                 <p className='py-3'>{skill.percentage}</p>
-                <p className='py-3 flex gap-4 justify-center'>
+                <p
+                  className={`py-3 flex gap-4 justify-center ${
+                    selectedSkill?.skillType || deleteSelectedSkill
+                      ? 'cursor-not-allowed'
+                      : ''
+                  }`}
+                >
                   <FontAwesomeIcon
                     icon={faTrashCan}
                     onClick={() => {
+                      if (deleteSelectedSkill) return;
                       setSelectedSkill({
                         skillType: skillSet.skillType,
                         skillName: skill.skillName,
@@ -66,7 +95,11 @@ const DeleteASkill = ({ skills }) => {
                       });
                       setDeleteSelectedSkill(true);
                     }}
-                    className='inline-block w-5 text-2xl text-pink-700 hover:cursor-pointer'
+                    className={`inline-block w-5 text-2xl text-pink-700 hover:cursor-pointer ${
+                      selectedSkill?.skillType || deleteSelectedSkill
+                        ? 'pointer-events-none'
+                        : ''
+                    }`}
                   />
                 </p>
               </div>

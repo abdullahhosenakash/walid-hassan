@@ -36,7 +36,7 @@ const DeleteResearchPaperModal = ({
     <section className='overflow-y-auto'>
       <form
         action={formAction}
-        className='h-48 lg:max-w-lg lg:w-full w-[90%] bg-gray-400 transition duration-300 z-50 shadow-xl shadow-slate-600 fixed top-40 left-0 right-0 mx-auto lg:p-4 p-2 rounded-lg flex flex-col justify-between text-lg text-black'
+        className='min-h-48 lg:max-w-lg lg:w-full w-[90%] bg-gray-400 transition duration-300 z-50 shadow-xl shadow-slate-600 fixed top-40 left-0 right-0 mx-auto lg:p-4 p-2 rounded-lg flex flex-col justify-between text-lg text-black'
       >
         <div>
           <p>

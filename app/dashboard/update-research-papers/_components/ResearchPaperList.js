@@ -4,7 +4,7 @@ import DeleteResearchPaperModal from '@/app/dashboard/update-research-papers/_co
 import { faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ResearchPaperList = ({
   researchPapers,
@@ -18,6 +18,14 @@ const ResearchPaperList = ({
     useState({});
   const [deleteSelectedResearchPaper, setDeleteSelectedResearchPaper] =
     useState(false);
+
+  useEffect(() => {
+    if (deleteSelectedResearchPaper) {
+      document.body.classList.add('overflow-y-hidden');
+    } else {
+      document.body.classList.remove('overflow-y-hidden');
+    }
+  }, [deleteSelectedResearchPaper]);
 
   return (
     <section className='flex flex-col gap-6'>
@@ -37,17 +45,21 @@ const ResearchPaperList = ({
             <span>{researchPaperSet.paperType}</span>
             <p
               className={`flex gap-2 items-center ${
-                (selectedResearchPaper?.paperId ||
-                  selectedResearchPaperType?._id) &&
-                'cursor-not-allowed'
+                selectedResearchPaper?.paperId ||
+                selectedResearchPaperType?._id ||
+                deleteSelectedResearchPaper
+                  ? 'cursor-not-allowed'
+                  : ''
               }`}
             >
               <Link
                 href='#form-update-type'
                 className={
-                  (selectedResearchPaper?.paperId ||
-                    selectedResearchPaperType?._id) &&
-                  'pointer-events-none'
+                  selectedResearchPaper?.paperId ||
+                  selectedResearchPaperType?._id ||
+                  deleteSelectedResearchPaper
+                    ? 'pointer-events-none'
+                    : ''
                 }
                 onClick={() => {
                   setSelectedResearchPaperType &&
@@ -67,12 +79,15 @@ const ResearchPaperList = ({
                 icon={faTrashCan}
                 className={`inline-block w-5 text-xl text-pink-700 cursor-pointer
                     ${
-                      (selectedResearchPaper?.paperId ||
-                        selectedResearchPaperType?._id) &&
-                      '!cursor-not-allowed'
+                      selectedResearchPaper?.paperId ||
+                      selectedResearchPaperType?._id ||
+                      deleteSelectedResearchPaper
+                        ? '!cursor-not-allowed'
+                        : ''
                     }
                     `}
                 onClick={() => {
+                  if (deleteSelectedResearchPaper) return;
                   setSelectedResearchPaperToDelete({
                     paperType: researchPaperSet.paperType,
                     papersLength: researchPaperSet.papers?.length
@@ -100,17 +115,21 @@ const ResearchPaperList = ({
               </p>
               <p
                 className={`w-fit mx-auto py-3 flex gap-2 items-center ${
-                  (selectedResearchPaper?.paperId ||
-                    selectedResearchPaperType?._id) &&
-                  'cursor-not-allowed'
+                  selectedResearchPaper?.paperId ||
+                  selectedResearchPaperType?._id ||
+                  deleteSelectedResearchPaper
+                    ? 'cursor-not-allowed'
+                    : ''
                 }`}
               >
                 <Link
                   href='#form-update'
                   className={
-                    (selectedResearchPaper?.paperId ||
-                      selectedResearchPaperType?._id) &&
-                    'pointer-events-none'
+                    selectedResearchPaper?.paperId ||
+                    selectedResearchPaperType?._id ||
+                    deleteSelectedResearchPaper
+                      ? 'pointer-events-none'
+                      : ''
                   }
                   onClick={() => {
                     setStatus && setStatus(paper.status);
@@ -129,11 +148,14 @@ const ResearchPaperList = ({
                 <FontAwesomeIcon
                   icon={faTrashCan}
                   className={`inline-block w-5 text-xl text-pink-700 cursor-pointer ${
-                    (selectedResearchPaper?.paperId ||
-                      selectedResearchPaperType?._id) &&
-                    '!cursor-not-allowed'
+                    selectedResearchPaper?.paperId ||
+                    selectedResearchPaperType?._id ||
+                    deleteSelectedResearchPaper
+                      ? '!cursor-not-allowed'
+                      : ''
                   }`}
                   onClick={() => {
+                    if (deleteSelectedResearchPaper) return;
                     setSelectedResearchPaperToDelete({
                       paperType: researchPaperSet.paperType,
                       paperName: paper.paperName,
