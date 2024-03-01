@@ -11,6 +11,7 @@
 - Admin dashboard (Secured with jwt token)
 - Responsiveness
 - Typewriter effect
+- Sticky navbar (hide/show on scroll down/up)
 
 ### Technologies used:
 

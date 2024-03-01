@@ -5,7 +5,7 @@ import NavLinks from '@/app/_components/Navbar/NavLinks';
 
 const Navbar = ({ user, theme }) => {
   return (
-    <nav className='lg:px-8 px-3 py-4 shadow-md shadow-slate-300 dark:shadow-slate-700 fixed top-0 right-0 left-0 z-40 bg-slate-50 dark:bg-slate-900 text-black dark:text-white'>
+    <nav className='lg:px-8 px-3 py-4 shadow-md shadow-slate-300 dark:shadow-slate-700 z-40 bg-slate-50 dark:bg-slate-900 text-black dark:text-white'>
       <ul className='flex justify-between items-center'>
         <li>
           <Link href='/' className='uppercase text-xl hover:text-pink-700'>

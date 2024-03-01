@@ -6,6 +6,7 @@ import Navbar from '@/app/_components/Navbar/Navbar';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import { Toaster } from 'react-hot-toast';
+import Header from '@/app/_components/Navbar/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,7 +23,10 @@ export default async function RootLayout({ children }) {
   return (
     <html lang='en' className={`scroll-smooth ${theme}`}>
       <body className={`${inter.className} dark:bg-slate-900`}>
-        <Navbar user={user} theme={theme} />
+        <Header>
+          <Navbar user={user} theme={theme} />
+        </Header>
+
         <main className='pt-20'>{children}</main>
         <Toaster
           toastOptions={{
