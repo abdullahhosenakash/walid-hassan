@@ -27,7 +27,7 @@ export default async function RootLayout({ children }) {
           <Navbar user={user} theme={theme} />
         </Header>
 
-        <main>{children}</main>
+        <main className='pt-4 lg:pt-0'>{children}</main>
         <Toaster
           toastOptions={{
             className: '',
